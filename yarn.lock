@@ -2749,6 +2749,11 @@ decamelize@^1.2.0:
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==
 
+deck-of-cards@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/deck-of-cards/-/deck-of-cards-0.1.8.tgz#b29244cc17fd19a04e358d4fdf95d148026e79d2"
+  integrity sha512-bmj5Y4uAQV9h+hrWqpHaODVdV1h8Naa5eQIJXWRnm3gzjqlqtVxxHnjxYwlv/ZkKlkdwvDyTLUqHWUDs4wPD2w==
+
 decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
