@@ -2382,6 +2382,11 @@ caniuse-lite@^1.0.30001332:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001344.tgz#8a1e7fdc4db9c2ec79a05e9fd68eb93a761888bb"
   integrity sha512-0ZFjnlCaXNOAYcV7i+TtdKBp0L/3XEU2MF/x6Du1lrh+SRX4IfzIVL4HNJg5pB2PmFb8rszIGyOvsZnqqRoc2g==
 
+cards@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/cards/-/cards-2.0.1.tgz#2040109c4677ce61bdb92cdd363b948636fe807d"
+  integrity sha512-I1ynulc3M9+9rT+H4t5WpHMosdcDa/oabvwgqtE0Vf4pXTIOgiDgaFpXgrCfJo92kpa+3L4QdZVN96NqB+FkSg==
+
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -2748,11 +2753,6 @@ decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==
-
-deck-of-cards@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/deck-of-cards/-/deck-of-cards-0.1.8.tgz#b29244cc17fd19a04e358d4fdf95d148026e79d2"
-  integrity sha512-bmj5Y4uAQV9h+hrWqpHaODVdV1h8Naa5eQIJXWRnm3gzjqlqtVxxHnjxYwlv/ZkKlkdwvDyTLUqHWUDs4wPD2w==
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
