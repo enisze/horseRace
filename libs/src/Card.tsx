@@ -4,15 +4,10 @@ import tw from "twrnc";
 
 interface CardProps {}
 
+const staticImage = require("../assets/cards/2C.png");
+
 const Card: FunctionComponent<CardProps> = () => {
-  return (
-    <>
-      <div style={tw`text-black`}>test</div>
-      <Image
-        source={{ height: 50, width: 50, uri: "../assets/adaptive-icon.png" }}
-      />
-    </>
-  );
+  return <Image source={staticImage} style={tw`h-23 w-15 `} />;
 };
 
 export default Card;
