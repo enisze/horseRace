@@ -1,13 +1,15 @@
 import { FunctionComponent } from "react";
-import { Image } from "react-native";
+import { Image, ImageSourcePropType } from "react-native";
 import tw from "twrnc";
+import { RankSymbol } from "../types/RankSymbol.type";
+import { getImage } from "../imageList/imageList";
 
-interface CardProps {}
+interface CardProps {
+  rankSymbol: RankSymbol;
+}
 
-const staticImage = require("../assets/cards/2C.png");
-
-const Card: FunctionComponent<CardProps> = () => {
-  return <Image source={staticImage} style={tw`h-23 w-15 `} />;
+const Card: FunctionComponent<CardProps> = ({ rankSymbol }) => {
+  return <Image source={getImage(rankSymbol)} style={tw`h-23 w-15 `} />;
 };
 
 export default Card;
