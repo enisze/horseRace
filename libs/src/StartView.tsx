@@ -1,15 +1,16 @@
-import { isNumber } from 'lodash'
 import React, { FunctionComponent, useState } from 'react'
-import { View, Button, TextInput } from 'react-native'
+import { View, Button, TextInput, Text } from 'react-native'
 import { useGameContext } from './GameContext'
+import tw from 'twrnc'
 
 export const StartView: FunctionComponent = () => {
   const { levelAmount, setLevelAmount } = useGameContext()
   const [level, setLevel] = useState<string>('')
+  const [showError, setShowError] = useState<boolean>(false)
 
   if (levelAmount) return null
   return (
-    <View>
+    <View style={tw`p-20`}>
       <TextInput
         onChangeText={(text) => {
           setLevel(text)
@@ -22,11 +23,17 @@ export const StartView: FunctionComponent = () => {
         title="Set Level amount"
         onPress={() => {
           const numericLevel = Number(level)
-          if (!isNaN(numericLevel) && isNumber(numericLevel)) {
+          if (!isNaN(numericLevel)) {
             setLevelAmount(numericLevel)
+            setShowError(false)
+          } else {
+            setShowError(true)
           }
         }}
       />
+      {showError && (
+        <Text style={tw`text-red-500`}>Please type in a number</Text>
+      )}
     </View>
   )
 }

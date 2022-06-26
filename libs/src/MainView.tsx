@@ -11,7 +11,7 @@ export const MainView: FunctionComponent<{}> = () => {
   if (!levelAmount) return null
 
   return (
-    <View style={tw`flex p-10`}>
+    <View style={tw`flex p-20`}>
       <MainCardSet />
       <SideCardSet />
     </View>

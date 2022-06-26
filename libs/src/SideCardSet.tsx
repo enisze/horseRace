@@ -11,7 +11,7 @@ export const SideCardSet: FunctionComponent = () => {
   return (
     <View style={tw`flex flex-col space-y-4`}>
       {[...Array(levelAmount)].map((e, i) => (
-        <BackCard />
+        <BackCard key={i} />
       ))}
     </View>
   )
