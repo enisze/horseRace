@@ -1,14 +1,14 @@
-import React, { FunctionComponent } from "react";
-import { Image, View, Text } from "react-native";
-import tw from "twrnc";
+import React, { FunctionComponent } from 'react'
+import { Image, View, Text } from 'react-native'
+import tw from 'twrnc'
 
 const BackCard: FunctionComponent = () => {
   return (
     <Image
-      source={require("../assets/cards/extra/back.png")}
+      source={require('../assets/cards/extra/back.png')}
       style={tw`h-23 w-15 `}
     />
-  );
-};
+  )
+}
 
-export default BackCard;
+export default BackCard
