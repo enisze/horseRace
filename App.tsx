@@ -1,16 +1,14 @@
 import React from "react";
 import { Text, View } from "react-native";
 import tw from "twrnc";
-import { CardDeckComponent } from "./libs/src/CardDeckComponent";
+import { MainCardSet } from "./libs/src/MainCardSet";
 import { GameContextProvider } from "./libs/src/GameContext";
+import { MainView } from "./libs/src/MainView";
 
 export default function App() {
   return (
     <GameContextProvider>
-      <View>
-        <Text style={tw`text-black `}>testerino</Text>
-        <CardDeckComponent />
-      </View>
+      <MainView />
     </GameContextProvider>
   );
 }

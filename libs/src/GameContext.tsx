@@ -13,6 +13,9 @@ const useGameContextState = () => {
   const [HAmount, setHAmount] = useState<number>(0);
   const [SAmount, setSAmount] = useState<number>(0);
 
+  const [levelAmount, setLevelAmount] = useState(8);
+  const [currentLevel, setCurrentLevel] = useState(0);
+
   const increment = (symbol: Symbol) => {
     switch (symbol) {
       case "C":
@@ -52,6 +55,10 @@ const useGameContextState = () => {
     DAmount,
     HAmount,
     SAmount,
+    levelAmount,
+    currentLevel,
+    setLevelAmount,
+    setCurrentLevel,
     increment,
     decrement,
   };
