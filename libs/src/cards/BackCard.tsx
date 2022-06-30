@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Image, View, Text } from 'react-native'
+import { Image } from 'react-native'
 import tw from 'twrnc'
 
 const BackCard: FunctionComponent = () => {

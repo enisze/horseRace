@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
-import { MainCardSet } from './MainCardSet'
-import { SideCardSet } from './SideCardSet'
+import { View, Text } from 'react-native'
+import { MainCardSet } from '../cardSets/MainCardSet'
+import { SideCardSet } from '../cardSets/SideCardSet'
 import tw from 'twrnc'
-import { useGameContext } from './GameContext'
+import { useGameContext } from '../helpers/GameContext'
 
 export const MainView: FunctionComponent<{}> = () => {
   const { levelAmount } = useGameContext()

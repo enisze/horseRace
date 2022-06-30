@@ -1,7 +1,7 @@
-import React from "react";
-import { GameContextProvider } from "./libs/src/GameContext";
-import { MainView } from "./libs/src/MainView";
-import { StartView } from "./libs/src/StartView";
+import React from 'react'
+import { GameContextProvider } from './libs/src/helpers/GameContext'
+import { MainView } from './libs/src/layouts/MainView'
+import { StartView } from './libs/src/StartView'
 
 export default function App() {
   return (
@@ -9,5 +9,5 @@ export default function App() {
       <StartView />
       <MainView />
     </GameContextProvider>
-  );
+  )
 }

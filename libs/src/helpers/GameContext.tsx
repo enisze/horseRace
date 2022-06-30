@@ -5,7 +5,7 @@ import React, {
   useContext,
   useState,
 } from 'react'
-import { Symbol } from '../types/Symbol.type'
+import { Symbol } from '../../types/Symbol.type'
 
 const useGameContextState = () => {
   const [CAmount, setCAmount] = useState<number>(0)
