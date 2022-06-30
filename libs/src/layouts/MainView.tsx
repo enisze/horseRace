@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { MainCardSet } from '../cardSets/MainCardSet'
 import { SideCardSet } from '../cardSets/SideCardSet'
 import tw from 'twrnc'

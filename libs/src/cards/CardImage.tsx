@@ -5,7 +5,7 @@ const CardImage: FunctionComponent<{ source: ImageSourcePropType }> = ({
   source,
 }) => {
   const win = Dimensions.get('window')
-  const width = win.width / 5 - 100
+  const width = win.width / 5
 
   return (
     <View style={{ flexGrow: 1 }}>

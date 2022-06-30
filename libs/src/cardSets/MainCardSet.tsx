@@ -1,12 +1,16 @@
 import React, { FunctionComponent } from 'react'
 
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import Card from '../cards/Card'
 import tw from 'twrnc'
 import { gapStyles } from '../../styles/gapStyles.styles'
+import { RankSymbol } from '../../types/RankSymbol.type'
+import { map } from 'lodash'
 
 export const MainCardSet: FunctionComponent = () => {
-  const styles = gapStyles(4, 'column')
+  const styles = gapStyles(4, 'row')
+
+  const keys: RankSymbol[] = ['AC', 'AD', 'AS', 'AH']
 
   return (
     <View
@@ -15,18 +19,13 @@ export const MainCardSet: FunctionComponent = () => {
         ...styles.container,
       }}
     >
-      <View style={styles.child}>
-        <Card rankSymbol={'AC'} />
-      </View>
-      <View style={styles.child}>
-        <Card rankSymbol={'AD'} />
-      </View>
-      <View style={styles.child}>
-        <Card rankSymbol={'AH'} />
-      </View>
-      <View style={styles.child}>
-        <Card rankSymbol={'AS'} />
-      </View>
+      {map(keys, (key, idx) => {
+        return (
+          <View style={styles.child} key={idx}>
+            <Card rankSymbol={key} />
+          </View>
+        )
+      })}
     </View>
   )
 }

@@ -9,9 +9,6 @@ interface CardProps {
 }
 
 const Card: FunctionComponent<CardProps> = ({ rankSymbol }) => {
-  const win = Dimensions.get('window')
-  const width = win.width / 5 - 100
-
   return <CardImage source={getImage(rankSymbol)} />
 }
 
