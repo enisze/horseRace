@@ -1,14 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import { Image } from 'react-native'
 import tw from 'twrnc'
+import CardImage from './CardImage'
 
 const BackCard: FunctionComponent = () => {
-  return (
-    <Image
-      source={require('../assets/cards/extra/back.png')}
-      style={tw`h-23 w-15 `}
-    />
-  )
+  return <CardImage source={require('../../assets/cards/extra/back.png')} />
 }
 
 export default BackCard

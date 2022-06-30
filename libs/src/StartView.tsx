@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { View, Button, TextInput, Text } from 'react-native'
-import { useGameContext } from './GameContext'
+import { useGameContext } from './helpers/GameContext'
 import tw from 'twrnc'
 
 export const StartView: FunctionComponent = () => {
