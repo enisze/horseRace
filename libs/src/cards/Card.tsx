@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Dimensions, Image, View } from 'react-native'
 import { RankSymbol } from '../../types/RankSymbol.type'
-import { getImage } from '../../imageList/imageList'
+import { getImage } from '../../dataLists/imageList'
 import CardImage from './CardImage'
 
 interface CardProps {

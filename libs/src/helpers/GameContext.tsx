@@ -5,6 +5,7 @@ import React, {
   useContext,
   useState,
 } from 'react'
+import { RankSymbol } from '../../types/RankSymbol.type'
 import { Symbol } from '../../types/Symbol.type'
 
 const useGameContextState = () => {
@@ -12,6 +13,8 @@ const useGameContextState = () => {
   const [DAmount, setDAmount] = useState<number>(0)
   const [HAmount, setHAmount] = useState<number>(0)
   const [SAmount, setSAmount] = useState<number>(0)
+
+  const [drawnCards, setDrawnCards] = useState<RankSymbol[]>([])
 
   const [levelAmount, setLevelAmount] = useState<number>()
   const [currentLevel, setCurrentLevel] = useState(0)
@@ -50,15 +53,31 @@ const useGameContextState = () => {
     }
   }
 
+  const getCurrentLevelAmount = (symbol: Symbol) => {
+    switch (symbol) {
+      case 'C':
+        return CAmount
+      case 'D':
+        return DAmount
+      case 'H':
+        return HAmount
+      case 'S':
+        return SAmount
+    }
+  }
+
+  const appendDrawnCard = (rankSymbol: RankSymbol) => {
+    setDrawnCards((cards) => [...cards, rankSymbol])
+  }
+
   return {
-    CAmount,
-    DAmount,
-    HAmount,
-    SAmount,
     levelAmount,
     currentLevel,
+    drawnCards,
+    appendDrawnCard,
     setLevelAmount,
     setCurrentLevel,
+    getCurrentLevelAmount,
     increment,
     decrement,
   }
