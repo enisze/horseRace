@@ -42,7 +42,11 @@ const CardWithCurrentPosition: FunctionComponent<{
   const symbol = getSymbolFromRankSymbol(rankSymbol)
 
   const offset = 1
-  const newHeight = height * (getCurrentLevelAmount(symbol) + offset)
+  const amount = getCurrentLevelAmount(symbol) + offset
+
+  console.log('amount', amount)
+
+  const newHeight = height * amount
 
   return (
     <View style={{ height: newHeight }} key={rankSymbol}>

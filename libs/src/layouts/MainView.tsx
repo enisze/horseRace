@@ -25,14 +25,18 @@ export const MainView: FunctionComponent<{}> = () => {
       <SideCardSet />
       <View style={tw`flex justify-center items-center`}>
         {test ? (
-          <Card rankSymbol={test} />
+          <View
+            onTouchStart={() => {
+              setTest(undefined)
+            }}
+          >
+            <Card rankSymbol={test} />
+          </View>
         ) : (
           <BackCard
             onClick={() => {
               const rankSymbol = getRandomRankSymbol()
-
               setTest(rankSymbol)
-
               const symbol = getSymbolFromRankSymbol(rankSymbol)
 
               increment(symbol)
