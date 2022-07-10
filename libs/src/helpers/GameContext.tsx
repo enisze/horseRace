@@ -16,8 +16,14 @@ const useGameContextState = () => {
 
   const [drawnCards, setDrawnCards] = useState<RankSymbol[]>([])
 
-  const [levelAmount, setLevelAmount] = useState<number>()
+  const [levelAmount, setLevelAmount] = useState<number>(10)
   const [currentLevel, setCurrentLevel] = useState(0)
+
+  const setLevelAmountConditionally = (levelAmount: number) => {
+    if (levelAmount < 11) {
+      setLevelAmount(levelAmount)
+    }
+  }
 
   const increment = (symbol: Symbol) => {
     switch (symbol) {
@@ -75,7 +81,7 @@ const useGameContextState = () => {
     currentLevel,
     drawnCards,
     appendDrawnCard,
-    setLevelAmount,
+    setLevelAmount: setLevelAmountConditionally,
     setCurrentLevel,
     getCurrentLevelAmount,
     increment,

@@ -7,7 +7,7 @@ import { gapStyles } from '../../styles/gapStyles.styles'
 import { RankSymbol } from '../../types/RankSymbol.type'
 import { map } from 'lodash'
 import { useGameContext } from '../helpers/GameContext'
-import { getWidthAndHeight } from '../helpers/getWidthAndHeight'
+import { getCardWidthAndHeight } from '../helpers/geCardWidthAndHeight'
 import { getSymbolFromRankSymbol } from '../helpers/getSymbolFromRankSymbol'
 
 export const MainCardSet: FunctionComponent = () => {
@@ -36,7 +36,7 @@ export const MainCardSet: FunctionComponent = () => {
 const CardWithCurrentPosition: FunctionComponent<{
   rankSymbol: RankSymbol
 }> = ({ rankSymbol }) => {
-  const { height } = getWidthAndHeight()
+  const { height } = getCardWidthAndHeight()
   const { getCurrentLevelAmount } = useGameContext()
 
   const symbol = getSymbolFromRankSymbol(rankSymbol)
