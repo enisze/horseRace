@@ -45,16 +45,16 @@ const useGameContextState = () => {
   const decrement = (symbol: Symbol) => {
     switch (symbol) {
       case 'C':
-        setCAmount((value) => value--)
+        setCAmount((value) => value - 1)
         return
       case 'D':
-        setDAmount((value) => value--)
+        setDAmount((value) => value - 1)
         return
       case 'H':
-        setHAmount((value) => value--)
+        setHAmount((value) => value - 1)
         return
       case 'S':
-        setSAmount((value) => value--)
+        setSAmount((value) => value - 1)
         return
     }
   }

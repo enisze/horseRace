@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import tw from 'twrnc'
 import { gapStyles } from '../../styles/gapStyles.styles'
-import BackCard from '../cards/BackCard'
+import { RandomCard } from '../cards/RandomCard'
 import { useGameContext } from '../helpers/GameContext'
 
 export const SideCardSet: FunctionComponent = () => {
@@ -15,7 +15,7 @@ export const SideCardSet: FunctionComponent = () => {
     <View style={{ ...tw`flex flex-col`, ...styles.container }}>
       {[...Array(levelAmount)].map((e, i) => (
         <View style={styles.child} key={i}>
-          <BackCard />
+          <RandomCard invoke="decrement" />
         </View>
       ))}
     </View>
