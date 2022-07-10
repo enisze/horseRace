@@ -13,10 +13,11 @@ const useGameContextState = () => {
   const [HAmount, setHAmount] = useState<number>(0)
   const [SAmount, setSAmount] = useState<number>(0)
 
+  const [winner, setWinner] = useState<Symbol>()
+
   const [drawnCards, setDrawnCards] = useState<RankSymbol[]>([])
 
-  const [levelAmount, setLevelAmount] = useState<number>(10)
-  const [currentLevel, setCurrentLevel] = useState(0)
+  const [levelAmount, setLevelAmount] = useState<number>(3)
 
   const setLevelAmountConditionally = (levelAmount: number) => {
     if (levelAmount < 11) {
@@ -31,15 +32,19 @@ const useGameContextState = () => {
     switch (symbol) {
       case 'C':
         setCAmount(incrementFnc)
+        if (CAmount === levelAmount) setWinner('C')
         return
       case 'D':
         setDAmount(incrementFnc)
+        if (DAmount === levelAmount) setWinner('D')
         return
       case 'H':
         setHAmount(incrementFnc)
+        if (HAmount === levelAmount) setWinner('H')
         return
       case 'S':
         setSAmount(incrementFnc)
+        if (SAmount === levelAmount) setWinner('S')
         return
     }
   }
@@ -81,13 +86,22 @@ const useGameContextState = () => {
     setDrawnCards((cards) => [...cards, rankSymbol])
   }
 
+  const reset = () => {
+    setCAmount(0)
+    setDAmount(0)
+    setSAmount(0)
+    setHAmount(0)
+    setDrawnCards([])
+    setWinner(undefined)
+  }
+
   return {
+    winner,
     levelAmount,
-    currentLevel,
     drawnCards,
     appendDrawnCard,
+    reset,
     setLevelAmount: setLevelAmountConditionally,
-    setCurrentLevel,
     getCurrentLevelAmount,
     increment,
     decrement,
