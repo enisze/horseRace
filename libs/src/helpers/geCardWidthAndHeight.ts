@@ -14,7 +14,7 @@ export const getCardWidthAndHeight = () => {
 
   const cardHeight = maxCardHeight
 
-  const cardWidth = cardHeight / 1.55
+  const cardWidth = cardHeight / 1.54
 
   return { width: cardWidth, height: cardHeight }
 }

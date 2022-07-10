@@ -24,7 +24,8 @@ const useGameContextState = () => {
     }
   }
 
-  const incrementFnc = (value: number) => (value >= 0 ? value + 1 : 0)
+  const incrementFnc = (value: number) =>
+    value >= 0 && value < levelAmount ? value + 1 : 0
 
   const increment = (symbol: Symbol) => {
     switch (symbol) {
@@ -43,7 +44,8 @@ const useGameContextState = () => {
     }
   }
 
-  const decrementFnc = (value: number) => (value > 0 ? value - 1 : 0)
+  const decrementFnc = (value: number) =>
+    value > 0 && value <= levelAmount ? value - 1 : 0
 
   const decrement = (symbol: Symbol) => {
     switch (symbol) {

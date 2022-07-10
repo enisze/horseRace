@@ -8,7 +8,7 @@ export const gapStyles = (gap: number, orientation: 'row' | 'column') =>
       paddingVertical: orientation === 'column' ? gap / -2 : undefined,
     },
     child: {
-      marginHorizontal: gap / 2,
-      marginVertical: gap / 2,
+      marginHorizontal: orientation === 'row' ? gap / 2 : undefined,
+      marginVertical: orientation === 'column' ? gap / 2 : undefined,
     },
   })
