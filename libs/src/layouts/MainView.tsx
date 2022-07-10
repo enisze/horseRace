@@ -19,8 +19,10 @@ export const MainView: FunctionComponent<{}> = () => {
 
   return (
     <View style={tw`flex p-20`}>
-      <MainCardSet />
-      <SideCardSet />
+      <View style={tw`flex flex-row`}>
+        <SideCardSet />
+        <MainCardSet />
+      </View>
       <View style={tw`flex justify-center items-center`}>
         <RandomCard invoke={'increment'} />
       </View>

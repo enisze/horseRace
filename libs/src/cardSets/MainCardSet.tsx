@@ -11,14 +11,14 @@ import { getCardWidthAndHeight } from '../helpers/geCardWidthAndHeight'
 import { getSymbolFromRankSymbol } from '../helpers/getSymbolFromRankSymbol'
 
 export const MainCardSet: FunctionComponent = () => {
-  const styles = gapStyles(4, 'row')
+  const styles = gapStyles(8, 'row')
 
   const keys: RankSymbol[] = ['AC', 'AD', 'AS', 'AH']
 
   return (
     <View
       style={{
-        ...tw`flex flex-row justify-center items-end`,
+        ...tw`flex flex-row items-end w-full`,
         ...styles.container,
       }}
     >
@@ -43,8 +43,6 @@ const CardWithCurrentPosition: FunctionComponent<{
 
   const offset = 1
   const amount = getCurrentLevelAmount(symbol) + offset
-
-  console.log('amount', amount)
 
   const newHeight = height * amount
 

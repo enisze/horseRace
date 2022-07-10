@@ -25,36 +25,40 @@ const useGameContextState = () => {
     }
   }
 
+  const incrementFnc = (value: number) => (value >= 0 ? value + 1 : 0)
+
   const increment = (symbol: Symbol) => {
     switch (symbol) {
       case 'C':
-        setCAmount((value) => value + 1)
+        setCAmount(incrementFnc)
         return
       case 'D':
-        setDAmount((value) => value + 1)
+        setDAmount(incrementFnc)
         return
       case 'H':
-        setHAmount((value) => value + 1)
+        setHAmount(incrementFnc)
         return
       case 'S':
-        setSAmount((value) => value + 1)
+        setSAmount(incrementFnc)
         return
     }
   }
 
+  const decrementFnc = (value: number) => (value > 0 ? value - 1 : 0)
+
   const decrement = (symbol: Symbol) => {
     switch (symbol) {
       case 'C':
-        setCAmount((value) => value - 1)
+        setCAmount(decrementFnc)
         return
       case 'D':
-        setDAmount((value) => value - 1)
+        setDAmount(decrementFnc)
         return
       case 'H':
-        setHAmount((value) => value - 1)
+        setHAmount(decrementFnc)
         return
       case 'S':
-        setSAmount((value) => value - 1)
+        setSAmount(decrementFnc)
         return
     }
   }

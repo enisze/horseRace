@@ -9,7 +9,7 @@ import { useGameContext } from '../helpers/GameContext'
 export const SideCardSet: FunctionComponent = () => {
   const { levelAmount } = useGameContext()
 
-  const styles = gapStyles(4, 'column')
+  const styles = gapStyles(8, 'column')
 
   return (
     <View style={{ ...tw`flex flex-col`, ...styles.container }}>
