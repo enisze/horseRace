@@ -17,7 +17,7 @@ const useGameContextState = () => {
 
   const [drawnCards, setDrawnCards] = useState<RankSymbol[]>([])
 
-  const [levelAmount, setLevelAmount] = useState<number>(3)
+  const [levelAmount, setLevelAmount] = useState<number>(10)
 
   const setLevelAmountConditionally = (levelAmount: number) => {
     if (levelAmount < 11) {
@@ -26,31 +26,31 @@ const useGameContextState = () => {
   }
 
   const incrementFnc = (value: number) =>
-    value >= 0 && value < levelAmount ? value + 1 : 0
+    value >= 0 && value < levelAmount - 1 ? value + 1 : 0
 
   const increment = (symbol: Symbol) => {
     switch (symbol) {
       case 'C':
         setCAmount(incrementFnc)
-        if (CAmount === levelAmount) setWinner('C')
+        if (CAmount === levelAmount - 1) setWinner('C')
         return
       case 'D':
         setDAmount(incrementFnc)
-        if (DAmount === levelAmount) setWinner('D')
+        if (DAmount === levelAmount - 1) setWinner('D')
         return
       case 'H':
         setHAmount(incrementFnc)
-        if (HAmount === levelAmount) setWinner('H')
+        if (HAmount === levelAmount - 1) setWinner('H')
         return
       case 'S':
         setSAmount(incrementFnc)
-        if (SAmount === levelAmount) setWinner('S')
+        if (SAmount === levelAmount - 1) setWinner('S')
         return
     }
   }
 
   const decrementFnc = (value: number) =>
-    value > 0 && value <= levelAmount ? value - 1 : 0
+    value > 0 && value <= levelAmount - 1 ? value - 1 : 0
 
   const decrement = (symbol: Symbol) => {
     switch (symbol) {

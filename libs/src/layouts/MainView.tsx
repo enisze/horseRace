@@ -13,7 +13,7 @@ export const MainView: FunctionComponent<{}> = () => {
   // if (!levelAmount) return null
 
   return (
-    <View style={tw`flex p-20`}>
+    <View style={tw`flex p-2 pt-10`}>
       <View style={tw`flex flex-row`}>
         <SideCardSet />
         <MainCardSet />

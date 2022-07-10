@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Modal, Pressable, Text, View } from 'react-native'
+import tw from 'twrnc'
 import Card from '../cards/Card'
 import { useGameContext } from '../helpers/GameContext'
 
@@ -15,18 +16,20 @@ export const HorseRaceModal: FunctionComponent = () => {
   }, [winner])
 
   return (
-    <View>
-      <Modal
-        animationType="slide"
-        visible={showModal}
-        onRequestClose={() => {
-          setShowModal(false)
-        }}
+    <Modal
+      animationType="slide"
+      visible={showModal}
+      onRequestClose={() => {
+        setShowModal(false)
+      }}
+    >
+      <View
+        style={tw`border rounded flex justify-center items-center m-auto p-10`}
       >
-        <View>
-          <Text>Winner:</Text>
+        <Text>Winner:</Text>
 
-          {winner && <Card rankSymbol={`A${winner}`} />}
+        {winner && <Card rankSymbol={`A${winner}`} />}
+        <View style={tw`border rounded p-2`}>
           <Pressable
             onPress={() => {
               setShowModal(false)
@@ -36,7 +39,7 @@ export const HorseRaceModal: FunctionComponent = () => {
             <Text>Reset </Text>
           </Pressable>
         </View>
-      </Modal>
-    </View>
+      </View>
+    </Modal>
   )
 }
