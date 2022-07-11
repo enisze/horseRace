@@ -22,6 +22,7 @@ export const HorseRaceModal: FunctionComponent = () => {
       onRequestClose={() => {
         setShowModal(false)
       }}
+      transparent={true}
     >
       <View
         style={tw`border rounded flex justify-center items-center m-auto p-10 bg-blue-100 shadow-black shadow-2xl`}
