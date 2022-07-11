@@ -6,7 +6,7 @@ import { StartView } from './libs/src/StartView'
 export default function App() {
   return (
     <GameContextProvider>
-      {/* <StartView /> */}
+      <StartView />
       <MainView />
     </GameContextProvider>
   )

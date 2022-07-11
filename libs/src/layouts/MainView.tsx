@@ -8,12 +8,12 @@ import { useGameContext } from '../helpers/GameContext'
 import { HorseRaceModal } from './HorseRaceModal'
 
 export const MainView: FunctionComponent<{}> = () => {
-  const { levelAmount, increment } = useGameContext()
+  const { levelAmount } = useGameContext()
 
-  // if (!levelAmount) return null
+  if (!levelAmount) return null
 
   return (
-    <View style={tw`flex p-2 pt-10`}>
+    <View style={tw`flex p-2 pt-10 bg-blue-100`}>
       <View style={tw`flex flex-row`}>
         <SideCardSet />
         <MainCardSet />

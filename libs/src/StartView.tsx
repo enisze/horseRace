@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
-import { View, Button, TextInput, Text } from 'react-native'
-import { useGameContext } from './helpers/GameContext'
+import { Pressable, Text, TextInput, View } from 'react-native'
 import tw from 'twrnc'
+import { useGameContext } from './helpers/GameContext'
 
 export const StartView: FunctionComponent = () => {
   const { levelAmount, setLevelAmount } = useGameContext()
@@ -18,9 +18,9 @@ export const StartView: FunctionComponent = () => {
         value={level}
         placeholder="Set Level"
         keyboardType="numeric"
+        style={tw`border-rounded h-6`}
       />
-      <Button
-        title="Set Level amount"
+      <Pressable
         onPress={() => {
           const numericLevel = Number(level)
           if (!isNaN(numericLevel)) {
@@ -30,7 +30,13 @@ export const StartView: FunctionComponent = () => {
             setShowError(true)
           }
         }}
-      />
+      >
+        <View
+          style={tw`w-full justify-center items-center flex rounded bg-blue-200 h-6`}
+        >
+          <Text>Set level</Text>
+        </View>
+      </Pressable>
       {showError && (
         <Text style={tw`text-red-500`}>Please type in a number</Text>
       )}

@@ -17,7 +17,7 @@ const useGameContextState = () => {
 
   const [drawnCards, setDrawnCards] = useState<RankSymbol[]>([])
 
-  const [levelAmount, setLevelAmount] = useState<number>(10)
+  const [levelAmount, setLevelAmount] = useState<number>(0)
 
   const setLevelAmountConditionally = (levelAmount: number) => {
     if (levelAmount < 11) {

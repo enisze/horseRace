@@ -24,12 +24,14 @@ export const HorseRaceModal: FunctionComponent = () => {
       }}
     >
       <View
-        style={tw`border rounded flex justify-center items-center m-auto p-10`}
+        style={tw`border rounded flex justify-center items-center m-auto p-10 bg-blue-100 shadow-black shadow-2xl`}
       >
         <Text>Winner:</Text>
 
         {winner && <Card rankSymbol={`A${winner}`} />}
-        <View style={tw`border rounded p-2`}>
+        <View
+          style={tw`border rounded p-2 shadow-black shadow-2xl bg-green-200`}
+        >
           <Pressable
             onPress={() => {
               setShowModal(false)
