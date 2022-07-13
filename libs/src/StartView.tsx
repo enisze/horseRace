@@ -1,5 +1,6 @@
+import { Button } from '@rneui/themed'
 import React, { FunctionComponent, useState } from 'react'
-import { Pressable, Text, TextInput, View } from 'react-native'
+import { Text, TextInput, View } from 'react-native'
 import tw from 'twrnc'
 import { useGameContext } from './helpers/GameContext'
 
@@ -20,7 +21,7 @@ export const StartView: FunctionComponent = () => {
         keyboardType="numeric"
         style={tw`border-rounded h-6`}
       />
-      <Pressable
+      <Button
         onPress={() => {
           const numericLevel = Number(level)
           if (!isNaN(numericLevel)) {
@@ -36,7 +37,7 @@ export const StartView: FunctionComponent = () => {
         >
           <Text>Set level</Text>
         </View>
-      </Pressable>
+      </Button>
       {showError && (
         <Text style={tw`text-red-500`}>Please type in a number</Text>
       )}
