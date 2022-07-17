@@ -1,6 +1,6 @@
-import { Button } from '@rneui/themed'
 import React, { FunctionComponent, useState } from 'react'
-import { Text, TextInput, View } from 'react-native'
+import { View } from 'react-native'
+import { Button, Input } from 'react-native-elements'
 import tw from 'twrnc'
 import { useGameContext } from './helpers/GameContext'
 
@@ -12,35 +12,31 @@ export const StartView: FunctionComponent = () => {
   if (levelAmount) return null
   return (
     <View style={tw`p-20`}>
-      <TextInput
+      <Input
+        autoCompleteType={'off'}
         onChangeText={(text) => {
           setLevel(text)
         }}
         value={level}
         placeholder="Set Level"
         keyboardType="numeric"
+        errorMessage={showError ? 'Level must be a number below 10' : undefined}
         style={tw`border-rounded h-6`}
       />
       <Button
         onPress={() => {
           const numericLevel = Number(level)
-          if (!isNaN(numericLevel)) {
+          if (!isNaN(numericLevel) && numericLevel < 11) {
             setLevelAmount(numericLevel)
             setShowError(false)
           } else {
             setShowError(true)
           }
         }}
-      >
-        <View
-          style={tw`w-full justify-center items-center flex rounded bg-blue-200 h-6`}
-        >
-          <Text>Set level</Text>
-        </View>
-      </Button>
-      {showError && (
-        <Text style={tw`text-red-500`}>Please type in a number</Text>
-      )}
+        style={tw`w-full justify-center items-center flex rounded`}
+        title="Set level"
+        buttonStyle={tw`w-full`}
+      />
     </View>
   )
 }
