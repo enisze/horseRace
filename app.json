@@ -22,7 +22,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./libs/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.eniszejnilovic.horseRace",
+      "versionCode": 2,
+      "permissions": []
     },
     "web": {
       "favicon": "./libs/assets/favicon.png"
