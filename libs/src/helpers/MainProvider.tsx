@@ -1,7 +1,7 @@
 import { setTestDeviceIDAsync } from 'expo-ads-admob'
 import React, { FunctionComponent, useEffect } from 'react'
 
-const MainProvider2: FunctionComponent = ({ children }) => {
+const MainProvider: FunctionComponent = ({ children }) => {
   const test = async () => {
     await setTestDeviceIDAsync('EMULATOR')
   }
@@ -13,4 +13,4 @@ const MainProvider2: FunctionComponent = ({ children }) => {
   return <>{children}</>
 }
 
-export default MainProvider2
+export default MainProvider
