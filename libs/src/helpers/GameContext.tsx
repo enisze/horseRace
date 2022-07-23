@@ -28,7 +28,7 @@ const useGameContextState = () => {
   }
 
   const currentLevel = useMemo(() => {
-    return min([CAmount, DAmount, HAmount, SAmount])
+    return min([CAmount, DAmount, HAmount, SAmount]) ?? 0
   }, [CAmount, DAmount, HAmount, SAmount])
 
   const incrementFnc = (value: number) =>

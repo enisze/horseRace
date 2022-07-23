@@ -1,35 +1,36 @@
-import React, { FunctionComponent, useEffect, useMemo } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { View } from 'react-native'
+import { RankSymbol } from '../../types/RankSymbol.type'
 import { useGameContext } from '../helpers/GameContext'
 import { getSymbolFromRankSymbol } from '../helpers/getSymbolFromRankSymbol'
 import { useGetRandomRankSymbol } from '../hooks/useGetRandomRankSymbol'
 import BackCard from './BackCard'
 import Card from './Card'
 
-type RandomCardProps = {
-  level?: number
+type RandomCardAutomatedProps = {
+  level: number
 }
 
-export const RandomCardAutomated: FunctionComponent<RandomCardProps> = ({
-  level,
-}) => {
+export const RandomCardAutomated: FunctionComponent<
+  RandomCardAutomatedProps
+> = ({ level }) => {
   const getRandomRankSymbol = useGetRandomRankSymbol()
 
   const { decrement, currentLevel } = useGameContext()
 
-  const randomSymbol = useMemo(() => {
-    if (level === currentLevel) {
-      return getRandomRankSymbol()
-    }
-  }, [level])
-
+  const [randomSymbol, setRandomSymbol] = useState<RankSymbol>()
   useEffect(() => {
-    if (randomSymbol) {
-      const symbol = getSymbolFromRankSymbol(randomSymbol)
+    if (currentLevel >= level && !randomSymbol) {
+      const rankSymbol = getRandomRankSymbol()
+      setRandomSymbol(rankSymbol)
 
+      const symbol = getSymbolFromRankSymbol(rankSymbol)
       decrement(symbol)
     }
-  }, [randomSymbol])
+    if (currentLevel < level && randomSymbol) {
+      setRandomSymbol(undefined)
+    }
+  }, [currentLevel, level, getRandomRankSymbol])
 
   return (
     <View>

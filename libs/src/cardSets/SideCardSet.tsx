@@ -16,7 +16,7 @@ export const SideCardSet: FunctionComponent = () => {
     <View style={{ ...tw`flex flex-col`, ...styles.container }}>
       {[...Array(levelAmount)].map((e, i) => (
         <View style={styles.child} key={i}>
-          <RandomCardAutomated level={i + 1} />
+          <RandomCardAutomated level={levelAmount - i} />
         </View>
       ))}
     </View>
