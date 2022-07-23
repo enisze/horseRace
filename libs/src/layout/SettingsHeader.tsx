@@ -17,14 +17,23 @@ const SettingsHeader: React.FunctionComponent = (props) => {
   const playgroundNavigate = () => {
     // Linking.openURL(`https://@rneui/themed.js.org/#/${props.view}`)
   }
+  const navigateBack = () => {}
 
   return (
     <SafeAreaProvider>
       <Header
-        leftComponent={{
-          icon: 'menu',
-          color: '#fff',
-        }}
+        leftComponent={
+          <View>
+            <TouchableOpacity onPress={navigateBack}>
+              <Icon
+                type="entypo"
+                name="arrow-long-left"
+                color="#fff"
+                tvParallaxProperties={null}
+              />
+            </TouchableOpacity>
+          </View>
+        }
         rightComponent={
           <View style={styles.headerRight}>
             <TouchableOpacity onPress={docsNavigate}>
@@ -47,7 +56,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
             </TouchableOpacity>
           </View>
         }
-        centerComponent={{ text: 'Header', style: styles.heading }}
+        centerComponent={{ text: 'HorseRace', style: styles.heading }}
       />
     </SafeAreaProvider>
   )
