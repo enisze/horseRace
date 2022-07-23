@@ -17,6 +17,7 @@ export const RandomCard: FunctionComponent<RandomCardProps> = ({ invoke }) => {
   const { increment, decrement } = useGameContext()
 
   const [randomSymbol, setRandomSymbol] = useState<RankSymbol>()
+
   return (
     <View>
       {randomSymbol ? (
