@@ -1,11 +1,23 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, {
   createContext,
   FunctionComponent,
   useContext,
+  useEffect,
   useState,
 } from 'react'
 import { RankSymbol } from '../../types/RankSymbol.type'
 import { Symbol } from '../../types/Symbol.type'
+import { GAMEDATA_STORAGE_KEY } from '../constants'
+
+type GameData = {
+  CAmount: number
+  DAmount: number
+  HAmount: number
+  SAmount: number
+  drawnCards: RankSymbol[]
+  levelAmount: number
+}
 
 const useGameContextState = () => {
   const [CAmount, setCAmount] = useState<number>(0)
@@ -82,6 +94,34 @@ const useGameContextState = () => {
     }
   }
 
+  const storeData = async () => {
+    try {
+      const gameData: GameData = {
+        CAmount,
+        DAmount,
+        HAmount,
+        SAmount,
+        drawnCards,
+        levelAmount,
+      }
+      console.log('data2', gameData)
+      await AsyncStorage.setItem(GAMEDATA_STORAGE_KEY, JSON.stringify(gameData))
+    } catch (e) {
+      // saving error
+    }
+  }
+
+  const getLastGamePlayedData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(GAMEDATA_STORAGE_KEY)
+      return Boolean(jsonValue)
+    } catch (error: any) {}
+  }
+  useEffect(() => {
+    const lastGame = getLastGamePlayedData()
+    storeData()
+  }, [CAmount, DAmount, HAmount, SAmount, drawnCards, levelAmount])
+
   const appendDrawnCard = (rankSymbol: RankSymbol) => {
     setDrawnCards((cards) => [...cards, rankSymbol])
   }
@@ -112,11 +152,22 @@ type IGameContext = ReturnType<typeof useGameContextState>
 
 const GameContext = createContext({} as IGameContext)
 
-export const GameContextProvider: FunctionComponent = ({ children }) => {
+export const GameContextProvider: FunctionComponent<{
+  gameData?: GameData
+}> = ({ children, gameData }) => {
   const value = useGameContextState()
+
+  if (gameData) {
+    setGameState(gameData)
+  }
+
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>
 }
 
 export const useGameContext = () => {
   return useContext(GameContext)
+}
+
+const setGameState = (gameData: GameData) => {
+  console.log('data', gameData)
 }
