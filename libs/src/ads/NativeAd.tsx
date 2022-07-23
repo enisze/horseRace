@@ -1,7 +1,12 @@
 import { AdMobBanner } from 'expo-ads-admob'
 
 import React, { FunctionComponent } from 'react'
+import { GOOGLE_ADMOB_PRODUCTION_KEY } from '../env.config'
 import { useDimensions } from '../hooks/useDimensions'
+
+const ID = GOOGLE_ADMOB_PRODUCTION_KEY
+
+const ID2 = 'ca-app-pub-3940256099942544/6300978111'
 
 type BannerSize =
   | 'largeBanner'
@@ -14,12 +19,21 @@ type BannerSize =
 
 const NativeAd: FunctionComponent = () => {
   const bannerSize = useGetBannerSize()
+
   return (
-    <AdMobBanner
-      bannerSize={bannerSize}
-      adUnitID="ca-app-pub-3940256099942544/6300978111" // Test ID, Replace with your-admob-unit-id
-      servePersonalizedAds // true or false
-    />
+    <>
+      <AdMobBanner
+        bannerSize={bannerSize}
+        adUnitID={ID}
+        servePersonalizedAds // true or false
+      />
+
+      <AdMobBanner
+        bannerSize={bannerSize}
+        adUnitID={ID2}
+        servePersonalizedAds // true or false
+      />
+    </>
   )
 }
 

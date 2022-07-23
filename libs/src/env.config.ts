@@ -1,3 +1,3 @@
 import Constants from 'expo-constants'
 
-export const TEST2 = Constants?.manifest?.extra?.apiKey
+export const GOOGLE_ADMOB_PRODUCTION_KEY = Constants?.manifest?.extra?.apiKey
