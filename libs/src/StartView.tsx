@@ -22,33 +22,29 @@ export const StartView: FunctionComponent = () => {
 
   return (
     <View style={tw`flex flex-col justify-center items-center pt-20`}>
-      <View style={buttonStyle}>
-        <Button
-          title="Start Game"
-          onPress={() => {
-            setShowModal(true)
-          }}
-        />
-      </View>
-      <View style={buttonStyle}>
-        <Button title="Continue Game" />
-      </View>
-      <View style={buttonStyle}>
-        <Button
-          title={'Support me '}
-          onPress={donationsNavigate}
-          type="solid"
-          icon={
-            <Icon
-              color={'red'}
-              tvParallaxProperties={undefined}
-              name="heart"
-              type="entypo"
-            />
-          }
-          iconRight
-        />
-      </View>
+      <Button
+        title="Start Game"
+        onPress={() => {
+          setShowModal(true)
+        }}
+        buttonStyle={buttonStyle}
+      />
+      <Button title="Continue Game" buttonStyle={buttonStyle} />
+      <Button
+        title={'Support me '}
+        onPress={donationsNavigate}
+        type="solid"
+        icon={
+          <Icon
+            color={'red'}
+            tvParallaxProperties={undefined}
+            name="heart"
+            type="entypo"
+          />
+        }
+        buttonStyle={buttonStyle}
+        iconRight
+      />
       <NewGameModal
         showModal={showModal}
         closeModal={() => setShowModal(false)}

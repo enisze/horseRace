@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Header, Icon } from 'react-native-elements'
+import { useGameContext } from '../helpers/GameContext'
 
 type ParamList = {
   Detail: {
@@ -9,7 +10,10 @@ type ParamList = {
 }
 
 const SettingsHeader: React.FunctionComponent = (props) => {
-  const navigateBack = () => {}
+  const { levelAmount, setLevelAmount } = useGameContext()
+  const navigateBack = () => {
+    setLevelAmount(0)
+  }
 
   return (
     <Header

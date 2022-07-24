@@ -24,32 +24,33 @@ export const NewGameModal: FunctionComponent<{
       <View
         style={tw`border rounded flex justify-center items-center m-auto p-10 bg-blue-100 shadow-black shadow-2xl`}
       >
-        <Input
-          autoCompleteType={'off'}
-          onChangeText={(text) => {
-            setLevel(text)
-          }}
-          value={level}
-          placeholder="Set Level"
-          keyboardType="numeric"
-          errorMessage={
-            showError ? 'Level must be a number below 10' : undefined
-          }
-          style={tw`border-rounded h-6`}
-        />
+        <View style={tw`w-40 flex `}>
+          <Input
+            autoCompleteType={'off'}
+            onChangeText={(text) => {
+              setLevel(text)
+            }}
+            value={level}
+            placeholder="Set Level"
+            keyboardType="numeric"
+            errorMessage={
+              showError ? 'Level must be a number below 10' : undefined
+            }
+          />
+        </View>
         <Button
           onPress={() => {
             const numericLevel = Number(level)
             if (!isNaN(numericLevel) && numericLevel < 11) {
               setLevelAmount(numericLevel)
+              closeModal()
               setShowError(false)
             } else {
               setShowError(true)
             }
           }}
-          style={tw`w-full justify-center items-center flex rounded`}
           title="Set level"
-          buttonStyle={tw`w-full`}
+          buttonStyle={tw`w-40`}
         />
       </View>
     </Modal>
