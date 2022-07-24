@@ -1,7 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Modal, Pressable, Text, View } from 'react-native'
 import tw from 'twrnc'
+import NativeAd from '../ads/NativeAd'
 import Card from '../cards/Card'
+import { GOOGLE_ADMOB_MODAL_BANNER_ID } from '../env.config'
 import { useGameContext } from '../helpers/GameContext'
 
 export const HorseRaceModal: FunctionComponent = () => {
@@ -42,6 +44,7 @@ export const HorseRaceModal: FunctionComponent = () => {
             <Text>Reset </Text>
           </Pressable>
         </View>
+        <NativeAd id={GOOGLE_ADMOB_MODAL_BANNER_ID} />
       </View>
     </Modal>
   )

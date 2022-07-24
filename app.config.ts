@@ -21,7 +21,7 @@ export default {
       supportsTablet: true,
 
       config: {
-        googleMobileAdsAppId: 'ca-app-pub-3940256099942544/2247696110',
+        googleMobileAdsAppId: 'ca-app-pub-7941882405849156~9233114658',
       },
     },
     android: {
@@ -30,7 +30,7 @@ export default {
         backgroundColor: '#FFFFFF',
       },
       config: {
-        googleMobileAdsAppId: 'ca-app-pub-3940256099942544/2247696110',
+        googleMobileAdsAppId: 'ca-app-pub-7941882405849156~9233114658',
       },
     },
     web: {
@@ -39,7 +39,9 @@ export default {
 
     extra: {
       // Add your extra configs here
-      apiKey: process.env.GOOGLE_ADMOB_PRODUCTION_KEY,
+      mainViewBannerId: process.env.GOOGLE_ADMOB_MAINVIEW_BANNER_ID,
+      startViewBannerId: process.env.GOOGLE_ADMOB_STARTVIEW_BANNER_ID,
+      modalBannerId: process.env.GOOGLE_ADMOB_STARTVIEW_BANNER_ID,
     },
   },
 }

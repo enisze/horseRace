@@ -21,7 +21,7 @@ export const StartView: FunctionComponent = () => {
         placeholder="Set Level"
         keyboardType="numeric"
         errorMessage={showError ? 'Level must be a number below 10' : undefined}
-        style={tw`border-rounded h-6`}
+        style={tw`h-6`}
       />
       <Button
         onPress={() => {
