@@ -6,7 +6,7 @@ import Card from '../cards/Card'
 import { GOOGLE_ADMOB_MODAL_BANNER_ID } from '../env.config'
 import { useGameContext } from '../helpers/GameContext'
 
-export const HorseRaceModal: FunctionComponent = () => {
+export const WinnerModal: FunctionComponent = () => {
   const { winner, reset } = useGameContext()
 
   const [showModal, setShowModal] = useState(false)

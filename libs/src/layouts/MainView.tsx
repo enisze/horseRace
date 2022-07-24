@@ -7,7 +7,7 @@ import { MainCardSet } from '../cardSets/MainCardSet'
 import { SideCardSet } from '../cardSets/SideCardSet'
 import { GOOGLE_ADMOB_MAINVIEW_BANNER_ID } from '../env.config'
 import { useGameContext } from '../helpers/GameContext'
-import { HorseRaceModal } from './HorseRaceModal'
+import { WinnerModal } from './WinnerModal'
 
 export const MainView: FunctionComponent<{}> = () => {
   const { levelAmount } = useGameContext()
@@ -24,11 +24,10 @@ export const MainView: FunctionComponent<{}> = () => {
       <View style={tw`flex justify-center items-center pb-2`}>
         <RandomCardSet invoke={'increment'} />
       </View>
+      <WinnerModal />
       <View style={tw`flex items-center`}>
         <NativeAd id={GOOGLE_ADMOB_MAINVIEW_BANNER_ID} />
       </View>
-
-      <HorseRaceModal />
     </View>
   )
 }
