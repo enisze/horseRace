@@ -8,7 +8,7 @@ export const NewGameModal: FunctionComponent<{
   showModal: boolean
   closeModal: () => void
 }> = ({ showModal, closeModal }) => {
-  const { levelAmount, setLevelAmount } = useGameContext()
+  const { levelAmount, setLevelAmount, reset } = useGameContext()
   const [level, setLevel] = useState<string>('')
   const [showError, setShowError] = useState<boolean>(false)
 
@@ -28,6 +28,7 @@ export const NewGameModal: FunctionComponent<{
           <Input
             autoCompleteType={'off'}
             onChangeText={(text) => {
+              reset()
               setLevel(text)
             }}
             value={level}

@@ -1,3 +1,4 @@
+import { last } from 'lodash'
 import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import tw from 'twrnc'
@@ -17,9 +18,11 @@ export const RandomCardSet: FunctionComponent<RandomCardSetProps> = ({
 }) => {
   const getRandomRankSymbol = useGetRandomRankSymbol()
 
-  const { increment, decrement } = useGameContext()
+  const { increment, decrement, drawnCards } = useGameContext()
 
-  const [randomSymbol, setRandomSymbol] = useState<RankSymbol>()
+  const [randomSymbol, setRandomSymbol] = useState<RankSymbol | undefined>(
+    last(drawnCards)
+  )
 
   return (
     <View style={tw`flex flex-row`}>

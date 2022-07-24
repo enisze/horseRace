@@ -1,8 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { FunctionComponent, useState } from 'react'
 import { Linking, View } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
 import tw from 'twrnc'
 import NativeAd from './ads/NativeAd'
+import { GAMEDATA_STORAGE_KEY } from './constants'
 import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
 import { useGameContext } from './helpers/GameContext'
 import { NewGameModal } from './layouts/NewGameModal'
@@ -13,11 +15,20 @@ const paypalDonationURL =
 const buttonStyle = tw`w-40 mt-10`
 
 export const StartView: FunctionComponent = () => {
-  const { levelAmount } = useGameContext()
+  const { levelAmount, loadGameState } = useGameContext()
   const [showModal, setShowModal] = useState(false)
 
   const donationsNavigate = () => {
     Linking.openURL(paypalDonationURL)
+  }
+
+  const getLastGamePlayedData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(GAMEDATA_STORAGE_KEY)
+      console.log('data', jsonValue)
+      const gameData = jsonValue != null ? JSON.parse(jsonValue) : null
+      loadGameState(gameData)
+    } catch (error: any) {}
   }
 
   if (levelAmount) return null
@@ -31,7 +42,11 @@ export const StartView: FunctionComponent = () => {
         }}
         buttonStyle={buttonStyle}
       />
-      <Button title="Continue Game" buttonStyle={buttonStyle} />
+      <Button
+        title="Continue Game"
+        buttonStyle={buttonStyle}
+        onPress={getLastGamePlayedData}
+      />
       <Button
         title={'Support me '}
         onPress={donationsNavigate}
