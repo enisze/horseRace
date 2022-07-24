@@ -1,41 +1,43 @@
 import React, { FunctionComponent, useState } from 'react'
-import { View } from 'react-native'
-import { Button, Input } from 'react-native-elements'
+import { Linking, View } from 'react-native'
+import { Button } from 'react-native-elements'
 import tw from 'twrnc'
 import { useGameContext } from './helpers/GameContext'
+import { NewGameModal } from './layouts/NewGameModal'
+
+const paypalDonationURL =
+  'https://www.paypal.com/donate/?hosted_button_id=Q7H2L2WCGZKVL'
+
+const buttonStyle = tw`w-40 pt-5`
 
 export const StartView: FunctionComponent = () => {
-  const { levelAmount, setLevelAmount } = useGameContext()
-  const [level, setLevel] = useState<string>('')
-  const [showError, setShowError] = useState<boolean>(false)
+  const { levelAmount } = useGameContext()
+  const [showModal, setShowModal] = useState(false)
+
+  const donationsNavigate = () => {
+    Linking.openURL(paypalDonationURL)
+  }
 
   if (levelAmount) return null
+
   return (
-    <View style={tw`p-20`}>
-      <Input
-        autoCompleteType={'off'}
-        onChangeText={(text) => {
-          setLevel(text)
-        }}
-        value={level}
-        placeholder="Set Level"
-        keyboardType="numeric"
-        errorMessage={showError ? 'Level must be a number below 10' : undefined}
-        style={tw`border-rounded h-6`}
-      />
+    <View style={tw`flex flex-col justify-center items-center pt-20`}>
       <Button
+        title="Start Game"
         onPress={() => {
-          const numericLevel = Number(level)
-          if (!isNaN(numericLevel) && numericLevel < 11) {
-            setLevelAmount(numericLevel)
-            setShowError(false)
-          } else {
-            setShowError(true)
-          }
+          setShowModal(true)
         }}
-        style={tw`w-full justify-center items-center flex rounded`}
-        title="Set level"
-        buttonStyle={tw`w-full`}
+        style={buttonStyle}
+      />
+      <Button title="Continue Game" style={buttonStyle} />
+      <Button
+        title="Support Me <3"
+        onPress={donationsNavigate}
+        style={buttonStyle}
+      />
+      <NewGameModal
+        showModal={showModal}
+        closeModal={() => setShowModal(false)}
       />
     </View>
   )
