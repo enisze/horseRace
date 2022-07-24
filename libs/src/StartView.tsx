@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Linking, View } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button, Icon } from 'react-native-elements'
 import tw from 'twrnc'
 import { useGameContext } from './helpers/GameContext'
 import { NewGameModal } from './layouts/NewGameModal'
@@ -8,7 +8,7 @@ import { NewGameModal } from './layouts/NewGameModal'
 const paypalDonationURL =
   'https://www.paypal.com/donate/?hosted_button_id=Q7H2L2WCGZKVL'
 
-const buttonStyle = tw`w-40 pt-5`
+const buttonStyle = tw`w-40 mt-5`
 
 export const StartView: FunctionComponent = () => {
   const { levelAmount } = useGameContext()
@@ -31,9 +31,19 @@ export const StartView: FunctionComponent = () => {
       />
       <Button title="Continue Game" style={buttonStyle} />
       <Button
-        title="Support Me <3"
+        title={'Support me '}
         onPress={donationsNavigate}
         style={buttonStyle}
+        type="solid"
+        icon={
+          <Icon
+            color={'red'}
+            tvParallaxProperties={undefined}
+            name="heart"
+            type="entypo"
+          />
+        }
+        iconRight
       />
       <NewGameModal
         showModal={showModal}
