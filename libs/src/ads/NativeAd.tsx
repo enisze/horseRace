@@ -12,13 +12,17 @@ type BannerSize =
   | 'smartBannerPortrait'
   | 'smartBannerLandscape'
 
-const NativeAd: FunctionComponent = () => {
+const NativeAd: FunctionComponent<{ id: string }> = ({ id }) => {
   const bannerSize = useGetBannerSize()
+
   return (
     <AdMobBanner
       bannerSize={bannerSize}
-      adUnitID="ca-app-pub-3940256099942544/6300978111" // Test ID, Replace with your-admob-unit-id
+      adUnitID={id}
       servePersonalizedAds // true or false
+      onDidFailToReceiveAdWithError={(error) => {
+        console.log(error)
+      }}
     />
   )
 }

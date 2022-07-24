@@ -39,12 +39,12 @@ const CardWithCurrentPosition: FunctionComponent<{
   rankSymbol: RankSymbol
 }> = ({ rankSymbol }) => {
   const { height } = useGetCardWidthAndHeight()
-  const { getCurrentLevelAmount } = useGameContext()
+  const { getCurrentLevelBySymbol } = useGameContext()
 
   const symbol = getSymbolFromRankSymbol(rankSymbol)
 
   const offset = 1
-  const amount = getCurrentLevelAmount(symbol) + offset
+  const amount = getCurrentLevelBySymbol(symbol) + offset
 
   const newHeight = (height + SIDE_CARD_SET_GAP) * amount
 

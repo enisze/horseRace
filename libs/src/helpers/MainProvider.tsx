@@ -1,9 +1,13 @@
 import { setTestDeviceIDAsync } from 'expo-ads-admob'
 import React, { FunctionComponent, useEffect } from 'react'
 
-const MainProvider2: FunctionComponent = ({ children }) => {
+import { Platform } from 'react-native'
+
+const MainProvider: FunctionComponent = ({ children }) => {
   const test = async () => {
-    await setTestDeviceIDAsync('EMULATOR')
+    if (Platform.OS !== 'web') {
+      await setTestDeviceIDAsync('EMULATOR')
+    }
   }
 
   useEffect(() => {
@@ -13,4 +17,4 @@ const MainProvider2: FunctionComponent = ({ children }) => {
   return <>{children}</>
 }
 
-export default MainProvider2
+export default MainProvider
