@@ -2,6 +2,8 @@ import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import { Button, Input } from 'react-native-elements'
 import tw from 'twrnc'
+import NativeAd from './ads/NativeAd'
+import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
 import { useGameContext } from './helpers/GameContext'
 
 export const StartView: FunctionComponent = () => {
@@ -37,6 +39,10 @@ export const StartView: FunctionComponent = () => {
         title="Set level"
         buttonStyle={tw`w-full`}
       />
+
+      <View style={tw`flex items-center `}>
+        <NativeAd id={GOOGLE_ADMOB_STARTVIEW_BANNER_ID} />
+      </View>
     </View>
   )
 }

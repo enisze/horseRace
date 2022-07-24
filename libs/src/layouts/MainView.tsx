@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import tw from 'twrnc'
 import NativeAd from '../ads/NativeAd'
-import { RandomCard } from '../cards/RandomCard'
+import { RandomCardSet } from '../cards/RandomCard'
 import { MainCardSet } from '../cardSets/MainCardSet'
 import { SideCardSet } from '../cardSets/SideCardSet'
 import { GOOGLE_ADMOB_MAINVIEW_BANNER_ID } from '../env.config'
@@ -20,10 +20,14 @@ export const MainView: FunctionComponent<{}> = () => {
         <SideCardSet />
         <MainCardSet />
       </View>
-      <View style={tw`flex justify-center items-center`}>
-        <RandomCard invoke={'increment'} />
+
+      <View style={tw`flex justify-center items-center pb-2`}>
+        <RandomCardSet invoke={'increment'} />
       </View>
-      <NativeAd id={GOOGLE_ADMOB_MAINVIEW_BANNER_ID} />
+      <View style={tw`flex items-center`}>
+        <NativeAd id={GOOGLE_ADMOB_MAINVIEW_BANNER_ID} />
+      </View>
+
       <HorseRaceModal />
     </View>
   )

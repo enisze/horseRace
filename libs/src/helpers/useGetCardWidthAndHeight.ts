@@ -11,7 +11,9 @@ export const useGetCardWidthAndHeight = () => {
 
   const buffer = levelAmount + 1
 
-  const offset = SIDE_CARD_SET_GAP * buffer
+  const adOffset = 100
+
+  const offset = SIDE_CARD_SET_GAP * buffer + adOffset
 
   if (levelAmount) {
     maxCardHeight = (height - offset) / buffer
