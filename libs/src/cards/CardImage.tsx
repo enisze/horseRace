@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react'
-import { Dimensions, View, Image, ImageSourcePropType } from 'react-native'
-
-import { getCardWidthAndHeight } from '../helpers/geCardWidthAndHeight'
+import { Image, ImageSourcePropType, View } from 'react-native'
+import { useGetCardWidthAndHeight } from '../helpers/useGetCardWidthAndHeight'
 
 const CardImage: FunctionComponent<{ source: ImageSourcePropType }> = ({
   source,
 }) => {
+  const cardStyles = useGetCardWidthAndHeight()
   return (
     <View style={{ flexGrow: 1 }}>
-      <Image source={source} style={getCardWidthAndHeight()} />
+      <Image source={source} style={cardStyles} />
     </View>
   )
 }

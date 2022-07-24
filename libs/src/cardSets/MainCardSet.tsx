@@ -8,8 +8,8 @@ import { RankSymbol } from '../../types/RankSymbol.type'
 import Card from '../cards/Card'
 import { SIDE_CARD_SET_GAP } from '../constants'
 import { useGameContext } from '../helpers/GameContext'
-import { getCardWidthAndHeight } from '../helpers/geCardWidthAndHeight'
 import { getSymbolFromRankSymbol } from '../helpers/getSymbolFromRankSymbol'
+import { useGetCardWidthAndHeight } from '../helpers/useGetCardWidthAndHeight'
 
 export const MainCardSet: FunctionComponent = () => {
   const styles = gapStyles(12, 'row')
@@ -38,13 +38,13 @@ export const MainCardSet: FunctionComponent = () => {
 const CardWithCurrentPosition: FunctionComponent<{
   rankSymbol: RankSymbol
 }> = ({ rankSymbol }) => {
-  const { height } = getCardWidthAndHeight()
-  const { getCurrentLevelAmount } = useGameContext()
+  const { height } = useGetCardWidthAndHeight()
+  const { getCurrentLevelBySymbol } = useGameContext()
 
   const symbol = getSymbolFromRankSymbol(rankSymbol)
 
   const offset = 1
-  const amount = getCurrentLevelAmount(symbol) + offset
+  const amount = getCurrentLevelBySymbol(symbol) + offset
 
   const newHeight = (height + SIDE_CARD_SET_GAP) * amount
 

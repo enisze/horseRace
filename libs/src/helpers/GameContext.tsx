@@ -1,9 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { min } from 'lodash'
 import React, {
   createContext,
   FunctionComponent,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react'
 import { RankSymbol } from '../../types/RankSymbol.type'
@@ -36,6 +38,10 @@ const useGameContextState = () => {
       setLevelAmount(levelAmount)
     }
   }
+
+  const currentLevel = useMemo(() => {
+    return min([CAmount, DAmount, HAmount, SAmount]) ?? 0
+  }, [CAmount, DAmount, HAmount, SAmount])
 
   const incrementFnc = (value: number) =>
     value >= 0 && value < levelAmount - 1 ? value + 1 : 0
@@ -81,7 +87,7 @@ const useGameContextState = () => {
     }
   }
 
-  const getCurrentLevelAmount = (symbol: Symbol) => {
+  const getCurrentLevelBySymbol = (symbol: Symbol) => {
     switch (symbol) {
       case 'C':
         return CAmount
@@ -142,7 +148,8 @@ const useGameContextState = () => {
     appendDrawnCard,
     reset,
     setLevelAmount: setLevelAmountConditionally,
-    getCurrentLevelAmount,
+    getCurrentLevelBySymbol,
+    currentLevel,
     increment,
     decrement,
   }

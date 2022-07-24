@@ -1,42 +1,60 @@
 import React, { FunctionComponent, useState } from 'react'
-import { View } from 'react-native'
-import { Button, Input } from 'react-native-elements'
+import { Linking, View } from 'react-native'
+import { Button, Icon } from 'react-native-elements'
 import tw from 'twrnc'
+import NativeAd from './ads/NativeAd'
+import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
 import { useGameContext } from './helpers/GameContext'
+import { NewGameModal } from './layouts/NewGameModal'
+
+const paypalDonationURL =
+  'https://www.paypal.com/donate/?hosted_button_id=Q7H2L2WCGZKVL'
+
+const buttonStyle = tw`w-40 mt-10`
 
 export const StartView: FunctionComponent = () => {
-  const { levelAmount, setLevelAmount } = useGameContext()
-  const [level, setLevel] = useState<string>('')
-  const [showError, setShowError] = useState<boolean>(false)
+  const { levelAmount } = useGameContext()
+  const [showModal, setShowModal] = useState(false)
+
+  const donationsNavigate = () => {
+    Linking.openURL(paypalDonationURL)
+  }
 
   if (levelAmount) return null
+
   return (
-    <View style={tw`p-20`}>
-      <Input
-        autoCompleteType={'off'}
-        onChangeText={(text) => {
-          setLevel(text)
-        }}
-        value={level}
-        placeholder="Set Level"
-        keyboardType="numeric"
-        errorMessage={showError ? 'Level must be a number below 10' : undefined}
-        style={tw`border-rounded h-6`}
-      />
+    <View style={tw`flex flex-col justify-center items-center pt-20`}>
       <Button
+        title="Start Game"
         onPress={() => {
-          const numericLevel = Number(level)
-          if (!isNaN(numericLevel) && numericLevel < 11) {
-            setLevelAmount(numericLevel)
-            setShowError(false)
-          } else {
-            setShowError(true)
-          }
+          setShowModal(true)
         }}
-        style={tw`w-full justify-center items-center flex rounded`}
-        title="Set level"
-        buttonStyle={tw`w-full`}
+        buttonStyle={buttonStyle}
       />
+      <Button title="Continue Game" buttonStyle={buttonStyle} />
+      <Button
+        title={'Support me '}
+        onPress={donationsNavigate}
+        type="solid"
+        icon={
+          <Icon
+            color={'red'}
+            tvParallaxProperties={undefined}
+            name="heart"
+            type="entypo"
+          />
+        }
+        buttonStyle={buttonStyle}
+        iconRight
+      />
+      <NewGameModal
+        showModal={showModal}
+        closeModal={() => setShowModal(false)}
+      />
+
+      <View style={tw`flex items-center `}>
+        <NativeAd id={GOOGLE_ADMOB_STARTVIEW_BANNER_ID} />
+      </View>
     </View>
   )
 }
