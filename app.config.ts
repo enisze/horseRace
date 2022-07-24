@@ -27,6 +27,7 @@ export default {
     android: {
       package: 'com.eniszejnilovic.horseRace',
       versionCode: 3,
+      permissions: [],
       adaptiveIcon: {
         foregroundImage: './libs/assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',

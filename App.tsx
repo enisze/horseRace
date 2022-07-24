@@ -1,6 +1,7 @@
 import React from 'react'
 import { GameContextProvider } from './libs/src/helpers/GameContext'
 import MainProvider from './libs/src/helpers/MainProvider'
+import SettingsHeader from './libs/src/layout/SettingsHeader'
 import { MainView } from './libs/src/layouts/MainView'
 import { StartView } from './libs/src/StartView'
 
@@ -8,6 +9,7 @@ export default function App() {
   return (
     <GameContextProvider>
       <MainProvider>
+        <SettingsHeader />
         <StartView />
         <MainView />
       </MainProvider>
