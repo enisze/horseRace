@@ -1,17 +1,19 @@
-import { Dimensions } from 'react-native'
 import { SIDE_CARD_SET_GAP } from '../constants'
+import { useDimensions } from '../hooks/useDimensions'
 import { useGameContext } from './GameContext'
 
-export const getCardWidthAndHeight = () => {
+export const useGetCardWidthAndHeight = () => {
   const { levelAmount } = useGameContext()
 
-  const { height, width } = Dimensions.get('window')
+  const { width, height } = useDimensions()
 
   let maxCardHeight = 0
 
   const buffer = levelAmount + 1
 
-  const offset = SIDE_CARD_SET_GAP * buffer
+  const adOffset = 100
+
+  const offset = SIDE_CARD_SET_GAP * buffer + adOffset
 
   if (levelAmount) {
     maxCardHeight = (height - offset) / buffer
