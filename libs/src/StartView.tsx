@@ -15,7 +15,8 @@ const paypalDonationURL =
 const buttonStyle = tw`w-40 mt-10`
 
 export const StartView: FunctionComponent = () => {
-  const { levelAmount, loadGameState } = useGameContext()
+  const { gameState, loadGameState, setGameState } = useGameContext()
+
   const [showModal, setShowModal] = useState(false)
 
   const donationsNavigate = () => {
@@ -31,7 +32,7 @@ export const StartView: FunctionComponent = () => {
     } catch (error: any) {}
   }
 
-  if (levelAmount) return null
+  if (gameState !== 'off') return null
 
   return (
     <View style={tw`flex flex-col justify-center items-center pt-20`}>

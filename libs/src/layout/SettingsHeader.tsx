@@ -10,9 +10,9 @@ type ParamList = {
 }
 
 const SettingsHeader: React.FunctionComponent = (props) => {
-  const { levelAmount, setLevelAmount } = useGameContext()
+  const { setGameState } = useGameContext()
   const navigateBack = () => {
-    setLevelAmount(0)
+    setGameState('off')
   }
 
   return (

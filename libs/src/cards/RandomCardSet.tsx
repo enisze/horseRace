@@ -15,7 +15,7 @@ type RandomCardSetProps = {}
 export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
   const getRandomRankSymbol = useGetRandomRankSymbol()
 
-  const { increment } = useGameContext()
+  const { increment, setGameState } = useGameContext()
 
   const lastCard = useGetLastRankSymbol('increment')
 
@@ -27,6 +27,7 @@ export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
     <View style={tw`flex flex-row`}>
       <BackCard
         onClick={() => {
+          setGameState('playing')
           const rankSymbol = getRandomRankSymbol('increment')
           setRandomSymbol(rankSymbol)
           const symbol = getSymbolFromRankSymbol(rankSymbol)

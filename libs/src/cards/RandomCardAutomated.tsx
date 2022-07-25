@@ -1,3 +1,4 @@
+import { filter } from 'lodash'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { RankSymbol } from '../../types/RankSymbol.type'
@@ -16,9 +17,12 @@ export const RandomCardAutomated: FunctionComponent<
 > = ({ level }) => {
   const getRandomRankSymbol = useGetRandomRankSymbol()
 
-  const { decrement, currentLevel, drawnCards } = useGameContext()
+  const { decrement, currentLevel, drawnCards, gameState } = useGameContext()
 
-  const [randomSymbol, setRandomSymbol] = useState<RankSymbol>()
+  const initialCard = useGetDecrementCardByLevel(level)
+  const [randomSymbol, setRandomSymbol] = useState<RankSymbol | undefined>(
+    initialCard
+  )
   useEffect(() => {
     if (currentLevel >= level && !randomSymbol) {
       const rankSymbol = getRandomRankSymbol('decrement')
@@ -45,4 +49,14 @@ export const RandomCardAutomated: FunctionComponent<
       )}
     </View>
   )
+}
+
+const useGetDecrementCardByLevel = (level: number): RankSymbol | undefined => {
+  const { drawnCards } = useGameContext()
+
+  const cards = filter(drawnCards, (card) => card.action === 'decrement')
+  if (cards.length > level) {
+    return cards[level].rankSymbol
+  }
+  return undefined
 }

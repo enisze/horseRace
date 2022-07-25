@@ -4,6 +4,7 @@ import React, {
   createContext,
   FunctionComponent,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react'
@@ -23,11 +24,15 @@ type GameData = {
 
 type DrawnCard = { rankSymbol: RankSymbol; action: LevelAction }
 
+type GameState = 'off' | 'init' | 'loaded' | 'playing'
+
 const useGameContextState = () => {
   const [CAmount, setCAmount] = useState<number>(0)
   const [DAmount, setDAmount] = useState<number>(0)
   const [HAmount, setHAmount] = useState<number>(0)
   const [SAmount, setSAmount] = useState<number>(0)
+
+  const [gameState, setGameState] = useState<GameState>('off')
 
   const [winner, setWinner] = useState<Symbol>()
 
@@ -118,9 +123,14 @@ const useGameContextState = () => {
     }
   }
 
+  useEffect(() => {
+    if (CAmount > 0 || DAmount > 0 || HAmount > 0 || SAmount > 0) {
+      storeData()
+    }
+  }, [CAmount, DAmount, HAmount, SAmount, drawnCards, levelAmount])
+
   const appendDrawnCard = (drawnCard: DrawnCard) => {
     setDrawnCards((cards) => [...cards, drawnCard])
-    storeData()
   }
 
   const loadGameState = (gameState: GameData) => {
@@ -130,6 +140,7 @@ const useGameContextState = () => {
     setSAmount(gameState.SAmount)
     setDrawnCards(gameState.drawnCards)
     setLevelAmount(gameState.levelAmount)
+    setGameState('loaded')
   }
 
   const reset = () => {
@@ -153,6 +164,8 @@ const useGameContextState = () => {
     increment,
     decrement,
     loadGameState,
+    gameState,
+    setGameState,
   }
 }
 
