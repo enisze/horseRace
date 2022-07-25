@@ -26,7 +26,6 @@ export const StartView: FunctionComponent = () => {
   const getLastGamePlayedData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem(GAMEDATA_STORAGE_KEY)
-      console.log('data', jsonValue)
       const gameData = jsonValue != null ? JSON.parse(jsonValue) : null
       loadGameState(gameData)
     } catch (error: any) {}

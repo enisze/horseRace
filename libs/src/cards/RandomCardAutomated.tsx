@@ -55,8 +55,8 @@ const useGetDecrementCardByLevel = (level: number): RankSymbol | undefined => {
   const { drawnCards } = useGameContext()
 
   const cards = filter(drawnCards, (card) => card.action === 'decrement')
-  if (cards.length > level) {
-    return cards[level].rankSymbol
+  if (cards.length >= level) {
+    return cards[level - 1].rankSymbol
   }
   return undefined
 }
