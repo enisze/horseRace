@@ -7,6 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react'
+import { LevelAction } from '../../types/LevelAction.type'
 import { RankSymbol } from '../../types/RankSymbol.type'
 import { Symbol } from '../../types/Symbol.type'
 import { GAMEDATA_STORAGE_KEY } from '../constants'
@@ -16,9 +17,11 @@ type GameData = {
   DAmount: number
   HAmount: number
   SAmount: number
-  drawnCards: RankSymbol[]
+  drawnCards: DrawnCard[]
   levelAmount: number
 }
+
+type DrawnCard = { rankSymbol: RankSymbol; action: LevelAction }
 
 const useGameContextState = () => {
   const [CAmount, setCAmount] = useState<number>(0)
@@ -28,7 +31,7 @@ const useGameContextState = () => {
 
   const [winner, setWinner] = useState<Symbol>()
 
-  const [drawnCards, setDrawnCards] = useState<RankSymbol[]>([])
+  const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([])
 
   const [levelAmount, setLevelAmount] = useState<number>(0)
 
@@ -115,9 +118,8 @@ const useGameContextState = () => {
     }
   }
 
-  const appendDrawnCard = (rankSymbol: RankSymbol) => {
-    setDrawnCards((cards) => [...cards, rankSymbol])
-    console.log(drawnCards)
+  const appendDrawnCard = (drawnCard: DrawnCard) => {
+    setDrawnCards((cards) => [...cards, drawnCard])
     storeData()
   }
 

@@ -22,7 +22,7 @@ export const MainView: FunctionComponent<{}> = () => {
       </View>
 
       <View style={tw`flex justify-center items-center pb-2`}>
-        <RandomCardSet invoke={'increment'} />
+        <RandomCardSet />
       </View>
       <WinnerModal />
       <View style={tw`flex items-center`}>

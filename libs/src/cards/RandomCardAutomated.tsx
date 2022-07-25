@@ -21,7 +21,7 @@ export const RandomCardAutomated: FunctionComponent<
   const [randomSymbol, setRandomSymbol] = useState<RankSymbol>()
   useEffect(() => {
     if (currentLevel >= level && !randomSymbol) {
-      const rankSymbol = getRandomRankSymbol()
+      const rankSymbol = getRandomRankSymbol('decrement')
       setRandomSymbol(rankSymbol)
 
       const symbol = getSymbolFromRankSymbol(rankSymbol)
