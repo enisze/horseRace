@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Header, Icon } from 'react-native-elements'
+import { appLink, paypalDonationURL } from '../constants'
 import { useGameContext } from '../helpers/GameContext'
 
 type ParamList = {
@@ -13,6 +14,14 @@ const SettingsHeader: React.FunctionComponent = (props) => {
   const { setGameState, gameState } = useGameContext()
   const navigateBack = () => {
     setGameState('off')
+  }
+
+  const donationsNavigate = () => {
+    Linking.openURL(paypalDonationURL)
+  }
+
+  const rateApp = () => {
+    Linking.openURL(appLink)
   }
 
   return (
@@ -33,14 +42,17 @@ const SettingsHeader: React.FunctionComponent = (props) => {
       }
       rightComponent={
         <View style={styles.headerRight}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={rateApp}>
             <Icon
               name="description"
               color="white"
               tvParallaxProperties={null}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={{ marginLeft: 10 }}>
+          <TouchableOpacity
+            style={{ marginLeft: 10 }}
+            onPress={donationsNavigate}
+          >
             <Icon
               type="antdesign"
               name="rocket1"

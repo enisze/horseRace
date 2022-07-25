@@ -4,13 +4,10 @@ import { Linking, View } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
 import tw from 'twrnc'
 import NativeAd from './ads/NativeAd'
-import { GAMEDATA_STORAGE_KEY } from './constants'
+import { GAMEDATA_STORAGE_KEY, paypalDonationURL } from './constants'
 import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
 import { useGameContext } from './helpers/GameContext'
 import { NewGameModal } from './layouts/NewGameModal'
-
-const paypalDonationURL =
-  'https://www.paypal.com/donate/?hosted_button_id=Q7H2L2WCGZKVL'
 
 const buttonStyle = tw`w-40 mt-10`
 
