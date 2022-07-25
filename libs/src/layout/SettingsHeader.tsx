@@ -3,6 +3,7 @@ import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Header, Icon } from 'react-native-elements'
 import { appLink, paypalDonationURL } from '../constants'
 import { useGameContext } from '../helpers/GameContext'
+import ShareApp from './ShareApp'
 
 type ParamList = {
   Detail: {
@@ -42,14 +43,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
       }
       rightComponent={
         <View style={styles.headerRight}>
-          <TouchableOpacity>
-            <Icon
-              type="entypo"
-              name="share"
-              color="white"
-              tvParallaxProperties={null}
-            />
-          </TouchableOpacity>
+          <ShareApp />
           <TouchableOpacity onPress={rateApp} style={{ marginLeft: 10 }}>
             <Icon
               name="description"
