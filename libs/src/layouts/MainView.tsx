@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import tw from 'twrnc'
 import NativeAd from '../ads/NativeAd'
-import { RandomCardSet } from '../cards/RandomCard'
+import { RandomCardSet } from '../cards/RandomCardSet'
 import { MainCardSet } from '../cardSets/MainCardSet'
 import { SideCardSet } from '../cardSets/SideCardSet'
 import { GOOGLE_ADMOB_MAINVIEW_BANNER_ID } from '../env.config'
@@ -10,9 +10,9 @@ import { useGameContext } from '../helpers/GameContext'
 import { WinnerModal } from './WinnerModal'
 
 export const MainView: FunctionComponent<{}> = () => {
-  const { levelAmount } = useGameContext()
+  const { gameState } = useGameContext()
 
-  if (!levelAmount) return null
+  if (gameState !== 'loaded' && gameState !== 'playing') return null
 
   return (
     <View style={tw`flex p-2 pt-10 bg-blue-100 h-full w-full`}>
@@ -22,7 +22,7 @@ export const MainView: FunctionComponent<{}> = () => {
       </View>
 
       <View style={tw`flex justify-center items-center pb-2`}>
-        <RandomCardSet invoke={'increment'} />
+        <RandomCardSet />
       </View>
       <WinnerModal />
       <View style={tw`flex items-center`}>

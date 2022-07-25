@@ -1,13 +1,30 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { min } from 'lodash'
 import React, {
   createContext,
   FunctionComponent,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react'
+import { LevelAction } from '../../types/LevelAction.type'
 import { RankSymbol } from '../../types/RankSymbol.type'
 import { Symbol } from '../../types/Symbol.type'
+import { GAMEDATA_STORAGE_KEY } from '../constants'
+
+type GameData = {
+  CAmount: number
+  DAmount: number
+  HAmount: number
+  SAmount: number
+  drawnCards: DrawnCard[]
+  levelAmount: number
+}
+
+type DrawnCard = { rankSymbol: RankSymbol; action: LevelAction }
+
+type GameState = 'off' | 'init' | 'loaded' | 'playing'
 
 const useGameContextState = () => {
   const [CAmount, setCAmount] = useState<number>(0)
@@ -15,9 +32,11 @@ const useGameContextState = () => {
   const [HAmount, setHAmount] = useState<number>(0)
   const [SAmount, setSAmount] = useState<number>(0)
 
+  const [gameState, setGameState] = useState<GameState>('off')
+
   const [winner, setWinner] = useState<Symbol>()
 
-  const [drawnCards, setDrawnCards] = useState<RankSymbol[]>([])
+  const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([])
 
   const [levelAmount, setLevelAmount] = useState<number>(0)
 
@@ -88,8 +107,40 @@ const useGameContextState = () => {
     }
   }
 
-  const appendDrawnCard = (rankSymbol: RankSymbol) => {
-    setDrawnCards((cards) => [...cards, rankSymbol])
+  const storeData = async () => {
+    try {
+      const gameData: GameData = {
+        CAmount,
+        DAmount,
+        HAmount,
+        SAmount,
+        drawnCards,
+        levelAmount,
+      }
+      await AsyncStorage.setItem(GAMEDATA_STORAGE_KEY, JSON.stringify(gameData))
+    } catch (e) {
+      // saving error
+    }
+  }
+
+  useEffect(() => {
+    if (CAmount > 0 || DAmount > 0 || HAmount > 0 || SAmount > 0) {
+      storeData()
+    }
+  }, [CAmount, DAmount, HAmount, SAmount, drawnCards, levelAmount])
+
+  const appendDrawnCard = (drawnCard: DrawnCard) => {
+    setDrawnCards((cards) => [...cards, drawnCard])
+  }
+
+  const loadGameState = (gameState: GameData) => {
+    setCAmount(gameState.CAmount)
+    setDAmount(gameState.DAmount)
+    setHAmount(gameState.HAmount)
+    setSAmount(gameState.SAmount)
+    setDrawnCards(gameState.drawnCards)
+    setLevelAmount(gameState.levelAmount)
+    setGameState('loaded')
   }
 
   const reset = () => {
@@ -112,6 +163,9 @@ const useGameContextState = () => {
     currentLevel,
     increment,
     decrement,
+    loadGameState,
+    gameState,
+    setGameState,
   }
 }
 
@@ -119,8 +173,9 @@ type IGameContext = ReturnType<typeof useGameContextState>
 
 const GameContext = createContext({} as IGameContext)
 
-export const GameContextProvider: FunctionComponent = ({ children }) => {
+export const GameContextProvider: FunctionComponent<{}> = ({ children }) => {
   const value = useGameContextState()
+
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>
 }
 

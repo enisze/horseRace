@@ -8,17 +8,15 @@ export const NewGameModal: FunctionComponent<{
   showModal: boolean
   closeModal: () => void
 }> = ({ showModal, closeModal }) => {
-  const { levelAmount, setLevelAmount } = useGameContext()
+  const { setLevelAmount, reset, setGameState, gameState } = useGameContext()
   const [level, setLevel] = useState<string>('')
   const [showError, setShowError] = useState<boolean>(false)
-
-  if (levelAmount) return null
 
   return (
     <Modal
       animationType="slide"
       visible={showModal}
-      onRequestClose={closeModal}
+      onRequestClose={() => setGameState('off')}
       transparent={true}
     >
       <View
@@ -28,6 +26,7 @@ export const NewGameModal: FunctionComponent<{
           <Input
             autoCompleteType={'off'}
             onChangeText={(text) => {
+              reset()
               setLevel(text)
             }}
             value={level}
@@ -44,6 +43,7 @@ export const NewGameModal: FunctionComponent<{
             if (!isNaN(numericLevel) && numericLevel < 11) {
               setLevelAmount(numericLevel)
               closeModal()
+              setGameState('playing')
               setShowError(false)
             } else {
               setShowError(true)

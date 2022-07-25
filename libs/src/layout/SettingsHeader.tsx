@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Header, Icon } from 'react-native-elements'
+import { appLink, paypalDonationURL } from '../constants'
 import { useGameContext } from '../helpers/GameContext'
 
 type ParamList = {
@@ -10,35 +11,56 @@ type ParamList = {
 }
 
 const SettingsHeader: React.FunctionComponent = (props) => {
-  const { levelAmount, setLevelAmount } = useGameContext()
+  const { setGameState, gameState } = useGameContext()
   const navigateBack = () => {
-    setLevelAmount(0)
+    setGameState('off')
+  }
+
+  const donationsNavigate = () => {
+    Linking.openURL(paypalDonationURL)
+  }
+
+  const rateApp = () => {
+    Linking.openURL(appLink)
   }
 
   return (
     <Header
       leftComponent={
         <View>
-          <TouchableOpacity onPress={navigateBack}>
-            <Icon
-              type="entypo"
-              name="arrow-long-left"
-              color="#fff"
-              tvParallaxProperties={null}
-            />
-          </TouchableOpacity>
+          {gameState !== 'off' && (
+            <TouchableOpacity onPress={navigateBack}>
+              <Icon
+                type="entypo"
+                name="arrow-long-left"
+                color="#fff"
+                tvParallaxProperties={null}
+              />
+            </TouchableOpacity>
+          )}
         </View>
       }
       rightComponent={
         <View style={styles.headerRight}>
           <TouchableOpacity>
             <Icon
+              type="entypo"
+              name="share"
+              color="white"
+              tvParallaxProperties={null}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={rateApp} style={{ marginLeft: 10 }}>
+            <Icon
               name="description"
               color="white"
               tvParallaxProperties={null}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={{ marginLeft: 10 }}>
+          <TouchableOpacity
+            style={{ marginLeft: 10 }}
+            onPress={donationsNavigate}
+          >
             <Icon
               type="antdesign"
               name="rocket1"
