@@ -31,7 +31,9 @@ export const StartView: FunctionComponent = () => {
   if (gameState !== 'off') return null
 
   return (
-    <View style={tw`flex flex-col justify-center items-center pt-20`}>
+    <View
+      style={tw`flex flex-col justify-center items-center bg-blue-100 h-full`}
+    >
       <Button
         title="Start Game"
         onPress={() => {

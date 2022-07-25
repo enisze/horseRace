@@ -35,6 +35,7 @@ export const NewGameModal: FunctionComponent<{
             errorMessage={
               showError ? 'Level must be a number below 10' : undefined
             }
+            inputContainerStyle={tw`h-14`}
           />
         </View>
         <Button

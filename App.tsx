@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+import { ThemeProvider } from 'react-native-elements'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import tw from 'twrnc'
 import { GameContextProvider } from './libs/src/helpers/GameContext'
@@ -8,19 +9,32 @@ import SettingsHeader from './libs/src/layout/SettingsHeader'
 import { MainView } from './libs/src/layouts/MainView'
 import { StartView } from './libs/src/StartView'
 
+const theme = {
+  Button: {
+    buttonStyle: {
+      height: 48,
+    },
+  },
+  Icon: {
+    size: 32,
+  },
+}
+
 export default function App() {
   return (
-    <GameContextProvider>
-      <SafeAreaProvider>
-        <MainProvider>
-          <SettingsHeader />
+    <ThemeProvider theme={theme}>
+      <GameContextProvider>
+        <SafeAreaProvider>
+          <MainProvider>
+            <SettingsHeader />
 
-          <View style={tw`flex flex-col justify-center`}>
-            <StartView />
-            <MainView />
-          </View>
-        </MainProvider>
-      </SafeAreaProvider>
-    </GameContextProvider>
+            <View style={tw`flex flex-col justify-center`}>
+              <StartView />
+              <MainView />
+            </View>
+          </MainProvider>
+        </SafeAreaProvider>
+      </GameContextProvider>
+    </ThemeProvider>
   )
 }

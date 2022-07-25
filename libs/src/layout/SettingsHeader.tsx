@@ -70,13 +70,6 @@ const SettingsHeader: React.FunctionComponent = (props) => {
 }
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#397af8',
-    width: '100%',
-    paddingVertical: 15,
-  },
   heading: {
     color: 'white',
     fontSize: 22,
@@ -85,7 +78,6 @@ const styles = StyleSheet.create({
   headerRight: {
     display: 'flex',
     flexDirection: 'row',
-    marginTop: 5,
   },
   subheaderText: {
     color: 'white',
