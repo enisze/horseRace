@@ -42,7 +42,15 @@ const SettingsHeader: React.FunctionComponent = (props) => {
       }
       rightComponent={
         <View style={styles.headerRight}>
-          <TouchableOpacity onPress={rateApp}>
+          <TouchableOpacity>
+            <Icon
+              type="entypo"
+              name="share"
+              color="white"
+              tvParallaxProperties={null}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={rateApp} style={{ marginLeft: 10 }}>
             <Icon
               name="description"
               color="white"
