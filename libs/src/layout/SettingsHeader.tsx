@@ -10,7 +10,7 @@ type ParamList = {
 }
 
 const SettingsHeader: React.FunctionComponent = (props) => {
-  const { setGameState } = useGameContext()
+  const { setGameState, gameState } = useGameContext()
   const navigateBack = () => {
     setGameState('off')
   }
@@ -19,14 +19,16 @@ const SettingsHeader: React.FunctionComponent = (props) => {
     <Header
       leftComponent={
         <View>
-          <TouchableOpacity onPress={navigateBack}>
-            <Icon
-              type="entypo"
-              name="arrow-long-left"
-              color="#fff"
-              tvParallaxProperties={null}
-            />
-          </TouchableOpacity>
+          {gameState !== 'off' && (
+            <TouchableOpacity onPress={navigateBack}>
+              <Icon
+                type="entypo"
+                name="arrow-long-left"
+                color="#fff"
+                tvParallaxProperties={null}
+              />
+            </TouchableOpacity>
+          )}
         </View>
       }
       rightComponent={

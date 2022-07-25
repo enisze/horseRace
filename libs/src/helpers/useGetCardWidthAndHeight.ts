@@ -11,7 +11,7 @@ export const useGetCardWidthAndHeight = () => {
 
   const buffer = levelAmount + 1
 
-  const adOffset = 100
+  const adOffset = 200
 
   const offset = SIDE_CARD_SET_GAP * buffer + adOffset
 
