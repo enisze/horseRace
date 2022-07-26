@@ -1,5 +1,8 @@
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getDatabase } from 'firebase/database'
+import { getFirestore } from 'firebase/firestore/lite'
+
 import {
   FIREBASE_API_KEY,
   FIREBASE_APP_ID,
@@ -35,5 +38,7 @@ if (getApps().length === 0) {
 }
 
 export const auth = getAuth()
+export const db = getFirestore(app)
+export const db2 = getDatabase(app)
 
 // const analytics = getAnalytics(app);
