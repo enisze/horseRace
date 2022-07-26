@@ -6,10 +6,10 @@ export default {
     slug: 'horseRace',
     version: '1.0.0',
     orientation: 'portrait',
-    icon: './libs/assets/icon.png',
+    icon: './app/assets/icon.png',
     userInterfaceStyle: 'light',
     splash: {
-      image: './libs/assets/splash.png',
+      image: './app/assets/splash.png',
       resizeMode: 'contain',
       backgroundColor: '#ffffff',
     },
@@ -29,7 +29,7 @@ export default {
       versionCode: 4,
       permissions: [],
       adaptiveIcon: {
-        foregroundImage: './libs/assets/adaptive-icon.png',
+        foregroundImage: './app/assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
       },
       config: {
@@ -37,7 +37,7 @@ export default {
       },
     },
     web: {
-      favicon: './libs/assets/favicon.png',
+      favicon: './app/assets/favicon.png',
     },
 
     extra: {
