@@ -1,8 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { signInAnonymously } from 'firebase/auth'
 import React, { FunctionComponent, useState } from 'react'
 import { Linking, View } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
 import tw from 'twrnc'
+import { auth } from '../database/Firebase'
 import NativeAd from './ads/NativeAd'
 import { GAMEDATA_STORAGE_KEY, paypalDonationURL } from './constants'
 import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
@@ -28,12 +30,32 @@ export const StartView: FunctionComponent = () => {
     } catch (error: any) {}
   }
 
+  const authenticate = async () => {
+    signInAnonymously(auth)
+      .then(() => {
+        // Signed in..
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        // ...
+      })
+  }
+
   if (gameState !== 'off') return null
 
   return (
     <View
       style={tw`flex flex-col justify-center items-center bg-blue-100 h-full`}
     >
+      <Button
+        title="test"
+        onPress={() => {
+          authenticate()
+        }}
+        buttonStyle={buttonStyle}
+      />
+
       <Button
         title="Start Game"
         onPress={() => {
