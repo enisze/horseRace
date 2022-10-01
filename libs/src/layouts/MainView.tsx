@@ -1,6 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import { map } from 'lodash'
+import React, { FunctionComponent, useEffect } from 'react'
 import { Text, View } from 'react-native'
 import tw from 'twrnc'
+import { useGetSessionDataFromFirebase } from '../../database/useGetSessionDataFromFireBase'
 import NativeAd from '../ads/NativeAd'
 import { RandomCardSet } from '../cards/RandomCardSet'
 import { MainCardSet } from '../cardSets/MainCardSet'
@@ -12,7 +14,15 @@ import { WinnerModal } from './WinnerModal'
 
 export const MainView: FunctionComponent<{}> = () => {
   const { gameState } = useGameContext()
-  const { players, gameId } = useSessionContext()
+  const { players, setPlayers, gameId, setGameId } = useSessionContext()
+
+  const b = gameId ?? 'Start'
+
+  const getSessionData = useGetSessionDataFromFirebase('Start')
+
+  useEffect(() => {
+    getSessionData()
+  }, [])
 
   if (gameState !== 'loaded' && gameState !== 'playing') return null
 
@@ -20,7 +30,7 @@ export const MainView: FunctionComponent<{}> = () => {
     <View style={tw`flex p-2 pt-10 bg-blue-100 h-full w-full`}>
       <View>
         {gameId && <Text>{gameId}</Text>}
-        {players && <Text>{players}</Text>}
+        {players && map(players, (player) => <Text>{player.name}</Text>)}
       </View>
       <View style={tw`flex flex-row`}>
         <SideCardSet />

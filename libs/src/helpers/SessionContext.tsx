@@ -5,15 +5,17 @@ import React, {
   useState,
 } from 'react'
 
+export type User = { id: string; name: string }
+
 type SessionData = {
-  players: string[]
+  players: User[]
   gameId: string
 }
 
 type GameState = 'off' | 'init' | 'loaded' | 'playing'
 
 const useSessionContextState = () => {
-  const [players, setPlayers] = useState([])
+  const [players, setPlayers] = useState<User[]>([])
   const [gameId, setGameId] = useState<string | null>(null)
 
   return { players, setPlayers, gameId, setGameId }

@@ -9,15 +9,17 @@ import NativeAd from './ads/NativeAd'
 import { paypalDonationURL } from './constants'
 import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
 import { useGameContext } from './helpers/GameContext'
+import { useSessionContext } from './helpers/SessionContext'
 import { useGetLastGamePlayedData } from './hooks/useGetLastGamePlayed'
 import { NewGameModal } from './layouts/NewGameModal'
 
 const buttonStyle = tw`w-40 mt-10`
 
-const GameKey = 'Start session'
+const GameKey = 'Start'
 
 export const StartView: FunctionComponent = () => {
   const { gameState } = useGameContext()
+  const { setGameId } = useSessionContext()
 
   const [showModal, setShowModal] = useState(false)
 
@@ -30,15 +32,11 @@ export const StartView: FunctionComponent = () => {
   const authenticate = async () => {
     signInAnonymously(auth)
       .then(({ user }) => {
-        console.log('signed In')
-        // Signed in..
-
-        console.log(user)
-
-        //Created game
-
         const b = ref(db2, `game/${GameKey}/users/${user.uid}`)
-        set(b, GameKey)
+        const username = 'Enis'
+
+        setGameId(GameKey)
+        set(b, username)
       })
       .catch((error) => {
         const errorCode = error.code
