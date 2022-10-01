@@ -14,6 +14,8 @@ import { NewGameModal } from './layouts/NewGameModal'
 
 const buttonStyle = tw`w-40 mt-10`
 
+const GameKey = 'test'
+
 export const StartView: FunctionComponent = () => {
   const { gameState, loadGameState, setGameState } = useGameContext()
 
@@ -41,6 +43,11 @@ export const StartView: FunctionComponent = () => {
 
         const a = ref(db2, `users/${user.uid}`)
         set(a, user.uid)
+
+        //Created game
+
+        const b = ref(db2, `game/${GameKey}`)
+        set(b, GameKey)
       })
       .catch((error) => {
         const errorCode = error.code
