@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { signInAnonymously } from 'firebase/auth'
 import { ref, set } from 'firebase/database'
 import React, { FunctionComponent, useState } from 'react'
@@ -7,9 +6,10 @@ import { Button, Icon } from 'react-native-elements'
 import tw from 'twrnc'
 import { auth, db2 } from '../database/Firebase'
 import NativeAd from './ads/NativeAd'
-import { GAMEDATA_STORAGE_KEY, paypalDonationURL } from './constants'
+import { paypalDonationURL } from './constants'
 import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
 import { useGameContext } from './helpers/GameContext'
+import { useGetLastGamePlayedData } from './hooks/useGetLastGamePlayed'
 import { NewGameModal } from './layouts/NewGameModal'
 
 const buttonStyle = tw`w-40 mt-10`
@@ -17,7 +17,7 @@ const buttonStyle = tw`w-40 mt-10`
 const GameKey = 'Start session'
 
 export const StartView: FunctionComponent = () => {
-  const { gameState, loadGameState, setGameState } = useGameContext()
+  const { gameState } = useGameContext()
 
   const [showModal, setShowModal] = useState(false)
 
@@ -25,13 +25,7 @@ export const StartView: FunctionComponent = () => {
     Linking.openURL(paypalDonationURL)
   }
 
-  const getLastGamePlayedData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem(GAMEDATA_STORAGE_KEY)
-      const gameData = jsonValue != null ? JSON.parse(jsonValue) : null
-      loadGameState(gameData)
-    } catch (error: any) {}
-  }
+  const getLastGamePlayedData = useGetLastGamePlayedData()
 
   const authenticate = async () => {
     signInAnonymously(auth)
