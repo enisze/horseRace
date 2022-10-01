@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import tw from 'twrnc'
 import { GameContextProvider } from './libs/src/helpers/GameContext'
 import MainProvider from './libs/src/helpers/MainProvider'
+import { SessionContextProvider } from './libs/src/helpers/SessionContext'
 import SettingsHeader from './libs/src/layout/SettingsHeader'
 import { MainView } from './libs/src/layouts/MainView'
 import { StartView } from './libs/src/StartView'
@@ -24,16 +25,18 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GameContextProvider>
-        <SafeAreaProvider>
-          <MainProvider>
-            <SettingsHeader />
+        <SessionContextProvider>
+          <SafeAreaProvider>
+            <MainProvider>
+              <SettingsHeader />
 
-            <View style={tw`flex flex-col justify-center`}>
-              <StartView />
-              <MainView />
-            </View>
-          </MainProvider>
-        </SafeAreaProvider>
+              <View style={tw`flex flex-col justify-center`}>
+                <StartView />
+                <MainView />
+              </View>
+            </MainProvider>
+          </SafeAreaProvider>
+        </SessionContextProvider>
       </GameContextProvider>
     </ThemeProvider>
   )

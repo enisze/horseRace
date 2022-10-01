@@ -6,10 +6,10 @@ export default {
     slug: 'horseRace',
     version: '1.0.0',
     orientation: 'portrait',
-    icon: './libs/assets/icon.png',
+    icon: './app/assets/icon.png',
     userInterfaceStyle: 'light',
     splash: {
-      image: './libs/assets/splash.png',
+      image: './app/assets/splash.png',
       resizeMode: 'contain',
       backgroundColor: '#ffffff',
     },
@@ -29,7 +29,7 @@ export default {
       versionCode: 4,
       permissions: [],
       adaptiveIcon: {
-        foregroundImage: './libs/assets/adaptive-icon.png',
+        foregroundImage: './app/assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
       },
       config: {
@@ -37,7 +37,7 @@ export default {
       },
     },
     web: {
-      favicon: './libs/assets/favicon.png',
+      favicon: './app/assets/favicon.png',
     },
 
     extra: {
@@ -45,6 +45,15 @@ export default {
       mainViewBannerId: process.env.GOOGLE_ADMOB_MAINVIEW_BANNER_ID,
       startViewBannerId: process.env.GOOGLE_ADMOB_STARTVIEW_BANNER_ID,
       modalBannerId: process.env.GOOGLE_ADMOB_STARTVIEW_BANNER_ID,
+
+      firebaseApiKey: process.env.FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      firebaseDatabaseUrl: process.env.FIREBASE_DATABASE_URL,
+      firebaseProjectId: process.env.FIREBASE_PROJECTID,
+      firebaseStorageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+      firebaseAppId: process.env.FIREBASE_APP_ID,
+      firebaseMeasurmentId: process.env.FIREBASE_MEASUREMENTID,
     },
   },
 }
