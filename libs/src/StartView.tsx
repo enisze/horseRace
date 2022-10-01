@@ -14,7 +14,7 @@ import { NewGameModal } from './layouts/NewGameModal'
 
 const buttonStyle = tw`w-40 mt-10`
 
-const GameKey = 'test'
+const GameKey = 'Start session'
 
 export const StartView: FunctionComponent = () => {
   const { gameState, loadGameState, setGameState } = useGameContext()
@@ -41,12 +41,9 @@ export const StartView: FunctionComponent = () => {
 
         console.log(user)
 
-        const a = ref(db2, `users/${user.uid}`)
-        set(a, user.uid)
-
         //Created game
 
-        const b = ref(db2, `game/${GameKey}`)
+        const b = ref(db2, `game/${GameKey}/users/${user.uid}`)
         set(b, GameKey)
       })
       .catch((error) => {
@@ -63,9 +60,11 @@ export const StartView: FunctionComponent = () => {
       style={tw`flex flex-col justify-center items-center bg-blue-100 h-full`}
     >
       <Button
-        title="test"
+        title="Start session"
         onPress={() => {
           authenticate()
+
+          setShowModal(true)
         }}
         buttonStyle={buttonStyle}
       />
