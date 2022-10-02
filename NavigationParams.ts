@@ -6,6 +6,7 @@ export type RootStackParamList = {
   StartView: undefined
   MainView: undefined
   StatisticsView: undefined
+  SessionView: undefined
 }
 
 export type NavigationScreen = keyof RootStackParamList
