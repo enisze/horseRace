@@ -1,13 +1,14 @@
 import React from 'react'
-import { View } from 'react-native'
 import { ThemeProvider } from 'react-native-elements'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import tw from 'twrnc'
+import { AppNavigation } from './AppNavigation'
 import { GameContextProvider } from './libs/src/helpers/GameContext'
 import MainProvider from './libs/src/helpers/MainProvider'
 import SettingsHeader from './libs/src/layout/SettingsHeader'
-import { MainView } from './libs/src/layouts/MainView'
-import { StartView } from './libs/src/StartView'
+
+import { AppNavigatonContainer } from './AppNavigatonContainer'
+import { CurrentScreenContextProvider } from './libs/src/helpers/CurrentScreenContext'
 
 const theme = {
   Button: {
@@ -25,14 +26,16 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <GameContextProvider>
         <SafeAreaProvider>
-          <MainProvider>
-            <SettingsHeader />
-
-            <View style={tw`flex flex-col justify-center`}>
-              <StartView />
-              <MainView />
-            </View>
-          </MainProvider>
+          <CurrentScreenContextProvider>
+            <MainProvider>
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                <AppNavigatonContainer>
+                  <SettingsHeader />
+                  <AppNavigation />
+                </AppNavigatonContainer>
+              </GestureHandlerRootView>
+            </MainProvider>
+          </CurrentScreenContextProvider>
         </SafeAreaProvider>
       </GameContextProvider>
     </ThemeProvider>

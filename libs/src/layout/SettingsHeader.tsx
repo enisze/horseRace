@@ -2,8 +2,10 @@ import React from 'react'
 import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Header, Icon } from 'react-native-elements'
 import { appLink, paypalDonationURL } from '../constants'
-import { useGameContext } from '../helpers/GameContext'
 import ShareApp from './ShareApp'
+
+import { useNavigation } from '@react-navigation/native'
+import { useIsInNavigationScreen } from '../hooks/useIsInNavigationScreen'
 
 type ParamList = {
   Detail: {
@@ -12,10 +14,9 @@ type ParamList = {
 }
 
 const SettingsHeader: React.FunctionComponent = (props) => {
-  const { setGameState, gameState } = useGameContext()
-  const navigateBack = () => {
-    setGameState('off')
-  }
+  const { navigate } = useNavigation()
+
+  const isStartScreen = useIsInNavigationScreen('StartView')
 
   const donationsNavigate = () => {
     Linking.openURL(paypalDonationURL)
@@ -29,8 +30,8 @@ const SettingsHeader: React.FunctionComponent = (props) => {
     <Header
       leftComponent={
         <View>
-          {gameState !== 'off' && (
-            <TouchableOpacity onPress={navigateBack}>
+          {!isStartScreen && (
+            <TouchableOpacity onPress={() => navigate('StartView')}>
               <Icon
                 type="entypo"
                 name="arrow-long-left"

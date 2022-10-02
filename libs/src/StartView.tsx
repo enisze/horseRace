@@ -9,12 +9,16 @@ import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
 import { useGameContext } from './helpers/GameContext'
 import { NewGameModal } from './layouts/NewGameModal'
 
+import { useNavigation } from '@react-navigation/native'
+
 const buttonStyle = tw`w-40 mt-10`
 
 export const StartView: FunctionComponent = () => {
-  const { gameState, loadGameState, setGameState } = useGameContext()
+  const { loadGameState, reset } = useGameContext()
 
   const [showModal, setShowModal] = useState(false)
+
+  const { navigate } = useNavigation()
 
   const donationsNavigate = () => {
     Linking.openURL(paypalDonationURL)
@@ -27,8 +31,6 @@ export const StartView: FunctionComponent = () => {
       loadGameState(gameData)
     } catch (error: any) {}
   }
-
-  if (gameState !== 'off') return null
 
   return (
     <View
@@ -44,7 +46,10 @@ export const StartView: FunctionComponent = () => {
       <Button
         title="Continue Game"
         buttonStyle={buttonStyle}
-        onPress={getLastGamePlayedData}
+        onPress={() => {
+          getLastGamePlayedData()
+          navigate('MainView')
+        }}
       />
       <Button
         title={'Support me '}
@@ -64,6 +69,10 @@ export const StartView: FunctionComponent = () => {
       <NewGameModal
         showModal={showModal}
         closeModal={() => setShowModal(false)}
+        onSubmit={() => {
+          reset()
+          navigate('MainView')
+        }}
       />
 
       <View style={tw`flex items-center `}>

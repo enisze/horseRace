@@ -7,18 +7,14 @@ import { useGameContext } from '../helpers/GameContext'
 export const NewGameModal: FunctionComponent<{
   showModal: boolean
   closeModal: () => void
-}> = ({ showModal, closeModal }) => {
-  const { setLevelAmount, reset, setGameState, gameState } = useGameContext()
+  onSubmit: () => void
+}> = ({ showModal, closeModal, onSubmit }) => {
+  const { setLevelAmount, reset } = useGameContext()
   const [level, setLevel] = useState<string>('')
   const [showError, setShowError] = useState<boolean>(false)
 
   return (
-    <Modal
-      animationType="slide"
-      visible={showModal}
-      onRequestClose={() => setGameState('off')}
-      transparent={true}
-    >
+    <Modal animationType="slide" visible={showModal} transparent={true}>
       <View
         style={tw`border rounded flex justify-center items-center m-auto p-10 bg-blue-100 shadow-black shadow-2xl`}
       >
@@ -44,8 +40,8 @@ export const NewGameModal: FunctionComponent<{
             if (!isNaN(numericLevel) && numericLevel < 11) {
               setLevelAmount(numericLevel)
               closeModal()
-              setGameState('playing')
               setShowError(false)
+              onSubmit()
             } else {
               setShowError(true)
             }
