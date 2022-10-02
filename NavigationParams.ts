@@ -5,6 +5,7 @@
 export type RootStackParamList = {
   StartView: undefined
   MainView: undefined
+  StatisticsView: undefined
 }
 
 export type TestParams = keyof RootStackParamList

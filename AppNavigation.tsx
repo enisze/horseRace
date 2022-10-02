@@ -2,7 +2,8 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import React from 'react'
 import { MainView } from './libs/src/layouts/MainView'
-import { StartView } from './libs/src/StartView'
+import { StartView } from './libs/src/layouts/StartView'
+import { StatisticsView } from './libs/src/layouts/StatisticsView'
 
 const Stack = createStackNavigator()
 
@@ -18,6 +19,12 @@ export const AppNavigation: React.FunctionComponent = () => {
         <Stack.Screen
           name="MainView"
           component={MainView}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="StatisticsView"
+          component={StatisticsView}
           options={{ headerShown: false }}
         />
       </Stack.Group>
