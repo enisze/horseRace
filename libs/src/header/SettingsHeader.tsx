@@ -5,6 +5,7 @@ import { appLink, paypalDonationURL } from '../constants'
 import ShareApp from './ShareApp'
 
 import { useNavigation } from '@react-navigation/native'
+import { BackButton } from '../components/BackButton'
 import { useIsInNavigationScreen } from '../hooks/useIsInNavigationScreen'
 
 type ParamList = {
@@ -31,14 +32,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
       leftComponent={
         <View>
           {!isStartScreen && (
-            <TouchableOpacity onPress={() => navigate('StartView')}>
-              <Icon
-                type="entypo"
-                name="arrow-long-left"
-                color="#fff"
-                tvParallaxProperties={null}
-              />
-            </TouchableOpacity>
+            <BackButton onPress={() => navigate('StartView')} />
           )}
         </View>
       }

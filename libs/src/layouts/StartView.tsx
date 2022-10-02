@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { FunctionComponent, useState } from 'react'
 import { Linking, View } from 'react-native'
-import { Button, Icon } from 'react-native-elements'
+import { Button } from 'react-native-elements'
 import tw from 'twrnc'
-import NativeAd from './ads/NativeAd'
-import { GAMEDATA_STORAGE_KEY, paypalDonationURL } from './constants'
-import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from './env.config'
-import { useGameContext } from './helpers/GameContext'
-import { NewGameModal } from './layouts/NewGameModal'
+import NativeAd from '../ads/NativeAd'
+import { GAMEDATA_STORAGE_KEY, paypalDonationURL } from '../constants'
+import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from '../env.config'
+import { useGameContext } from '../helpers/GameContext'
+import { NewGameModal } from './NewGameModal'
 
 import { useNavigation } from '@react-navigation/native'
 
@@ -52,17 +52,9 @@ export const StartView: FunctionComponent = () => {
         }}
       />
       <Button
-        title={'Support me '}
-        onPress={donationsNavigate}
+        title={'Statistics'}
+        onPress={() => navigate('StatisticsView')}
         type="solid"
-        icon={
-          <Icon
-            color={'red'}
-            tvParallaxProperties={undefined}
-            name="heart"
-            type="entypo"
-          />
-        }
         buttonStyle={buttonStyle}
         iconRight
       />

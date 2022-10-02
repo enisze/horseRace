@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { Modal, View } from 'react-native'
 import { Button, Input } from 'react-native-elements'
 import tw from 'twrnc'
+import { BackButton } from '../components/BackButton'
 import { useGameContext } from '../helpers/GameContext'
 
 export const NewGameModal: FunctionComponent<{
@@ -18,6 +19,9 @@ export const NewGameModal: FunctionComponent<{
       <View
         style={tw`border rounded flex justify-center items-center m-auto p-10 bg-blue-100 shadow-black shadow-2xl`}
       >
+        <View style={tw`top-4 left-4 absolute`}>
+          <BackButton darkBg={false} onPress={closeModal} />
+        </View>
         <View style={tw`w-40 flex `}>
           <Input
             autoCompleteType={'off'}
