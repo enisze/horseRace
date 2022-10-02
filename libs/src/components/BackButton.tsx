@@ -1,19 +1,19 @@
 import React from 'react'
 import { Icon } from 'react-native-elements'
-import { HorseRaceIconButton } from './HorseRaceIconButton'
+import { HorseRaceButton } from './HorseRaceButton'
 
 export const BackButton: React.FunctionComponent<{
   darkBg?: boolean
   onPress: () => void
 }> = ({ darkBg = true, onPress }) => {
   return (
-    <HorseRaceIconButton onPress={onPress}>
+    <HorseRaceButton onPress={onPress}>
       <Icon
         type="entypo"
         name="arrow-long-left"
         color={darkBg ? '#fff' : '#2089dc'}
         tvParallaxProperties={null}
       />
-    </HorseRaceIconButton>
+    </HorseRaceButton>
   )
 }

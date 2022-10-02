@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import { Button, Input } from 'react-native-elements'
-import { BackButton } from '../components/BackButton'
 import { HorseRaceModal } from '../components/HorseRaceModal'
 import { useGameContext } from '../helpers/GameContext'
 import { tw } from '../tailwind'
@@ -16,10 +15,7 @@ export const NewGameModal: FunctionComponent<{
   const [showError, setShowError] = useState<boolean>(false)
 
   return (
-    <HorseRaceModal visible={showModal} transparent={true}>
-      <View style={tw`top-4 left-4 absolute`}>
-        <BackButton darkBg={false} onPress={closeModal} />
-      </View>
+    <HorseRaceModal visible={showModal} onClose={closeModal}>
       <View style={tw`w-40 flex `}>
         <Input
           autoCompleteType={'off'}

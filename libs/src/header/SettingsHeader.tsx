@@ -6,7 +6,7 @@ import { ShareAppButton } from './ShareAppButton'
 
 import { useNavigation } from '@react-navigation/native'
 import { BackButton } from '../components/BackButton'
-import { HorseRaceIconButton } from '../components/HorseRaceIconButton'
+import { HorseRaceButton } from '../components/HorseRaceButton'
 import { useIsInNavigationScreen } from '../hooks/useIsInNavigationScreen'
 
 type ParamList = {
@@ -40,14 +40,14 @@ const SettingsHeader: React.FunctionComponent = (props) => {
       rightComponent={
         <View style={styles.headerRight}>
           <ShareAppButton />
-          <HorseRaceIconButton onPress={rateApp} style={{ marginLeft: 10 }}>
+          <HorseRaceButton onPress={rateApp} style={{ marginLeft: 10 }}>
             <Icon
               name="description"
               color="white"
               tvParallaxProperties={null}
             />
-          </HorseRaceIconButton>
-          <HorseRaceIconButton
+          </HorseRaceButton>
+          <HorseRaceButton
             style={{ marginLeft: 10 }}
             onPress={donationsNavigate}
           >
@@ -57,7 +57,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
               color="white"
               tvParallaxProperties={null}
             />
-          </HorseRaceIconButton>
+          </HorseRaceButton>
         </View>
       }
       centerComponent={{ text: 'HorseRace', style: styles.heading }}

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Share } from 'react-native'
 import { Icon } from 'react-native-elements'
-import { HorseRaceIconButton } from '../components/HorseRaceIconButton'
+import { HorseRaceButton } from '../components/HorseRaceButton'
 import { appLink } from '../constants'
 
 export const ShareAppButton: FunctionComponent = () => {
@@ -26,13 +26,13 @@ export const ShareAppButton: FunctionComponent = () => {
     }
   }
   return (
-    <HorseRaceIconButton onPress={onShare}>
+    <HorseRaceButton onPress={onShare}>
       <Icon
         type="entypo"
         name="share"
         color="white"
         tvParallaxProperties={null}
       />
-    </HorseRaceIconButton>
+    </HorseRaceButton>
   )
 }

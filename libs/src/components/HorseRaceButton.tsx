@@ -1,11 +1,11 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
-import { Button, ButtonProps } from 'react-native-elements'
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
-export type HorseRaceButtonProps = PropsWithChildren<ButtonProps>
+export type HorseRaceButtonProps = PropsWithChildren<TouchableOpacityProps>
 
 export const HorseRaceButton: FunctionComponent<HorseRaceButtonProps> = ({
   children,
   ...props
 }) => {
-  return <Button {...props}>{children}</Button>
+  return <TouchableOpacity {...props}>{children}</TouchableOpacity>
 }
