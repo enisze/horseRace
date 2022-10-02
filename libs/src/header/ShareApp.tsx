@@ -1,6 +1,7 @@
 import React from 'react'
-import { Share, TouchableOpacity } from 'react-native'
+import { Share } from 'react-native'
 import { Icon } from 'react-native-elements'
+import { HorseRaceButton } from '../components/HorseRaceButton'
 import { appLink } from '../constants'
 
 const ShareApp = () => {
@@ -25,14 +26,14 @@ const ShareApp = () => {
     }
   }
   return (
-    <TouchableOpacity onPress={onShare}>
+    <HorseRaceButton onPress={onShare}>
       <Icon
         type="entypo"
         name="share"
         color="white"
         tvParallaxProperties={null}
       />
-    </TouchableOpacity>
+    </HorseRaceButton>
   )
 }
 

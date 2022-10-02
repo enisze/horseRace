@@ -1,11 +1,12 @@
 import React from 'react'
-import { Linking, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Linking, StyleSheet, View } from 'react-native'
 import { Header, Icon } from 'react-native-elements'
 import { appLink, paypalDonationURL } from '../constants'
 import ShareApp from './ShareApp'
 
 import { useNavigation } from '@react-navigation/native'
 import { BackButton } from '../components/BackButton'
+import { HorseRaceButton } from '../components/HorseRaceButton'
 import { useIsInNavigationScreen } from '../hooks/useIsInNavigationScreen'
 
 type ParamList = {
@@ -39,14 +40,14 @@ const SettingsHeader: React.FunctionComponent = (props) => {
       rightComponent={
         <View style={styles.headerRight}>
           <ShareApp />
-          <TouchableOpacity onPress={rateApp} style={{ marginLeft: 10 }}>
+          <HorseRaceButton onPress={rateApp} style={{ marginLeft: 10 }}>
             <Icon
               name="description"
               color="white"
               tvParallaxProperties={null}
             />
-          </TouchableOpacity>
-          <TouchableOpacity
+          </HorseRaceButton>
+          <HorseRaceButton
             style={{ marginLeft: 10 }}
             onPress={donationsNavigate}
           >
@@ -56,7 +57,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
               color="white"
               tvParallaxProperties={null}
             />
-          </TouchableOpacity>
+          </HorseRaceButton>
         </View>
       }
       centerComponent={{ text: 'HorseRace', style: styles.heading }}
