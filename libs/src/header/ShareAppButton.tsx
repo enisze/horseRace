@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Share } from 'react-native'
 import { Icon } from 'react-native-elements'
-import { HorseRaceButton } from '../components/HorseRaceButton'
+import { HorseRaceIconButton } from '../components/HorseRaceIconButton'
 import { appLink } from '../constants'
 
-const ShareApp = () => {
+export const ShareAppButton: FunctionComponent = () => {
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -26,15 +26,13 @@ const ShareApp = () => {
     }
   }
   return (
-    <HorseRaceButton onPress={onShare}>
+    <HorseRaceIconButton onPress={onShare}>
       <Icon
         type="entypo"
         name="share"
         color="white"
         tvParallaxProperties={null}
       />
-    </HorseRaceButton>
+    </HorseRaceIconButton>
   )
 }
-
-export default ShareApp

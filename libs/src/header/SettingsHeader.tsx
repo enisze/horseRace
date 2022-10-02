@@ -2,11 +2,11 @@ import React from 'react'
 import { Linking, StyleSheet, View } from 'react-native'
 import { Header, Icon } from 'react-native-elements'
 import { appLink, paypalDonationURL } from '../constants'
-import ShareApp from './ShareApp'
+import { ShareAppButton } from './ShareAppButton'
 
 import { useNavigation } from '@react-navigation/native'
 import { BackButton } from '../components/BackButton'
-import { HorseRaceButton } from '../components/HorseRaceButton'
+import { HorseRaceIconButton } from '../components/HorseRaceIconButton'
 import { useIsInNavigationScreen } from '../hooks/useIsInNavigationScreen'
 
 type ParamList = {
@@ -39,15 +39,15 @@ const SettingsHeader: React.FunctionComponent = (props) => {
       }
       rightComponent={
         <View style={styles.headerRight}>
-          <ShareApp />
-          <HorseRaceButton onPress={rateApp} style={{ marginLeft: 10 }}>
+          <ShareAppButton />
+          <HorseRaceIconButton onPress={rateApp} style={{ marginLeft: 10 }}>
             <Icon
               name="description"
               color="white"
               tvParallaxProperties={null}
             />
-          </HorseRaceButton>
-          <HorseRaceButton
+          </HorseRaceIconButton>
+          <HorseRaceIconButton
             style={{ marginLeft: 10 }}
             onPress={donationsNavigate}
           >
@@ -57,7 +57,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
               color="white"
               tvParallaxProperties={null}
             />
-          </HorseRaceButton>
+          </HorseRaceIconButton>
         </View>
       }
       centerComponent={{ text: 'HorseRace', style: styles.heading }}
