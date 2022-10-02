@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Image, View } from 'react-native'
-import tw from 'twrnc'
+import { View } from 'react-native'
 import CardImage from './CardImage'
 
 type BackCardProps = {

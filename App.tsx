@@ -3,11 +3,11 @@ import { ThemeProvider } from 'react-native-elements'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { AppNavigation } from './AppNavigation'
-import SettingsHeader from './libs/src/header/SettingsHeader'
 import { GameContextProvider } from './libs/src/helpers/GameContext'
 import MainProvider from './libs/src/helpers/MainProvider'
 
 import { AppNavigatonContainer } from './AppNavigatonContainer'
+import SettingsHeader from './libs/src/header/SettingsHeader'
 import { CurrentScreenContextProvider } from './libs/src/helpers/CurrentScreenContext'
 
 const theme = {

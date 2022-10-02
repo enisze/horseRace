@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Modal, View } from 'react-native'
 import { Button, Input } from 'react-native-elements'
-import tw from 'twrnc'
 import { BackButton } from '../components/BackButton'
 import { useGameContext } from '../helpers/GameContext'
+import { tw } from '../tailwind'
 
 export const NewGameModal: FunctionComponent<{
   showModal: boolean
