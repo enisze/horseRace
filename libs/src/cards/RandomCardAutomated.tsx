@@ -17,7 +17,7 @@ export const RandomCardAutomated: FunctionComponent<
 > = ({ level }) => {
   const getRandomRankSymbol = useGetRandomRankSymbol()
 
-  const { decrement, currentLevel, drawnCards, gameState } = useGameContext()
+  const { decrement, currentLevel, drawnCards } = useGameContext()
 
   const initialCard = useGetDecrementCardByLevel(level)
   const [randomSymbol, setRandomSymbol] = useState<RankSymbol | undefined>(
