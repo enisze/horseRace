@@ -1,12 +1,12 @@
 import { filter, last } from 'lodash'
 import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
-import tw from 'twrnc'
 import { LevelAction } from '../../types/LevelAction.type'
 import { RankSymbol } from '../../types/RankSymbol.type'
 import { useGameContext } from '../helpers/GameContext'
 import { getSymbolFromRankSymbol } from '../helpers/getSymbolFromRankSymbol'
 import { useGetRandomRankSymbol } from '../hooks/useGetRandomRankSymbol'
+import { tw } from '../tailwind'
 import BackCard from './BackCard'
 import Card from './Card'
 

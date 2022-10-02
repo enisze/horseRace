@@ -1,11 +1,15 @@
 import React from 'react'
-import { Text, View } from 'react-native'
-import tw from 'twrnc'
+import { View } from 'react-native'
+import { MainLayout } from '../components/MainLayout'
+import { Paragraph } from '../components/Paragraph'
+import { tw } from '../tailwind'
 
 export const StatisticsView: React.FC = () => {
   return (
-    <View style={tw`flex justify-center items-center h-full bg-blue-100`}>
-      <Text style={tw`text-3xl`}>Coming soon...</Text>
-    </View>
+    <MainLayout>
+      <View style={tw`flex justify-center items-center h-full w-full`}>
+        <Paragraph style={tw`text-3xl`}>Coming soon...</Paragraph>
+      </View>
+    </MainLayout>
   )
 }

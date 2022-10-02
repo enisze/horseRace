@@ -8,7 +8,7 @@ export type RootStackParamList = {
   StatisticsView: undefined
 }
 
-export type TestParams = keyof RootStackParamList
+export type NavigationScreen = keyof RootStackParamList
 
 declare global {
   namespace ReactNavigation {

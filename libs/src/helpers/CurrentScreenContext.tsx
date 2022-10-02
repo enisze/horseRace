@@ -4,9 +4,11 @@ import React, {
   useContext,
   useState,
 } from 'react'
+import { NavigationScreen } from '../../../NavigationParams'
 
 const useCurrentScreenContextState = () => {
-  const [currentScreen, setActiveScreen] = useState<string>()
+  const [currentScreen, setActiveScreen] =
+    useState<NavigationScreen>('StartView')
 
   return { currentScreen, setActiveScreen }
 }
