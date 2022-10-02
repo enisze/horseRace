@@ -32,6 +32,7 @@ export const ShareAppButton: FunctionComponent = () => {
         name="share"
         color="white"
         tvParallaxProperties={null}
+        size={24}
       />
     </HorseRaceButton>
   )

@@ -54,6 +54,13 @@ export const StartView: FunctionComponent = () => {
           buttonStyle={buttonStyle}
           iconRight
         />
+        <Button
+          title={'Start Game Session'}
+          onPress={() => navigate('SessionView')}
+          type="solid"
+          buttonStyle={buttonStyle}
+          iconRight
+        />
         <NewGameModal
           showModal={showModal}
           closeModal={() => setShowModal(false)}
