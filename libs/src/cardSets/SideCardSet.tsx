@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { gapStyles } from '../../styles/gapStyles.styles'
 import { RandomCardAutomated } from '../cards/RandomCardAutomated'
 import { SIDE_CARD_SET_GAP } from '../constants'
-import { useGameContext } from '../helpers/GameContext'
+import { useGameContext } from '../contexts/GameContext'
 import { tw } from '../tailwind'
 
 export const SideCardSet: FunctionComponent = () => {

@@ -1,6 +1,6 @@
 import { isUndefined } from 'lodash'
 import { NavigationScreen } from '../../../NavigationParams'
-import { useCurrentScreenContext } from '../helpers/CurrentScreenContext'
+import { useCurrentScreenContext } from '../contexts/CurrentScreenContext'
 
 export const useIsInNavigationScreen = (
   screenName: NavigationScreen

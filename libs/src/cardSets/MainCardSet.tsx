@@ -6,9 +6,9 @@ import { gapStyles } from '../../styles/gapStyles.styles'
 import { RankSymbol } from '../../types/RankSymbol.type'
 import Card from '../cards/Card'
 import { SIDE_CARD_SET_GAP } from '../constants'
-import { useGameContext } from '../helpers/GameContext'
+import { useGameContext } from '../contexts/GameContext'
 import { getSymbolFromRankSymbol } from '../helpers/getSymbolFromRankSymbol'
-import { useGetCardWidthAndHeight } from '../helpers/useGetCardWidthAndHeight'
+import { useGetCardWidthAndHeight } from '../hooks/useGetCardWidthAndHeight'
 import { tw } from '../tailwind'
 
 export const MainCardSet: FunctionComponent = () => {

@@ -1,6 +1,6 @@
 import { SIDE_CARD_SET_GAP } from '../constants'
-import { useDimensions } from '../hooks/useDimensions'
-import { useGameContext } from './GameContext'
+import { useGameContext } from '../contexts/GameContext'
+import { useDimensions } from './useDimensions'
 
 export const useGetCardWidthAndHeight = () => {
   const { levelAmount } = useGameContext()
