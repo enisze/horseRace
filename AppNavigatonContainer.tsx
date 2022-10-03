@@ -3,7 +3,7 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native'
 import { PropsWithChildren } from 'react'
-import { useCurrentScreenContext } from './libs/src/helpers/CurrentScreenContext'
+import { useCurrentScreenContext } from './libs/src/contexts/CurrentScreenContext'
 
 export const AppNavigatonContainer: React.FunctionComponent<
   PropsWithChildren<{}>

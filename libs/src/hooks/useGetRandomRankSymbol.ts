@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { rankSymbolList } from '../../dataLists/rankSymbolList'
 import { LevelAction } from '../../types/LevelAction.type'
-import { useGameContext } from '../helpers/GameContext'
+import { useGameContext } from '../contexts/GameContext'
 
 export const useGetRandomRankSymbol = () => {
   const { drawnCards, appendDrawnCard } = useGameContext()

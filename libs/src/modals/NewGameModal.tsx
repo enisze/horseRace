@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import { Button, Input } from 'react-native-elements'
 import { HorseRaceModal } from '../components/HorseRaceModal'
-import { useGameContext } from '../helpers/GameContext'
+import { useGameContext } from '../contexts/GameContext'
 import { tw } from '../tailwind'
 
 export const NewGameModal: FunctionComponent<{
