@@ -1,0 +1,16 @@
+{
+  "winner": "Gewinner",
+  "restart": "Neu starten",
+  "game": {
+    "start": "Spiel starten",
+    "continue": "Weiterspielen",
+    "session": "Sitzung starten"
+  },
+  "statistics": "Statistiken",
+  "about": "Hey du, vielen Dank, dass du meine App verwendest :) Hoffentlich gefällt es dir und du gibst mir ein Feedback für Verbesserungen, das würde ich sehr zu schätzen wissen. \nIch versuche mein Bestes, um diese App in meiner Freizeit ständig zu verbessern. \nAber da ich nicht immer so viel Zeit/Motivation zum Programmieren habe, nachdem ich einen ganzen Arbeitstag programmiert habe, kann es zu Verzögerungen bei Updates kommen. \nIch hoffe, du verstehst das. \n{'\\n'} {'\\n'} Fühl dich sich frei, mich zu unterstützen, wenn dir diese App gefällt :) Vielen Dank!",
+  "comingSoon": {
+    "session": "Das Spielen mit deinen Freunden wird bald verfügbar sein...",
+    "statistics": "Kommt demnächst..."
+  },
+  "appName": "Pferderennen"
+}

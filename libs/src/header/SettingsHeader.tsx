@@ -5,6 +5,7 @@ import { appLink, paypalDonationURL } from '../constants'
 import { ShareAppButton } from './ShareAppButton'
 
 import { useNavigation } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 import { BackButton } from '../components/BackButton'
 import { HorseRaceButton } from '../components/HorseRaceButton'
 import { HorseRaceModal } from '../components/HorseRaceModal'
@@ -19,6 +20,8 @@ type ParamList = {
 
 const SettingsHeader: React.FunctionComponent = (props) => {
   const { navigate } = useNavigation()
+
+  const { t } = useTranslation()
 
   const isStartScreen = useIsInNavigationScreen('StartView')
 
@@ -80,20 +83,10 @@ const SettingsHeader: React.FunctionComponent = (props) => {
             </HorseRaceButton>
           </View>
         }
-        centerComponent={{ text: 'HorseRace', style: styles.heading }}
+        centerComponent={{ text: t('appName'), style: styles.heading }}
       />
       <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
-        <Paragraph>
-          Hey you, thank you for using my app :) Hopefully you enjoy it and
-          could give me some feedback for improvement, which is much
-          appreciated. I am trying my best to constantly improving this app in
-          my free time. But as I do not have always that much time / motivation
-          to code after I coded a full working day, updates may be delayed. I
-          hope you understand this.
-          {'\n'}
-          {'\n'}
-          Feel free to support me, if you like this app :) Thank you alot!
-        </Paragraph>
+        <Paragraph>{t('about')}</Paragraph>
       </HorseRaceModal>
     </>
   )

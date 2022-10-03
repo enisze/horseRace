@@ -1,0 +1,16 @@
+{
+  "winner": "Winner",
+  "restart": "Restart",
+  "game": {
+    "start": "Start Game",
+    "continue": "Continue Game",
+    "session": "Start Session"
+  },
+  "statistics": "Statistics",
+  "about": "Hey you, thank you for using my app :) Hopefully you enjoy it and could give me some feedback for improvement, which is much appreciated. I am trying my best to constantly improving this app in my free time. But as I do not have always that much time / motivation to code after I coded a full working day, updates may be delayed. I hope you understand this. {'\\n'} {'\\n'} Feel free to support me, if you like this app :) Thank you alot!",
+  "comingSoon": {
+    "session": "Playing with your friends will be coming soon...",
+    "statistics": "Coming soon..."
+  },
+  "appName": "HorseRace"
+}

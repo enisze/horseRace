@@ -1,6 +1,7 @@
 import { AdMobBanner } from 'expo-ads-admob'
 
 import React, { FunctionComponent } from 'react'
+import { Platform } from 'react-native'
 import { useDimensions } from '../hooks/useDimensions'
 
 type BannerSize =
@@ -14,6 +15,8 @@ type BannerSize =
 
 const NativeAd: FunctionComponent<{ id: string }> = ({ id }) => {
   const bannerSize = useGetBannerSize()
+
+  if (Platform.OS !== 'android') return null
 
   return (
     <AdMobBanner
