@@ -10,6 +10,7 @@ import { tw } from '../tailwind'
 import { NewGameModal } from './NewGameModal'
 
 import { useNavigation } from '@react-navigation/native'
+import { t } from 'i18next'
 import { MainLayout } from '../components/MainLayout'
 
 const buttonStyle = tw`w-40 mt-10`
@@ -33,14 +34,14 @@ export const StartView: FunctionComponent = () => {
     <MainLayout>
       <View style={tw`flex flex-col justify-center items-center h-full`}>
         <Button
-          title="Start Game"
+          title={t('game.start')}
           onPress={() => {
             setShowModal(true)
           }}
           buttonStyle={buttonStyle}
         />
         <Button
-          title="Continue Game"
+          title={t('game.continue')}
           buttonStyle={buttonStyle}
           onPress={() => {
             getLastGamePlayedData()
@@ -48,14 +49,14 @@ export const StartView: FunctionComponent = () => {
           }}
         />
         <Button
-          title={'Statistics'}
+          title={t('statistics')}
           onPress={() => navigate('StatisticsView')}
           type="solid"
           buttonStyle={buttonStyle}
           iconRight
         />
         <Button
-          title={'Start Game Session'}
+          title={t('game.session')}
           onPress={() => navigate('SessionView')}
           type="solid"
           buttonStyle={buttonStyle}
