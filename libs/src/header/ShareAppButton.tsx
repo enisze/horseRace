@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Share } from 'react-native'
 import { Icon } from 'react-native-elements'
-import { HorseRaceButton } from '../components/HorseRaceButton'
+import { HorseRaceButton } from '../components/buttons/HorseRaceButton'
 import { appLink } from '../constants'
 
 export const ShareAppButton: FunctionComponent = () => {

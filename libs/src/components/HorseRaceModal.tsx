@@ -1,7 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { Modal, ModalProps, View } from 'react-native'
 import { tw } from '../tailwind'
-import { BackButton } from './BackButton'
+import { BackButton } from './buttons/BackButton'
 import { MainLayout } from './MainLayout'
 
 export type HorseRaceModalProps = PropsWithChildren<ModalProps> & {
