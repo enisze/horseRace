@@ -9,10 +9,14 @@ import { GOOGLE_ADMOB_MODAL_BANNER_ID } from '../env.config'
 import { useGameContext } from '../helpers/GameContext'
 import { tw } from '../tailwind'
 
+import { useTranslation } from 'react-i18next'
+
 export const WinnerModal: FunctionComponent = () => {
   const { winner, reset } = useGameContext()
 
   const [showModal, setShowModal] = useState(false)
+
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (winner) {
@@ -26,7 +30,7 @@ export const WinnerModal: FunctionComponent = () => {
       onClose={() => setShowModal(false)}
       showBackButton={false}
     >
-      <Paragraph>Winner:</Paragraph>
+      <Paragraph>{t('winner')}</Paragraph>
 
       {winner && <Card rankSymbol={`A${winner}`} />}
       <View style={tw`border rounded p-2 shadow-black shadow-2xl bg-green-200`}>
@@ -36,7 +40,7 @@ export const WinnerModal: FunctionComponent = () => {
             reset()
           }}
         >
-          <Paragraph>Reset </Paragraph>
+          <Paragraph>{t('restart')}</Paragraph>
         </HorseRaceButton>
       </View>
       <NativeAd id={GOOGLE_ADMOB_MODAL_BANNER_ID} />
