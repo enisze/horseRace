@@ -33,11 +33,11 @@ importers:
         specifier: ^0.10.7
         version: 0.10.7
       '@react-native-async-storage/async-storage':
-        specifier: ^1.19.3
-        version: 1.19.3(react-native@0.72.4)
+        specifier: ^1.18.2
+        version: 1.18.2(react-native@0.72.4)
       '@shopify/flash-list':
-        specifier: 1.5.0
-        version: 1.5.0(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0)
+        specifier: 1.4.3
+        version: 1.4.3(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.33.0
         version: 4.33.0(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
@@ -62,9 +62,12 @@ importers:
       expo-linking:
         specifier: ~5.0.2
         version: 5.0.2(expo@49.0.8)
+      expo-localization:
+        specifier: ^14.3.0
+        version: 14.3.0(expo@49.0.8)
       expo-router:
-        specifier: 2.0.4
-        version: 2.0.4(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
+        specifier: 2.0.0
+        version: 2.0.0(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
       expo-splash-screen:
         specifier: ~0.20.5
         version: 0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.8)
@@ -2732,8 +2735,8 @@ packages:
       - supports-color
     dev: false
 
-  /@expo/metro-runtime@2.2.6(react-native@0.72.4):
-    resolution: {integrity: sha512-GCN2Ayn9COiPLvmS3MjrqJnRyfJLVcpvjdjnxe5WlWdT4CFNwTwBUXZsv+CxHVQLoWTWzCmYy3aC7CJahcfTLg==}
+  /@expo/metro-runtime@2.2.3(react-native@0.72.4):
+    resolution: {integrity: sha512-SI1SfjsAKIryRLVgxcNBDywy1DN7L/EGcPZSS6+Juls3L6/mGluz97ytIJw3CTZ6S4X3hDL4QDvjyZv2szpTDA==}
     peerDependencies:
       react-native: '*'
     dependencies:
@@ -3209,8 +3212,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-native-async-storage/async-storage@1.19.3(react-native@0.72.4):
-    resolution: {integrity: sha512-CwGfoHCWdPOTPS+2fW6YRE1fFBpT9++ahLEroX5hkgwyoQ+TkmjOaUxixdEIoVua9Pz5EF2pGOIJzqOTMWfBlA==}
+  /@react-native-async-storage/async-storage@1.18.2(react-native@0.72.4):
+    resolution: {integrity: sha512-dM8AfdoeIxlh+zqgr0o5+vCTPQ0Ru1mrPzONZMsr7ufp5h+6WgNxQNza7t0r5qQ6b04AJqTlBNixTWZxqP649Q==}
     peerDependencies:
       react-native: ^0.0.0-0 || 0.60 - 0.72 || 1000.0.0
     dependencies:
@@ -3539,8 +3542,8 @@ packages:
       join-component: 1.1.0
     dev: false
 
-  /@shopify/flash-list@1.5.0(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-XeocevDIXastr6jh3TPo1MzV5XkdqTyWtw/j8kUhz9EOBc2SzNWbpJWyzrAsYKlqYNrnxxs0P9C0amlX2jaQnw==}
+  /@shopify/flash-list@1.4.3(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-jtIReAbwWzYBV0dQ6Io9wBX+pD0C4qQFMrb5/fkEvX8PYDgBl5KRYvpfr9WLLj8CV2Jsn1X0mYOsB+ysWrI/8g==}
     peerDependencies:
       '@babel/runtime': '*'
       react: '*'
@@ -6333,6 +6336,15 @@ packages:
       - supports-color
     dev: false
 
+  /expo-localization@14.3.0(expo@49.0.8):
+    resolution: {integrity: sha512-TML3TeVtwpfuSNwbhBspC9XsGJaa0TWJNh+UaR/35YP9fQiaJfVWUMSrAq84ba6rY1Pm3kti07LV8UUa505oqg==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 49.0.8(@babel/core@7.22.11)
+      rtl-detect: 1.0.4
+    dev: false
+
   /expo-modules-autolinking@1.5.1:
     resolution: {integrity: sha512-yt5a1VCp2BF9CrsO689PCD5oXKP14MMhnOanQMvDn4BDpURYfzAlDVGC5fZrNQKtwn/eq3bcrxIwZ7D9QjVVRg==}
     dependencies:
@@ -6353,12 +6365,12 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.4(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-ILa7UxO6KceRUZ47Lw9wF0Ndftc05l3n4RlijvJLaqg9mGnBZ4WDMXGZEMVg4+oVJTXZEBjh9N3Tc9iHntonEQ==}
+  /expo-router@2.0.0(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-K9ezwX2ll4VAOPOKmpoy6b2bcWxnakAYGFYAx+WWlhR5IABWK0fwrNODs8pCHnN0P1SmeiiFf+8zsZ7MyiXODQ==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
       '@testing-library/jest-native': '*'
-      expo: ^49.0.0
+      expo: ^49.0.0-alpha.6
       expo-constants: '*'
       expo-linking: '*'
       expo-status-bar: '*'
@@ -6376,7 +6388,7 @@ packages:
         optional: true
     dependencies:
       '@bacons/react-views': 1.1.3(react-native@0.72.4)
-      '@expo/metro-runtime': 2.2.6(react-native@0.72.4)
+      '@expo/metro-runtime': 2.2.3(react-native@0.72.4)
       '@radix-ui/react-slot': 1.0.1(react@18.2.0)
       '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
       '@react-navigation/native': 6.1.6(react-native@0.72.4)(react@18.2.0)
@@ -9802,6 +9814,7 @@ packages:
   /querystring@0.2.0:
     resolution: {integrity: sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g==}
     engines: {node: '>=0.4.x'}
+    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
     dev: false
 
   /querystringify@2.2.0:
@@ -10340,6 +10353,10 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     dependencies:
       glob: 7.2.3
+
+  /rtl-detect@1.0.4:
+    resolution: {integrity: sha512-EBR4I2VDSSYr7PkBmFy04uhycIpDKp+21p/jARYXlCSjQksTBQcJ0HFUPOO79EPPH5JS6VAhiIQbycf0O3JAxQ==}
+    dev: false
 
   /run-async@2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}

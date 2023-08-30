@@ -1,5 +1,5 @@
-import { execSync } from "node:child_process";
 import type { PackageJson, PlopTypes } from "@turbo/gen";
+import { execSync } from "node:child_process";
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator("init", {
