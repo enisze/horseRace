@@ -5,13 +5,13 @@ import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { t } from "i18next";
 
-import NativeAd from "~/old/ads/NativeAd";
-import { MainLayout } from "~/old/components/MainLayout";
-import { GAMEDATA_STORAGE_KEY } from "~/old/constants";
-import { useGameContext } from "~/old/contexts/GameContext";
-import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from "~/old/env.config";
-import { NewGameModal } from "~/old/modals/NewGameModal";
-import { Button } from "~/ui/Button";
+import NativeAd from "../old/ads/NativeAd";
+import { MainLayout } from "../old/components/MainLayout";
+import { GAMEDATA_STORAGE_KEY } from "../old/constants";
+import { useGameContext } from "../old/contexts/GameContext";
+import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from "../old/env.config";
+import { NewGameModal } from "../old/modals/NewGameModal";
+import { Button } from "../ui/Button";
 
 const buttonStyle = "w-40 mt-10";
 

@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from "react";
 import { View } from "react-native";
 import { Input } from "react-native-elements";
 
-import { Button } from "~/ui/Button";
+import { Button } from "../../ui/Button";
 import { HorseRaceModal } from "../components/HorseRaceModal";
 import { useGameContext } from "../contexts/GameContext";
 

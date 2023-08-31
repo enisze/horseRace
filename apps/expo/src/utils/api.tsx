@@ -32,9 +32,11 @@ const getBaseUrl = () => {
 
   if (!localhost) {
     // return "https://turbo.t3.gg";
-    throw new Error(
-      "Failed to get localhost. Please point to your production server.",
-    );
+    //TODO: revert this
+    // throw new Error(
+    //   "Failed to get localhost. Please point to your production server.",
+    // );
+    return;
   }
   return `http://${localhost}:3000`;
 };

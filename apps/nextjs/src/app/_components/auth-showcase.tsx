@@ -1,6 +1,6 @@
 import { auth } from "@acme/auth";
 
-import { SignIn, SignOut } from "~/components/auth";
+import { SignIn, SignOut } from "../../components/auth";
 
 export async function AuthShowcase() {
   const session = await auth();

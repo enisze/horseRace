@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 
-import { RankSymbol } from "~/types/RankSymbol.type";
 import { LevelAction } from "../../types/LevelAction.type";
+import { RankSymbol } from "../../types/RankSymbol.type";
 import { useGameContext } from "../contexts/GameContext";
 import { rankSymbolList } from "../dataLists/rankSymbolList";
 

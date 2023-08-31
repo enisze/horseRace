@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { RankSymbol } from "~/types/RankSymbol.type";
+import { RankSymbol } from "../../types/RankSymbol.type";
 
 const imageList = {
   "2H": require("../../../assets/cards/2H.png"),

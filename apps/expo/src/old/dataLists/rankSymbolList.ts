@@ -1,4 +1,4 @@
-import { RankSymbol } from "~/types/RankSymbol.type";
+import { RankSymbol } from "../../types/RankSymbol.type";
 
 export const rankSymbolList: RankSymbol[] = [
   "2C",

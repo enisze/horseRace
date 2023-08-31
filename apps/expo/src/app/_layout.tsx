@@ -6,14 +6,13 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { I18nextProvider } from "react-i18next";
 
-import { CurrentScreenContextProvider } from "~/old/contexts/CurrentScreenContext";
-import { GameContextProvider } from "~/old/contexts/GameContext";
-import SettingsHeader from "~/old/header/SettingsHeader";
-import MainProvider from "~/old/helpers/MainProvider";
-import i18n from "~/old/i18n";
-import { TRPCProvider } from "~/utils/api";
+import { GameContextProvider } from "../old/contexts/GameContext";
+import SettingsHeader from "../old/header/SettingsHeader";
+import MainProvider from "../old/helpers/MainProvider";
+import i18n from "../old/i18n";
+import { TRPCProvider } from "../utils/api";
 
-await mobileAds()
+mobileAds()
   .initialize()
   .then((adapterStatuses) => {
     // Initialization complete!
@@ -33,22 +32,20 @@ const RootLayout = () => {
       <GameContextProvider>
         <I18nextProvider i18n={i18n}>
           <SafeAreaProvider>
-            <CurrentScreenContextProvider>
-              <MainProvider>
-                <GestureHandlerRootView style={{ flex: 1 }}>
-                  <SettingsHeader />
+            <MainProvider>
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                <SettingsHeader />
 
-                  <Stack
-                    screenOptions={{
-                      headerStyle: {
-                        backgroundColor: "#f472b6",
-                      },
-                    }}
-                  />
-                  <StatusBar />
-                </GestureHandlerRootView>
-              </MainProvider>
-            </CurrentScreenContextProvider>
+                <Stack
+                  screenOptions={{
+                    headerStyle: {
+                      backgroundColor: "#f472b6",
+                    },
+                  }}
+                />
+                <StatusBar />
+              </GestureHandlerRootView>
+            </MainProvider>
           </SafeAreaProvider>
         </I18nextProvider>
       </GameContextProvider>
