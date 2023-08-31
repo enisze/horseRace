@@ -7,7 +7,7 @@ import { MainCardSet } from "../old/cardSets/MainCardSet";
 import { SideCardSet } from "../old/cardSets/SideCardSet";
 import { MainLayout } from "../old/components/MainLayout";
 import { GOOGLE_ADMOB_MAINVIEW_BANNER_ID } from "../old/env.config";
-import { WinnerModal } from "./WinnerModal";
+import { WinnerModal } from "../ui/WinnerModal";
 
 export const MainView = () => {
   return (

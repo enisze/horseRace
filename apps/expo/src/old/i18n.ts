@@ -10,6 +10,7 @@ void i18next.use(initReactI18next).init({
     de: { general: de },
     en: { general: en },
   },
+  compatibilityJSON: "v3",
   defaultNS: "general",
   lng: Localization.locale,
   fallbackLng: "en",

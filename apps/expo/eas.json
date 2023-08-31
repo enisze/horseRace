@@ -4,9 +4,9 @@
   },
   "build": {
     "base": {
-      "node": "18.16.1",
+      "node": "20.3.1",
       "ios": {
-        "resourceClass": "m-medium"
+        "resourceClass": "m1-medium"
       }
     },
     "development": {

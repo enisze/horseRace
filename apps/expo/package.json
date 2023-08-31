@@ -12,7 +12,9 @@
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "typecheck": "tsc --noEmit",
     "android": "expo run:android",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "dev-client:ios-simulator": "eas build --platform ios --profile preview --local",
+    "dev-client:android": "eas build --platform android --profile development --local"
   },
   "dependencies": {
     "@expo/metro-config": "^0.10.7",
@@ -40,6 +42,7 @@
     "react-native-dotenv": "^3.4.9",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "^2.12.1",
+    "react-native-google-mobile-ads": "^12.1.0",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.1",
     "superjson": "1.13.1"
@@ -57,6 +60,7 @@
     "@types/babel__core": "^7.20.1",
     "@types/react": "^18.2.21",
     "eslint": "^8.48.0",
+    "expo-dev-client": "^2.4.8",
     "prettier": "^3.0.3",
     "tailwindcss": "3.3.2",
     "typescript": "^5.2.2"

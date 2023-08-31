@@ -53,6 +53,9 @@ const defineConfig = (): ExpoConfig => ({
     mainViewBannerId: process.env.GOOGLE_ADMOB_MAINVIEW_BANNER_ID,
     startViewBannerId: process.env.GOOGLE_ADMOB_STARTVIEW_BANNER_ID,
     modalBannerId: process.env.GOOGLE_ADMOB_STARTVIEW_BANNER_ID,
+    eas: {
+      projectId: "7eb073d8-81bd-409a-9b6a-09db2d499c73",
+    },
   },
 });
 

@@ -14,6 +14,7 @@ import { TRPCProvider } from "~/utils/api";
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need
+
 const RootLayout = () => {
   return (
     <TRPCProvider>

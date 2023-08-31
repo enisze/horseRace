@@ -1,42 +1,29 @@
-import { AdMobBanner } from 'expo-ads-admob'
+import React, { FunctionComponent } from "react";
+import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 
-import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
-import { useDimensions } from '../hooks/useDimensions'
-
-type BannerSize =
-  | 'largeBanner'
-  | 'banner'
-  | 'mediumRectangle'
-  | 'fullBanner'
-  | 'leaderboard'
-  | 'smartBannerPortrait'
-  | 'smartBannerLandscape'
+import { useDimensions } from "../hooks/useDimensions";
 
 const NativeAd: FunctionComponent<{ id: string }> = ({ id }) => {
-  const bannerSize = useGetBannerSize()
-
-  if (Platform.OS !== 'android') return null
+  const bannerSize = useGetBannerSize();
 
   return (
-    <AdMobBanner
-      bannerSize={bannerSize}
-      adUnitID={id}
-      servePersonalizedAds // true or false
-      onDidFailToReceiveAdWithError={(error) => {
-        console.log(error)
+    <BannerAd
+      unitId={id}
+      size={bannerSize}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
       }}
     />
-  )
-}
+  );
+};
 
-export default NativeAd
+export default NativeAd;
 
-const useGetBannerSize = (): BannerSize => {
-  const { width } = useDimensions()
+const useGetBannerSize = (): BannerAdSize => {
+  const { width } = useDimensions();
 
   if (width > 768) {
-    return 'fullBanner'
+    return BannerAdSize.FULL_BANNER;
   }
-  return 'largeBanner'
-}
+  return BannerAdSize.LARGE_BANNER;
+};

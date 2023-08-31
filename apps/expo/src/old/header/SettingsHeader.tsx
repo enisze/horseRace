@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Linking, StyleSheet, View } from "react-native";
 import { Header, Icon } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
+import { usePathname, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 
 import { BackButton } from "../components/buttons/BackButton";
@@ -9,7 +9,6 @@ import { HorseRaceButton } from "../components/buttons/HorseRaceButton";
 import { HorseRaceModal } from "../components/HorseRaceModal";
 import { Paragraph } from "../components/Paragraph";
 import { appLink, paypalDonationURL } from "../constants";
-import { useIsInNavigationScreen } from "../hooks/useIsInNavigationScreen";
 import { ShareAppButton } from "./ShareAppButton";
 
 interface ParamList {
@@ -19,11 +18,13 @@ interface ParamList {
 }
 
 const SettingsHeader: React.FunctionComponent = (props) => {
-  const { navigate } = useNavigation();
-
   const { t } = useTranslation();
 
-  const isStartScreen = useIsInNavigationScreen("StartView");
+  const router = useRouter();
+
+  const pathname = usePathname();
+
+  const isStartScreen = pathname === "/StartView";
 
   const [showModal, setShowModal] = useState(false);
 
@@ -41,7 +42,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
         leftComponent={
           <View>
             {!isStartScreen && (
-              <BackButton onPress={() => navigate("StartView")} />
+              <BackButton onPress={() => router.push("/StartView")} />
             )}
           </View>
         }
