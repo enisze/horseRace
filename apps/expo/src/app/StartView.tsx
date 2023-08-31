@@ -1,17 +1,17 @@
 import type { FunctionComponent } from "react";
 import React, { useState } from "react";
 import { View } from "react-native";
+import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from "@react-navigation/native";
 import { t } from "i18next";
 
+import NativeAd from "~/old/ads/NativeAd";
+import { MainLayout } from "~/old/components/MainLayout";
+import { GAMEDATA_STORAGE_KEY } from "~/old/constants";
+import { useGameContext } from "~/old/contexts/GameContext";
+import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from "~/old/env.config";
+import { NewGameModal } from "~/old/modals/NewGameModal";
 import { Button } from "~/ui/Button";
-import NativeAd from "../ads/NativeAd";
-import { MainLayout } from "../components/MainLayout";
-import { GAMEDATA_STORAGE_KEY } from "../constants";
-import { useGameContext } from "../contexts/GameContext";
-import { GOOGLE_ADMOB_STARTVIEW_BANNER_ID } from "../env.config";
-import { NewGameModal } from "../modals/NewGameModal";
 
 const buttonStyle = "w-40 mt-10";
 
@@ -20,7 +20,7 @@ export const StartView: FunctionComponent = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const { navigate } = useNavigation();
+  const router = useRouter();
 
   const getLastGamePlayedData = async () => {
     try {
@@ -43,19 +43,19 @@ export const StartView: FunctionComponent = () => {
         <Button
           title={t("game.continue")}
           className={buttonStyle}
-          onPress={() => {
-            getLastGamePlayedData();
-            navigate("MainView");
+          onPress={async () => {
+            await getLastGamePlayedData();
+            router.push("/MainView");
           }}
         />
         <Button
           title={t("statistics")}
-          onPress={() => navigate("StatisticsView")}
+          onPress={() => router.push("/StatisticsView")}
           className={buttonStyle}
         />
         <Button
           title={t("game.session")}
-          onPress={() => navigate("SessionView")}
+          onPress={() => router.push("/SessionView")}
           className={buttonStyle}
         />
         <NewGameModal
@@ -63,7 +63,7 @@ export const StartView: FunctionComponent = () => {
           closeModal={() => setShowModal(false)}
           onSubmit={() => {
             reset();
-            navigate("MainView");
+            router.push("/MainView");
           }}
         />
 

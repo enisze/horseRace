@@ -1,12 +1,12 @@
 import React from "react";
 import { View } from "react-native";
 
-import NativeAd from "../ads/NativeAd";
-import { RandomCardSet } from "../cards/RandomCardSet";
-import { MainCardSet } from "../cardSets/MainCardSet";
-import { SideCardSet } from "../cardSets/SideCardSet";
-import { MainLayout } from "../components/MainLayout";
-import { GOOGLE_ADMOB_MAINVIEW_BANNER_ID } from "../env.config";
+import NativeAd from "../old/ads/NativeAd";
+import { RandomCardSet } from "../old/cards/RandomCardSet";
+import { MainCardSet } from "../old/cardSets/MainCardSet";
+import { SideCardSet } from "../old/cardSets/SideCardSet";
+import { MainLayout } from "../old/components/MainLayout";
+import { GOOGLE_ADMOB_MAINVIEW_BANNER_ID } from "../old/env.config";
 import { WinnerModal } from "./WinnerModal";
 
 export const MainView = () => {

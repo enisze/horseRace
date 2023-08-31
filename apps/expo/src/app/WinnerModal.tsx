@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { View } from "react-native";
+import { Card } from "react-native-elements";
 import { useTranslation } from "react-i18next";
 
-import NativeAd from "../ads/NativeAd";
-import Card from "../cards/Card";
-import { HorseRaceButton } from "../components/buttons/HorseRaceButton";
-import { HorseRaceModal } from "../components/HorseRaceModal";
-import { Paragraph } from "../components/Paragraph";
-import { useGameContext } from "../contexts/GameContext";
-import { GOOGLE_ADMOB_MODAL_BANNER_ID } from "../env.config";
+import NativeAd from "~/old/ads/NativeAd";
+import { HorseRaceButton } from "~/old/components/buttons/HorseRaceButton";
+import { HorseRaceModal } from "~/old/components/HorseRaceModal";
+import { Paragraph } from "~/old/components/Paragraph";
+import { useGameContext } from "~/old/contexts/GameContext";
+import { GOOGLE_ADMOB_MODAL_BANNER_ID } from "~/old/env.config";
 
 export const WinnerModal: FunctionComponent = () => {
   const { winner, reset } = useGameContext();

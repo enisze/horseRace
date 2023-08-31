@@ -8,23 +8,25 @@ import React, {
   useState,
 } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { min } from "lodash";
 
 import { LevelAction } from "../../types/LevelAction.type";
 import { RankSymbol } from "../../types/RankSymbol.type";
 import { CardSymbol } from "../../types/Symbol.type";
 import { GAMEDATA_STORAGE_KEY } from "../constants";
 
-type GameData = {
+interface GameData {
   CAmount: number;
   DAmount: number;
   HAmount: number;
   SAmount: number;
   drawnCards: DrawnCard[];
   levelAmount: number;
-};
+}
 
-type DrawnCard = { rankSymbol: RankSymbol; action: LevelAction };
+interface DrawnCard {
+  rankSymbol: RankSymbol;
+  action: LevelAction;
+}
 
 const useGameContextState = () => {
   const [CAmount, setCAmount] = useState<number>(0);
@@ -45,7 +47,7 @@ const useGameContextState = () => {
   };
 
   const currentLevel = useMemo(() => {
-    return min([CAmount, DAmount, HAmount, SAmount]) ?? 0;
+    return Math.min(...[CAmount, DAmount, HAmount, SAmount]) ?? 0;
   }, [CAmount, DAmount, HAmount, SAmount]);
 
   const incrementFnc = (value: number) =>

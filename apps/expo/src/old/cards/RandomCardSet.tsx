@@ -1,17 +1,15 @@
 import React, { FunctionComponent, useState } from "react";
 import { View } from "react-native";
-import { filter, last } from "lodash";
 
 import { LevelAction } from "../../types/LevelAction.type";
 import { RankSymbol } from "../../types/RankSymbol.type";
 import { useGameContext } from "../contexts/GameContext";
 import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
 import { useGetRandomRankSymbol } from "../hooks/useGetRandomRankSymbol";
-import { tw } from "../tailwind";
 import BackCard from "./BackCard";
 import Card from "./Card";
 
-type RandomCardSetProps = {};
+interface RandomCardSetProps {}
 
 export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
   const getRandomRankSymbol = useGetRandomRankSymbol();
@@ -25,7 +23,7 @@ export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
   );
 
   return (
-    <View style={tw`flex flex-row`}>
+    <View className="flex flex-row">
       <BackCard
         onClick={() => {
           const rankSymbol: RankSymbol | undefined =
@@ -48,11 +46,10 @@ export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
 const useGetLastRankSymbol = (action: LevelAction): RankSymbol | undefined => {
   const { drawnCards } = useGameContext();
 
-  const filteredCardsByAction = filter(
-    drawnCards,
+  const filteredCardsByAction = drawnCards.filter(
     (card) => card.action === action,
   );
-  const lastCard = last(filteredCardsByAction)?.rankSymbol;
+  const lastCard = filteredCardsByAction.at(-1)?.rankSymbol;
 
   return lastCard;
 };

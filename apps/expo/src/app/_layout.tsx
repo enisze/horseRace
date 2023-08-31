@@ -1,4 +1,5 @@
 import React from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -27,19 +28,16 @@ const RootLayout = () => {
             <CurrentScreenContextProvider>
               <MainProvider>
                 <GestureHandlerRootView style={{ flex: 1 }}>
-                  <AppNavigatonContainer>
-                    <SettingsHeader />
-                    <AppNavigation />
+                  <SettingsHeader />
 
-                    <Stack
-                      screenOptions={{
-                        headerStyle: {
-                          backgroundColor: "#f472b6",
-                        },
-                      }}
-                    />
-                    <StatusBar />
-                  </AppNavigatonContainer>
+                  <Stack
+                    screenOptions={{
+                      headerStyle: {
+                        backgroundColor: "#f472b6",
+                      },
+                    }}
+                  />
+                  <StatusBar />
                 </GestureHandlerRootView>
               </MainProvider>
             </CurrentScreenContextProvider>

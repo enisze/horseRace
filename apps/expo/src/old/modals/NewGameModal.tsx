@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState } from "react";
 import { View } from "react-native";
+import { Input } from "react-native-elements";
 
 import { Button } from "~/ui/Button";
 import { HorseRaceModal } from "../components/HorseRaceModal";
 import { useGameContext } from "../contexts/GameContext";
-import { tw } from "../tailwind";
 
 export const NewGameModal: FunctionComponent<{
   showModal: boolean;
@@ -17,9 +17,8 @@ export const NewGameModal: FunctionComponent<{
 
   return (
     <HorseRaceModal visible={showModal} onClose={closeModal}>
-      <View style={tw`w-40 flex `}>
-        {/* <Input
-          autoCompleteType={"off"}
+      <View className="flex w-40">
+        <Input
           onChangeText={(text) => {
             reset();
             setLevel(text);
@@ -30,8 +29,7 @@ export const NewGameModal: FunctionComponent<{
           errorMessage={
             showError ? "Level must be a number below 10" : undefined
           }
-          inputContainerStyle={tw`h-14`}
-        /> */}
+        />
       </View>
       <Button
         onPress={() => {

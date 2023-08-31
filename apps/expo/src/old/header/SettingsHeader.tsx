@@ -1,39 +1,39 @@
-import React, { useState } from 'react'
-import { Linking, StyleSheet, View } from 'react-native'
-import { Header, Icon } from 'react-native-elements'
-import { appLink, paypalDonationURL } from '../constants'
-import { ShareAppButton } from './ShareAppButton'
+import React, { useState } from "react";
+import { Linking, StyleSheet, View } from "react-native";
+import { Header, Icon } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
-import { useNavigation } from '@react-navigation/native'
-import { useTranslation } from 'react-i18next'
-import { BackButton } from '../components/buttons/BackButton'
-import { HorseRaceButton } from '../components/buttons/HorseRaceButton'
-import { HorseRaceModal } from '../components/HorseRaceModal'
-import { Paragraph } from '../components/Paragraph'
-import { useIsInNavigationScreen } from '../hooks/useIsInNavigationScreen'
+import { BackButton } from "../components/buttons/BackButton";
+import { HorseRaceButton } from "../components/buttons/HorseRaceButton";
+import { HorseRaceModal } from "../components/HorseRaceModal";
+import { Paragraph } from "../components/Paragraph";
+import { appLink, paypalDonationURL } from "../constants";
+import { useIsInNavigationScreen } from "../hooks/useIsInNavigationScreen";
+import { ShareAppButton } from "./ShareAppButton";
 
-type ParamList = {
+interface ParamList {
   Detail: {
-    openDrawer: void
-  }
+    openDrawer: void;
+  };
 }
 
 const SettingsHeader: React.FunctionComponent = (props) => {
-  const { navigate } = useNavigation()
+  const { navigate } = useNavigation();
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  const isStartScreen = useIsInNavigationScreen('StartView')
+  const isStartScreen = useIsInNavigationScreen("StartView");
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   const donationsNavigate = () => {
-    Linking.openURL(paypalDonationURL)
-  }
+    Linking.openURL(paypalDonationURL);
+  };
 
   const rateApp = () => {
-    Linking.openURL(appLink)
-  }
+    Linking.openURL(appLink);
+  };
 
   return (
     <>
@@ -41,7 +41,7 @@ const SettingsHeader: React.FunctionComponent = (props) => {
         leftComponent={
           <View>
             {!isStartScreen && (
-              <BackButton onPress={() => navigate('StartView')} />
+              <BackButton onPress={() => navigate("StartView")} />
             )}
           </View>
         }
@@ -49,64 +49,47 @@ const SettingsHeader: React.FunctionComponent = (props) => {
           <View style={styles.headerRight}>
             <ShareAppButton />
             <HorseRaceButton onPress={rateApp} style={{ marginLeft: 4 }}>
-              <Icon
-                name="description"
-                color="white"
-                tvParallaxProperties={null}
-                size={24}
-              />
+              <Icon name="description" color="white" size={24} />
             </HorseRaceButton>
             <HorseRaceButton
               style={{ marginLeft: 4 }}
               onPress={donationsNavigate}
             >
-              <Icon
-                type="antdesign"
-                name="rocket1"
-                color="white"
-                tvParallaxProperties={null}
-                size={24}
-              />
+              <Icon type="antdesign" name="rocket1" color="white" size={24} />
             </HorseRaceButton>
 
             <HorseRaceButton
               style={{ marginLeft: 4 }}
               onPress={() => setShowModal(true)}
             >
-              <Icon
-                type="fontawesom5"
-                name="info"
-                color="white"
-                tvParallaxProperties={null}
-                size={24}
-              />
+              <Icon type="fontawesom5" name="info" color="white" size={24} />
             </HorseRaceButton>
           </View>
         }
-        centerComponent={{ text: t('appName'), style: styles.heading }}
+        centerComponent={{ text: t("appName"), style: styles.heading }}
       />
       <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
-        <Paragraph>{t('about')}</Paragraph>
+        <Paragraph>{t("about")}</Paragraph>
       </HorseRaceModal>
     </>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   heading: {
-    color: 'white',
+    color: "white",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   headerRight: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
   },
   subheaderText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-})
+});
 
-export default SettingsHeader
+export default SettingsHeader;
