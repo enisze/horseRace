@@ -1,5 +1,6 @@
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import mobileAds from "react-native-google-mobile-ads";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -11,6 +12,12 @@ import SettingsHeader from "~/old/header/SettingsHeader";
 import MainProvider from "~/old/helpers/MainProvider";
 import i18n from "~/old/i18n";
 import { TRPCProvider } from "~/utils/api";
+
+await mobileAds()
+  .initialize()
+  .then((adapterStatuses) => {
+    // Initialization complete!
+  });
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need

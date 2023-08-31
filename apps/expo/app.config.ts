@@ -34,9 +34,6 @@ const defineConfig = (): ExpoConfig => ({
     },
     versionCode: 6,
     permissions: [],
-    config: {
-      googleMobileAdsAppId: "ca-app-pub-7941882405849156~9233114658",
-    },
   },
   // extra: {
   //   eas: {
@@ -47,7 +44,21 @@ const defineConfig = (): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router", "./expo-plugins/with-modify-gradle.js"],
+  plugins: [
+    ["expo-router"],
+    ["./expo-plugins/with-modify-gradle.js"],
+    [
+      "expo-build-properties",
+      {
+        android: {
+          compileSdkVersion: 33,
+        },
+        ios: {
+          deploymentTarget: "13.0",
+        },
+      },
+    ],
+  ],
   extra: {
     // Add your extra configs here
     mainViewBannerId: process.env.GOOGLE_ADMOB_MAINVIEW_BANNER_ID,
