@@ -1,15 +1,20 @@
-import React, { FunctionComponent, PropsWithChildren, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+} from "react";
 import { Platform } from "react-native";
 
 const MainProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  const test = async () => {
+  const test = useCallback(async () => {
     if (Platform.OS !== "web") {
       // await setTestDeviceIDAsync("EMULATOR");
     }
-  };
+  }, []);
 
   useEffect(() => {
-    test();
+    void test();
   }, [test]);
 
   return <>{children}</>;

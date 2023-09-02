@@ -1,142 +1,77 @@
-import React from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Link, Stack } from "expo-router";
-import { FlashList } from "@shopify/flash-list";
+import type { FunctionComponent } from "react";
+import React, { useState } from "react";
+import { View } from "react-native";
+import { Stack, useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { t } from "i18next";
 
-import type { RouterOutputs } from "../utils/api";
-import { api } from "../utils/api";
+import { MainLayout } from "../old/components/MainLayout";
+import { GAMEDATA_STORAGE_KEY } from "../old/constants";
+import { useGameContext } from "../old/contexts/GameContext";
+import { NewGameModal } from "../old/modals/NewGameModal";
+import { Button } from "../ui/Button";
 
-function PostCard(props: {
-  post: RouterOutputs["post"]["all"][number];
-  onDelete: () => void;
-}) {
-  return (
-    <View className="flex flex-row rounded-lg bg-white/10 p-4">
-      <View className="flex-grow">
-        <Link
-          asChild
-          href={{
-            pathname: "/post/[id]",
-            params: { id: props.post.id },
-          }}
-        >
-          <TouchableOpacity>
-            <Text className="text-xl font-semibold text-pink-400">
-              {props.post.title}
-            </Text>
-            <Text className="mt-2 text-white">{props.post.content}</Text>
-          </TouchableOpacity>
-        </Link>
-      </View>
-      <TouchableOpacity onPress={props.onDelete}>
-        <Text className="font-bold uppercase text-pink-400">Delete</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+const buttonStyle = "w-40 mt-10";
 
-function CreatePost() {
-  const utils = api.useContext();
+const StartView: FunctionComponent = () => {
+  const { loadGameState, reset } = useGameContext();
 
-  const [title, setTitle] = React.useState("");
-  const [content, setContent] = React.useState("");
+  const [showModal, setShowModal] = useState(false);
 
-  const { mutate, error } = api.post.create.useMutation({
-    async onSuccess() {
-      setTitle("");
-      setContent("");
-      await utils.post.all.invalidate();
-    },
-  });
+  const router = useRouter();
+
+  const getLastGamePlayedData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(GAMEDATA_STORAGE_KEY);
+      const gameData = jsonValue != null ? JSON.parse(jsonValue) : null;
+      loadGameState(gameData);
+    } catch (error: any) {}
+  };
 
   return (
-    <View className="mt-4">
-      <TextInput
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        placeholderTextColor="rgba(255, 255, 255, 0.5)"
-        value={title}
-        onChangeText={setTitle}
-        placeholder="Title"
-      />
-      {error?.data?.zodError?.fieldErrors.title && (
-        <Text className="mb-2 text-red-500">
-          {error.data.zodError.fieldErrors.title}
-        </Text>
-      )}
-      <TextInput
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        placeholderTextColor="rgba(255, 255, 255, 0.5)"
-        value={content}
-        onChangeText={setContent}
-        placeholder="Content"
-      />
-      {error?.data?.zodError?.fieldErrors.content && (
-        <Text className="mb-2 text-red-500">
-          {error.data.zodError.fieldErrors.content}
-        </Text>
-      )}
-      <TouchableOpacity
-        className="rounded bg-pink-400 p-2"
-        onPress={() => {
-          mutate({
-            title,
-            content,
-          });
-        }}
-      >
-        <Text className="font-semibold text-white">Publish post</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-const Index = () => {
-  const utils = api.useContext();
-
-  const postQuery = api.post.all.useQuery();
-
-  const deletePostMutation = api.post.delete.useMutation({
-    onSettled: () => utils.post.all.invalidate(),
-  });
-
-  return (
-    <SafeAreaView className="bg-[#1F104A]">
-      {/* Changes page title visible on the header */}
-      <Stack.Screen options={{ title: "Home Page" }} />
-      <View className="h-full w-full p-4">
-        <Text className="mx-auto pb-2 text-5xl font-bold text-white">
-          Create <Text className="text-pink-400">T3</Text> Turbo
-        </Text>
-
+    <MainLayout>
+      <Stack.Screen options={{ title: "Start Page" }} />
+      <View className="flex h-full flex-col items-center justify-center">
         <Button
-          onPress={() => void utils.post.all.invalidate()}
-          title="Refresh posts"
-          color={"#f472b6"}
+          title={t("game.start")}
+          onPress={() => {
+            setShowModal(true);
+          }}
+          className={buttonStyle}
+        />
+        <Button
+          title={t("game.continue")}
+          className={buttonStyle}
+          onPress={async () => {
+            await getLastGamePlayedData();
+            router.push("/MainView");
+          }}
+        />
+        <Button
+          title={t("statistics")}
+          onPress={() => router.push("/StatisticsView")}
+          className={buttonStyle}
+        />
+        <Button
+          title={t("game.session")}
+          onPress={() => router.push("/SessionView")}
+          className={buttonStyle}
+        />
+        <NewGameModal
+          showModal={showModal}
+          closeModal={() => setShowModal(false)}
+          onSubmit={() => {
+            reset();
+            router.push("/MainView");
+          }}
         />
 
-        <View className="py-2">
-          <Text className="font-semibold italic text-white">
-            Press on a post
-          </Text>
+        <View className="flex items-center">
+          {/* <NativeAd id={GOOGLE_ADMOB_STARTVIEW_BANNER_ID ?? ""} /> */}
         </View>
-
-        <FlashList
-          data={postQuery.data}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => (
-            <PostCard
-              post={p.item}
-              onDelete={() => deletePostMutation.mutate(p.item.id)}
-            />
-          )}
-        />
-
-        <CreatePost />
       </View>
-    </SafeAreaView>
+    </MainLayout>
   );
 };
 
-export default Index;
+export default StartView;

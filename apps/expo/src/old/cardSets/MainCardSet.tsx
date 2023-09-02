@@ -19,6 +19,7 @@ export const MainCardSet: FunctionComponent = () => {
     <View
       className={`flex flex-row items-end`}
       //TODO: Add this
+      style={styles.container}
       //   ...{ marginBottom: -SIDE_CARD_SET_GAP / 2 },
     >
       {keys.map((key, idx) => {

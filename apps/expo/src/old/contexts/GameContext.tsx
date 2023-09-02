@@ -2,6 +2,7 @@ import React, {
   createContext,
   FunctionComponent,
   PropsWithChildren,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -107,7 +108,7 @@ const useGameContextState = () => {
     }
   };
 
-  const storeData = async () => {
+  const storeData = useCallback(async () => {
     try {
       const gameData: GameData = {
         CAmount,
@@ -124,13 +125,13 @@ const useGameContextState = () => {
     } catch (e) {
       // saving error
     }
-  };
+  }, [CAmount, DAmount, HAmount, SAmount, drawnCards, levelAmount]);
 
   useEffect(() => {
     if (CAmount > 0 || DAmount > 0 || HAmount > 0 || SAmount > 0) {
-      storeData();
+      void storeData();
     }
-  }, [CAmount, DAmount, HAmount, SAmount, drawnCards, levelAmount]);
+  }, [CAmount, DAmount, storeData, HAmount, SAmount, drawnCards, levelAmount]);
 
   const appendDrawnCard = (drawnCard: DrawnCard) => {
     setDrawnCards((cards) => [...cards, drawnCard]);

@@ -29,6 +29,7 @@ export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
           const rankSymbol: RankSymbol | undefined =
             getRandomRankSymbol("increment");
           setRandomSymbol(rankSymbol);
+
           const symbol = getSymbolFromRankSymbol(rankSymbol);
 
           increment(symbol);

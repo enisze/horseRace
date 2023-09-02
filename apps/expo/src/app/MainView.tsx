@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Stack } from "expo-router";
 
 import { RandomCardSet } from "../old/cards/RandomCardSet";
@@ -14,11 +14,6 @@ const MainView = () => {
       <Stack.Screen
         options={{
           title: "Main Page",
-          header: (props) => (
-            <View>
-              <Text>test</Text>
-            </View>
-          ),
         }}
       />
       <View className="flex h-full w-full pt-10">

@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { View } from "react-native";
-import { Card } from "react-native-elements";
 import { useTranslation } from "react-i18next";
 
+import { RankSymbol } from "~/types/RankSymbol.type";
+import Card from "../old/cards/Card";
 import { HorseRaceButton } from "../old/components/buttons/HorseRaceButton";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
 import { Paragraph } from "../old/components/Paragraph";
@@ -21,6 +22,8 @@ export const WinnerModal: FunctionComponent = () => {
     }
   }, [winner]);
 
+  const symbol: RankSymbol = winner ? `A${winner}` : "AC";
+
   return (
     <HorseRaceModal
       visible={showModal}
@@ -29,7 +32,7 @@ export const WinnerModal: FunctionComponent = () => {
     >
       <Paragraph>{t("winner")}</Paragraph>
 
-      {winner && <Card rankSymbol={`A${winner}`} />}
+      {winner && <Card rankSymbol={symbol} />}
       <View className="rounded border bg-green-200 p-2 shadow-2xl shadow-black">
         <HorseRaceButton
           onPress={() => {
