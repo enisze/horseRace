@@ -5,17 +5,17 @@
   "main": "index.tsx",
   "scripts": {
     "clean": "git clean -xdf .expo .turbo node_modules",
-    "dev": "expo start --ios",
-    "dev:android": "expo start --android",
-    "dev:ios": "expo start --ios",
+    "dev": "npx expo start --ios",
+    "dev:android": "npx expo start --android",
+    "dev:ios": "npx expo start --ios",
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "typecheck": "tsc --noEmit",
     "android": "expo run:android",
-    "ios": "expo run:ios",
+    "ios": "npx expo run:ios",
     "dev-client:ios-simulator": "eas build --platform ios --profile preview --local",
     "dev-client:android": "export ANDROID_HOME=$HOME/Library/Android/sdk/ && eas build --platform android --profile development --local",
-    "start-dev-client": "expo start --dev-client"
+    "start-dev-client": "npx expo start --dev-client"
   },
   "dependencies": {
     "@expo/metro-config": "^0.10.7",
