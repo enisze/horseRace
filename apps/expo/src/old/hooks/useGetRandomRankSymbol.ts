@@ -2,9 +2,28 @@ import { useCallback } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 
 import { LevelAction } from "../../types/LevelAction.type";
-import { RankSymbol } from "../../types/RankSymbol.type";
 import { appendCardAtom, drawnCardsAtom } from "../contexts/GameContext";
 import { rankSymbolList } from "../dataLists/rankSymbolList";
+
+function getRandomValueNotInArray<T>(
+  sourceArray: T[],
+  exclusionArray: T[],
+): T | undefined {
+  if (sourceArray.length === 0) {
+    return undefined; // Handle empty source array case
+  }
+
+  // Keep generating a random index until we find an element not in the exclusion array
+  let randomIndex: number;
+  let randomValue: T | undefined;
+
+  do {
+    randomIndex = Math.floor(Math.random() * sourceArray.length);
+    randomValue = sourceArray[randomIndex];
+  } while (randomValue && exclusionArray.includes(randomValue));
+
+  return randomValue;
+}
 
 export const useGetRandomRankSymbol = () => {
   const drawnCards = useAtomValue(drawnCardsAtom);
@@ -12,22 +31,15 @@ export const useGetRandomRankSymbol = () => {
 
   return useCallback(
     (action: LevelAction) => {
-      const max = rankSymbolList.length - 1;
+      const mappedCards = drawnCards.map((value) => value.rankSymbol);
 
-      let random = Math.floor(Math.random() * (max + 1));
+      const card = getRandomValueNotInArray(rankSymbolList, mappedCards);
 
-      let card: RankSymbol | undefined = rankSymbolList.at(random);
-
-      if (!card) return;
-
-      const cardSymbol = card;
-
-      while (drawnCards.map((value) => value.rankSymbol).includes(cardSymbol)) {
-        random = Math.floor(Math.random() * (max + 1));
-        card = rankSymbolList[random];
+      if (!card) {
+        return;
       }
 
-      appendDrawnCard({ rankSymbol: cardSymbol, action });
+      appendDrawnCard({ rankSymbol: card, action });
 
       return card;
     },
