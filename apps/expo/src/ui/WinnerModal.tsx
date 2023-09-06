@@ -8,11 +8,11 @@ import Card from "../old/cards/Card";
 import { HorseRaceButton } from "../old/components/buttons/HorseRaceButton";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
 import { Paragraph } from "../old/components/Paragraph";
-import { useResetGame, winnerAtom } from "../old/contexts/GameContext";
+import { useRestartGame, winnerAtom } from "../old/contexts/GameContext";
 
 export const WinnerModal: FunctionComponent = () => {
   const winner = useAtomValue(winnerAtom);
-  const reset = useResetGame();
+  const restart = useRestartGame();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -39,7 +39,7 @@ export const WinnerModal: FunctionComponent = () => {
         <HorseRaceButton
           onPress={() => {
             setShowModal(false);
-            reset();
+            restart();
           }}
         >
           <Paragraph>{t("restart")}</Paragraph>

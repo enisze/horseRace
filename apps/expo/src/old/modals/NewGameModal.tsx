@@ -23,7 +23,6 @@ export const NewGameModal: FunctionComponent<{
       <View className="flex w-40">
         <Input
           onChangeText={(text) => {
-            reset();
             setLevel(text);
           }}
           value={level}
@@ -38,6 +37,7 @@ export const NewGameModal: FunctionComponent<{
         onPress={() => {
           const numericLevel = Number(level);
           if (!isNaN(numericLevel) && numericLevel < 11) {
+            reset();
             setLevelAmount(numericLevel);
             closeModal();
             setShowError(false);
