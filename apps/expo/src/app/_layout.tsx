@@ -10,7 +10,6 @@ import { I18nextProvider, useTranslation } from "react-i18next";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
 import { Paragraph } from "../old/components/Paragraph";
 import { appLink, paypalDonationURL } from "../old/constants";
-import { GameContextProvider } from "../old/contexts/GameContext";
 import MainProvider from "../old/helpers/MainProvider";
 import i18n from "../old/i18n";
 import { TRPCProvider } from "../utils/api";
@@ -32,25 +31,23 @@ const RootLayout = () => {
         It also allows you to configure your screens 
       */}
 
-      <GameContextProvider>
-        <I18nextProvider i18n={i18n}>
-          <SafeAreaProvider>
-            <MainProvider>
-              <GestureHandlerRootView style={{ flex: 1 }}>
-                <Stack
-                  screenOptions={{
-                    headerStyle: {
-                      backgroundColor: "#f472b6",
-                    },
-                    // header: () => <Header />,
-                  }}
-                />
-                <StatusBar />
-              </GestureHandlerRootView>
-            </MainProvider>
-          </SafeAreaProvider>
-        </I18nextProvider>
-      </GameContextProvider>
+      <I18nextProvider i18n={i18n}>
+        <SafeAreaProvider>
+          <MainProvider>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <Stack
+                screenOptions={{
+                  headerStyle: {
+                    backgroundColor: "#f472b6",
+                  },
+                  // header: () => <Header />,
+                }}
+              />
+              <StatusBar />
+            </GestureHandlerRootView>
+          </MainProvider>
+        </SafeAreaProvider>
+      </I18nextProvider>
     </TRPCProvider>
   );
 };

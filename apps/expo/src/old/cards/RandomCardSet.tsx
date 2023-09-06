@@ -1,21 +1,18 @@
 import React, { FunctionComponent, useState } from "react";
 import { View } from "react-native";
+import { useAtomValue, useSetAtom } from "jotai";
 
 import { LevelAction } from "../../types/LevelAction.type";
 import { RankSymbol } from "../../types/RankSymbol.type";
-import { useGameContext } from "../contexts/GameContext";
+import { drawnCardsAtom, incrementAtom } from "../contexts/GameContext";
 import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
 import { useGetRandomRankSymbol } from "../hooks/useGetRandomRankSymbol";
 import BackCard from "./BackCard";
 import Card from "./Card";
 
-interface RandomCardSetProps {}
-
-export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
+export const RandomCardSet: FunctionComponent = () => {
   const getRandomRankSymbol = useGetRandomRankSymbol();
-
-  const { increment } = useGameContext();
-
+  const increment = useSetAtom(incrementAtom);
   const lastCard = useGetLastRankSymbol("increment");
 
   const [randomSymbol, setRandomSymbol] = useState<RankSymbol | undefined>(
@@ -45,7 +42,7 @@ export const RandomCardSet: FunctionComponent<RandomCardSetProps> = () => {
 };
 
 const useGetLastRankSymbol = (action: LevelAction): RankSymbol | undefined => {
-  const { drawnCards } = useGameContext();
+  const drawnCards = useAtomValue(drawnCardsAtom);
 
   const filteredCardsByAction = drawnCards.filter(
     (card) => card.action === action,

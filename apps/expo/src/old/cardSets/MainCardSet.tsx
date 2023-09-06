@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { RankSymbol } from "../../types/RankSymbol.type";
 import Card from "../cards/Card";
 import { SIDE_CARD_SET_GAP } from "../constants";
-import { useGameContext } from "../contexts/GameContext";
+import { useGetCurrentLevelBySymbol } from "../contexts/GameContext";
 import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
 import { useGetCardWidthAndHeight } from "../hooks/useGetCardWidthAndHeight";
 import { gapStyles } from "../styles/gapStyles.styles";
@@ -37,12 +37,10 @@ const CardWithCurrentPosition: FunctionComponent<{
   rankSymbol: RankSymbol;
 }> = ({ rankSymbol }) => {
   const { height } = useGetCardWidthAndHeight();
-  const { getCurrentLevelBySymbol } = useGameContext();
-
   const symbol = getSymbolFromRankSymbol(rankSymbol);
-
   const offset = 1;
-  const amount = getCurrentLevelBySymbol(symbol) + offset;
+
+  const amount = useGetCurrentLevelBySymbol(symbol) + offset;
 
   const newHeight = (height + SIDE_CARD_SET_GAP) * amount;
 

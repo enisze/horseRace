@@ -1,187 +1,147 @@
-import React, {
-  createContext,
-  FunctionComponent,
-  PropsWithChildren,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { atom, useAtom, useAtomValue } from "jotai";
+import { atomWithStorage, RESET, selectAtom } from "jotai/utils";
 
 import { LevelAction } from "../../types/LevelAction.type";
 import { RankSymbol } from "../../types/RankSymbol.type";
 import { CardSymbol } from "../../types/Symbol.type";
 import { GAMEDATA_STORAGE_KEY } from "../constants";
 
-interface GameData {
-  CAmount: number;
-  DAmount: number;
-  HAmount: number;
-  SAmount: number;
-  drawnCards: DrawnCard[];
-  levelAmount: number;
-}
-
 interface DrawnCard {
   rankSymbol: RankSymbol;
   action: LevelAction;
 }
 
-const useGameContextState = () => {
-  const [CAmount, setCAmount] = useState<number>(0);
-  const [DAmount, setDAmount] = useState<number>(0);
-  const [HAmount, setHAmount] = useState<number>(0);
-  const [SAmount, setSAmount] = useState<number>(0);
+interface GameData {
+  C: number;
+  D: number;
+  H: number;
+  S: number;
+  drawnCards: DrawnCard[];
+  levelAmount: number;
+}
 
-  const [winner, setWinner] = useState<CardSymbol>();
+export const winnerAtom = atom<CardSymbol | undefined>(undefined);
 
-  const [drawnCards, setDrawnCards] = useState<DrawnCard[]>([]);
+export const gameDataAtom = atomWithStorage<GameData>(GAMEDATA_STORAGE_KEY, {
+  C: 0,
+  D: 0,
+  H: 0,
+  S: 0,
+  drawnCards: [],
+  levelAmount: 0,
+});
 
-  const [levelAmount, setLevelAmount] = useState<number>(0);
+export const levelAtom = atom(
+  (get) => get(gameDataAtom).levelAmount,
 
-  const setLevelAmountConditionally = (levelAmount: number) => {
-    if (levelAmount < 11) {
-      setLevelAmount(levelAmount);
-    }
-  };
-
-  const currentLevel = useMemo(() => {
-    return Math.min(...[CAmount, DAmount, HAmount, SAmount]) ?? 0;
-  }, [CAmount, DAmount, HAmount, SAmount]);
-
-  const incrementFnc = (value: number) =>
-    value >= 0 && value < levelAmount - 1 ? value + 1 : 0;
-
-  const increment = (symbol: CardSymbol) => {
-    switch (symbol) {
-      case "C":
-        setCAmount(incrementFnc);
-        if (CAmount === levelAmount - 1) setWinner("C");
-        return;
-      case "D":
-        setDAmount(incrementFnc);
-        if (DAmount === levelAmount - 1) setWinner("D");
-        return;
-      case "H":
-        setHAmount(incrementFnc);
-        if (HAmount === levelAmount - 1) setWinner("H");
-        return;
-      case "S":
-        setSAmount(incrementFnc);
-        if (SAmount === levelAmount - 1) setWinner("S");
-        return;
-    }
-  };
-
-  const decrementFnc = (value: number) =>
-    value > 0 && value <= levelAmount - 1 ? value - 1 : 0;
-
-  const decrement = (symbol: CardSymbol) => {
-    switch (symbol) {
-      case "C":
-        setCAmount(decrementFnc);
-        return;
-      case "D":
-        setDAmount(decrementFnc);
-        return;
-      case "H":
-        setHAmount(decrementFnc);
-        return;
-      case "S":
-        setSAmount(decrementFnc);
-        return;
-    }
-  };
-
-  const getCurrentLevelBySymbol = (symbol: CardSymbol) => {
-    switch (symbol) {
-      case "C":
-        return CAmount;
-      case "D":
-        return DAmount;
-      case "H":
-        return HAmount;
-      case "S":
-        return SAmount;
-    }
-  };
-
-  const storeData = useCallback(async () => {
-    try {
-      const gameData: GameData = {
-        CAmount,
-        DAmount,
-        HAmount,
-        SAmount,
-        drawnCards,
-        levelAmount,
+  (get, set, level: number) => {
+    set(gameDataAtom, (prev) => {
+      return {
+        ...prev,
+        levelAmount: level,
       };
-      await AsyncStorage.setItem(
-        GAMEDATA_STORAGE_KEY,
-        JSON.stringify(gameData),
-      );
-    } catch (e) {
-      // saving error
+    });
+  },
+);
+
+const incrementFnc = (value: number, levelAmount: number) =>
+  value >= 0 && value < levelAmount - 1 ? value + 1 : 0;
+
+export const incrementAtom = atom(null, (get, set, symbol: CardSymbol) => {
+  set(gameDataAtom, (prev) => {
+    const levelAmount = prev.levelAmount;
+    switch (symbol) {
+      case "C": {
+        const C = incrementFnc(prev.C, levelAmount);
+        if (C === prev.levelAmount - 1) set(winnerAtom, "C");
+        return { ...prev, C };
+      }
+      case "D": {
+        const D = incrementFnc(prev.D, levelAmount);
+        if (D === prev.levelAmount - 1) set(winnerAtom, "D");
+        return { ...prev, D };
+      }
+      case "H": {
+        const H = incrementFnc(prev.H, levelAmount);
+        if (H === prev.levelAmount - 1) set(winnerAtom, "H");
+        return { ...prev, H };
+      }
+      case "S": {
+        const S = incrementFnc(prev.S, levelAmount);
+        if (S === prev.levelAmount - 1) set(winnerAtom, "S");
+        return { ...prev, S };
+      }
     }
-  }, [CAmount, DAmount, HAmount, SAmount, drawnCards, levelAmount]);
+  });
+});
 
-  useEffect(() => {
-    if (CAmount > 0 || DAmount > 0 || HAmount > 0 || SAmount > 0) {
-      void storeData();
+const decrementFnc = (value: number, levelAmount: number) =>
+  value > 0 && value <= levelAmount - 1 ? value - 1 : 0;
+
+export const decrementAtom = atom(null, (get, set, symbol: CardSymbol) => {
+  set(gameDataAtom, (prev) => {
+    const levelAmount = prev.levelAmount;
+
+    switch (symbol) {
+      case "C":
+        return { ...prev, C: decrementFnc(prev.C, levelAmount) };
+      case "D":
+        return { ...prev, D: decrementFnc(prev.D, levelAmount) };
+      case "H":
+        return { ...prev, H: decrementFnc(prev.H, levelAmount) };
+      case "S":
+        return { ...prev, S: decrementFnc(prev.S, levelAmount) };
     }
-  }, [CAmount, DAmount, storeData, HAmount, SAmount, drawnCards, levelAmount]);
+  });
+});
 
-  const appendDrawnCard = (drawnCard: DrawnCard) => {
-    setDrawnCards((cards) => [...cards, drawnCard]);
-  };
+export const currentLevelAtom = atom((get) => {
+  const data = get(gameDataAtom);
+  const { C, D, H, S } = data;
+  return Math.min(...[C, D, H, S]) ?? 0;
+});
 
-  const loadGameState = (gameState: GameData) => {
-    setCAmount(gameState.CAmount);
-    setDAmount(gameState.DAmount);
-    setHAmount(gameState.HAmount);
-    setSAmount(gameState.SAmount);
-    setDrawnCards(gameState.drawnCards);
-    setLevelAmount(gameState.levelAmount);
-  };
-
-  const reset = () => {
-    setCAmount(0);
-    setDAmount(0);
-    setSAmount(0);
-    setHAmount(0);
-    setDrawnCards([]);
-    setWinner(undefined);
-  };
-
+const currentLevelBySymbolAtom = atom((get) => {
+  const data = get(gameDataAtom);
+  const { C, D, H, S } = data;
   return {
-    winner,
-    levelAmount,
-    drawnCards,
-    appendDrawnCard,
-    reset,
-    setLevelAmount: setLevelAmountConditionally,
-    getCurrentLevelBySymbol,
-    currentLevel,
-    increment,
-    decrement,
-    loadGameState,
+    C,
+    D,
+    H,
+    S,
+  };
+});
+
+export const useGetCurrentLevelBySymbol = (symbol: CardSymbol) => {
+  const { C, D, H, S } = useAtomValue(currentLevelBySymbolAtom);
+
+  switch (symbol) {
+    case "C":
+      return C;
+    case "D":
+      return D;
+    case "H":
+      return H;
+    case "S":
+      return S;
+  }
+};
+
+export const useResetGame = () => {
+  const [, setGameData] = useAtom(gameDataAtom);
+
+  return () => {
+    setGameData(RESET);
   };
 };
 
-type IGameContext = ReturnType<typeof useGameContextState>;
+export const appendCardAtom = atom(null, (get, set, drawnCard: DrawnCard) => {
+  set(gameDataAtom, (prev) => {
+    return { ...prev, drawnCards: [...prev.drawnCards, drawnCard] };
+  });
+});
 
-const GameContext = createContext({} as IGameContext);
-
-export const GameContextProvider: FunctionComponent<PropsWithChildren> = ({
-  children,
-}) => {
-  const value = useGameContextState();
-
-  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
-};
-
-export const useGameContext = () => {
-  return useContext(GameContext);
-};
+export const drawnCardsAtom = selectAtom(
+  gameDataAtom,
+  (data) => data.drawnCards,
+);

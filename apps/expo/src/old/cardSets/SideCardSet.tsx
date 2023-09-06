@@ -1,13 +1,14 @@
 import React, { FunctionComponent } from "react";
 import { View } from "react-native";
+import { useAtomValue } from "jotai";
 
 import { RandomCardAutomated } from "../cards/RandomCardAutomated";
 import { SIDE_CARD_SET_GAP } from "../constants";
-import { useGameContext } from "../contexts/GameContext";
+import { levelAtom } from "../contexts/GameContext";
 import { gapStyles } from "../styles/gapStyles.styles";
 
 export const SideCardSet: FunctionComponent = () => {
-  const { levelAmount } = useGameContext();
+  const levelAmount = useAtomValue(levelAtom);
 
   const styles = gapStyles(SIDE_CARD_SET_GAP, "column");
 
@@ -15,7 +16,7 @@ export const SideCardSet: FunctionComponent = () => {
   //...styles.container }}>
   return (
     <View className="flex flex-col">
-      {[...Array(levelAmount)].map((e, i) => (
+      {[...Array<number>(levelAmount)].map((e, i) => (
         <View style={styles.child} key={i}>
           <RandomCardAutomated level={levelAmount - i} />
         </View>

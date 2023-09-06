@@ -1,8 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { View } from "react-native";
+import { useAtomValue, useSetAtom } from "jotai";
 
 import { RankSymbol } from "../../types/RankSymbol.type";
-import { useGameContext } from "../contexts/GameContext";
+import {
+  currentLevelAtom,
+  decrementAtom,
+  drawnCardsAtom,
+} from "../contexts/GameContext";
 import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
 import { useGetRandomRankSymbol } from "../hooks/useGetRandomRankSymbol";
 import BackCard from "./BackCard";
@@ -16,8 +21,9 @@ export const RandomCardAutomated: FunctionComponent<
   RandomCardAutomatedProps
 > = ({ level }) => {
   const getRandomRankSymbol = useGetRandomRankSymbol();
-
-  const { decrement, currentLevel, drawnCards } = useGameContext();
+  const decrement = useSetAtom(decrementAtom);
+  const currentLevel = useAtomValue(currentLevelAtom);
+  const drawnCards = useAtomValue(drawnCardsAtom);
 
   const initialCard = useGetDecrementCardByLevel(level);
   const [randomSymbol, setRandomSymbol] = useState<RankSymbol | undefined>(
@@ -59,7 +65,7 @@ export const RandomCardAutomated: FunctionComponent<
 };
 
 const useGetDecrementCardByLevel = (level: number): RankSymbol | undefined => {
-  const { drawnCards } = useGameContext();
+  const drawnCards = useAtomValue(drawnCardsAtom);
 
   const cards = drawnCards.filter((card) => card.action === "decrement");
   if (cards.length >= level) {

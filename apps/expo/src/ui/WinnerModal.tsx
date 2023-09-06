@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { View } from "react-native";
+import { useAtomValue } from "jotai";
 import { useTranslation } from "react-i18next";
 
 import { RankSymbol } from "~/types/RankSymbol.type";
@@ -7,10 +8,11 @@ import Card from "../old/cards/Card";
 import { HorseRaceButton } from "../old/components/buttons/HorseRaceButton";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
 import { Paragraph } from "../old/components/Paragraph";
-import { useGameContext } from "../old/contexts/GameContext";
+import { useResetGame, winnerAtom } from "../old/contexts/GameContext";
 
 export const WinnerModal: FunctionComponent = () => {
-  const { winner, reset } = useGameContext();
+  const winner = useAtomValue(winnerAtom);
+  const reset = useResetGame();
 
   const [showModal, setShowModal] = useState(false);
 

@@ -1,12 +1,14 @@
 import { useCallback } from "react";
+import { useAtomValue, useSetAtom } from "jotai";
 
 import { LevelAction } from "../../types/LevelAction.type";
 import { RankSymbol } from "../../types/RankSymbol.type";
-import { useGameContext } from "../contexts/GameContext";
+import { appendCardAtom, drawnCardsAtom } from "../contexts/GameContext";
 import { rankSymbolList } from "../dataLists/rankSymbolList";
 
 export const useGetRandomRankSymbol = () => {
-  const { drawnCards, appendDrawnCard } = useGameContext();
+  const drawnCards = useAtomValue(drawnCardsAtom);
+  const appendDrawnCard = useSetAtom(appendCardAtom);
 
   return useCallback(
     (action: LevelAction) => {

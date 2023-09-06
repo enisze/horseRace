@@ -1,17 +1,20 @@
 import React, { FunctionComponent, useState } from "react";
 import { View } from "react-native";
 import { Input } from "react-native-elements";
+import { useSetAtom } from "jotai";
 
 import { Button } from "../../ui/Button";
 import { HorseRaceModal } from "../components/HorseRaceModal";
-import { useGameContext } from "../contexts/GameContext";
+import { levelAtom, useResetGame } from "../contexts/GameContext";
 
 export const NewGameModal: FunctionComponent<{
   showModal: boolean;
   closeModal: () => void;
   onSubmit: () => void;
 }> = ({ showModal, closeModal, onSubmit }) => {
-  const { setLevelAmount, reset } = useGameContext();
+  const setLevelAmount = useSetAtom(levelAtom);
+
+  const reset = useResetGame();
   const [level, setLevel] = useState<string>("");
   const [showError, setShowError] = useState<boolean>(false);
 

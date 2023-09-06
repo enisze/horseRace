@@ -2,31 +2,17 @@ import type { FunctionComponent } from "react";
 import React, { useState } from "react";
 import { View } from "react-native";
 import { Stack, useRouter } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { t } from "i18next";
 
 import { MainLayout } from "../old/components/MainLayout";
-import { GAMEDATA_STORAGE_KEY } from "../old/constants";
-import { useGameContext } from "../old/contexts/GameContext";
 import { NewGameModal } from "../old/modals/NewGameModal";
 import { Button } from "../ui/Button";
 
 const buttonStyle = "w-40 mt-10";
 
 const StartView: FunctionComponent = () => {
-  const { loadGameState, reset } = useGameContext();
-
   const [showModal, setShowModal] = useState(false);
-
   const router = useRouter();
-
-  const getLastGamePlayedData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem(GAMEDATA_STORAGE_KEY);
-      const gameData = jsonValue != null ? JSON.parse(jsonValue) : null;
-      loadGameState(gameData);
-    } catch (error: any) {}
-  };
 
   return (
     <MainLayout>
@@ -42,8 +28,7 @@ const StartView: FunctionComponent = () => {
         <Button
           title={t("game.continue")}
           className={buttonStyle}
-          onPress={async () => {
-            await getLastGamePlayedData();
+          onPress={() => {
             router.push("/MainView");
           }}
         />
@@ -61,7 +46,6 @@ const StartView: FunctionComponent = () => {
           showModal={showModal}
           closeModal={() => setShowModal(false)}
           onSubmit={() => {
-            reset();
             router.push("/MainView");
           }}
         />
