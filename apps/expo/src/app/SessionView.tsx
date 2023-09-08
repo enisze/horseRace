@@ -10,7 +10,7 @@ const SessionView = () => {
   const { t } = useTranslation();
   return (
     <MainLayout>
-      <Stack.Screen options={{ title: "Session Page" }} />
+      <Stack.Screen options={{ title: "Sessions" }} />
       <View className="flex h-full w-full items-center justify-center">
         <Paragraph className="text-3xl">{t("comingSoon.session")}</Paragraph>
       </View>

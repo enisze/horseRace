@@ -1,18 +1,19 @@
 import type { GestureResponderEvent } from "react-native";
-import { Text, TouchableOpacity } from "react-native";
+import { Text } from "react-native";
+import { Button as PaperButton } from "react-native-paper";
 
-type Props = {
+interface Props {
   onPress?: (event: GestureResponderEvent) => void;
   title: string;
   className?: string;
-};
+}
 
 export const Button = ({ onPress, title, className }: Props) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <PaperButton onPress={onPress}>
       <Text className={`text-xl font-semibold text-blue-400 ${className}`}>
         {title}
       </Text>
-    </TouchableOpacity>
+    </PaperButton>
   );
 };

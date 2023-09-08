@@ -1,40 +1,25 @@
-import { z } from "zod";
+import { HfInference } from "@huggingface/inference";
 
-import { desc, eq, schema } from "@acme/db";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+const hf = new HfInference("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");
 
 export const postRouter = createTRPCRouter({
-  all: publicProcedure.query(({ ctx }) => {
-    // return ctx.db.select().from(schema.post).orderBy(desc(schema.post.id));
-    return ctx.db.query.post.findMany({ orderBy: desc(schema.post.id) });
-  }),
+  all: publicProcedure.query(async ({ ctx }) => {
+    console.log("test");
 
-  byId: publicProcedure
-    .input(z.object({ id: z.number() }))
-    .query(({ ctx, input }) => {
-      // return ctx.db
-      //   .select()
-      //   .from(schema.post)
-      //   .where(eq(schema.post.id, input.id));
+    const res = await hf.textToImage({
+      inputs: "human boxer in a ring high resolution photo",
+      model: "stabilityai/stable-diffusion-xl-base-1.0",
+      parameters: {
+        negative_prompt: "low quality, bad quality, sketches",
+        height: 512,
+        width: 512,
+      },
+    });
 
-      return ctx.db.query.post.findFirst({
-        where: eq(schema.post.id, input.id),
-      });
-    }),
+    const base64Data = Buffer.from(await res.arrayBuffer()).toString("base64");
 
-  create: protectedProcedure
-    .input(
-      z.object({
-        title: z.string().min(1),
-        content: z.string().min(1),
-      }),
-    )
-    .mutation(({ ctx, input }) => {
-      return ctx.db.insert(schema.post).values(input);
-    }),
-
-  delete: protectedProcedure.input(z.number()).mutation(({ ctx, input }) => {
-    return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
+    return base64Data;
   }),
 });

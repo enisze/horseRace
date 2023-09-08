@@ -10,7 +10,7 @@ const StatisticsView: React.FC = () => {
   const { t } = useTranslation();
   return (
     <MainLayout>
-      <Stack.Screen options={{ title: "Statistics Page" }} />
+      <Stack.Screen options={{ title: "Statistics" }} />
       <View className="flex h-full w-full items-center justify-center">
         <Paragraph className="text-3xl">{t("comingSoon.statistics")}</Paragraph>
       </View>

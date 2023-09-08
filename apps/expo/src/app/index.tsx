@@ -16,7 +16,9 @@ const StartView: FunctionComponent = () => {
 
   return (
     <MainLayout>
-      <Stack.Screen options={{ title: "Start Page" }} />
+      <Stack.Screen
+        options={{ title: "Horse Race", headerTitleAlign: "center" }}
+      />
       <View className="flex h-full flex-col items-center justify-center">
         <Button
           title={t("game.start")}

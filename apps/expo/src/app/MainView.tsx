@@ -11,11 +11,7 @@ import { WinnerModal } from "../ui/WinnerModal";
 const MainView = () => {
   return (
     <MainLayout>
-      <Stack.Screen
-        options={{
-          title: "Main Page",
-        }}
-      />
+      <Stack.Screen options={{ title: "" }} />
       <View className="flex h-full w-full pt-10">
         <View className="flex flex-row">
           <SideCardSet />

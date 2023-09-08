@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Linking, Text, View } from "react-native";
+import { Linking, View } from "react-native";
+import { Icon } from "react-native-elements";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import mobileAds from "react-native-google-mobile-ads";
+import { PaperProvider } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { I18nextProvider, useTranslation } from "react-i18next";
 
+import { HorseRaceButton } from "~/old/components/buttons/HorseRaceButton";
+import { ShareAppButton } from "~/old/header/ShareAppButton";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
 import { Paragraph } from "../old/components/Paragraph";
 import { appLink, paypalDonationURL } from "../old/constants";
@@ -32,21 +36,23 @@ const RootLayout = () => {
       */}
 
       <I18nextProvider i18n={i18n}>
-        <SafeAreaProvider>
-          <MainProvider>
-            <GestureHandlerRootView style={{ flex: 1 }}>
-              <Stack
-                screenOptions={{
-                  headerStyle: {
-                    backgroundColor: "#f472b6",
-                  },
-                  // header: () => <Header />,
-                }}
-              />
-              <StatusBar />
-            </GestureHandlerRootView>
-          </MainProvider>
-        </SafeAreaProvider>
+        <PaperProvider>
+          <SafeAreaProvider>
+            <MainProvider>
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                <Stack
+                  screenOptions={{
+                    headerStyle: {
+                      backgroundColor: "#f472b6",
+                    },
+                    headerRight: () => <Header />,
+                  }}
+                />
+                <StatusBar />
+              </GestureHandlerRootView>
+            </MainProvider>
+          </SafeAreaProvider>
+        </PaperProvider>
       </I18nextProvider>
     </TRPCProvider>
   );
@@ -68,8 +74,8 @@ const Header = () => {
   };
   return (
     <>
-      <View className="flex h-3">
-        {/* <ShareAppButton />
+      <View className="flex flex-row">
+        <ShareAppButton />
         <HorseRaceButton onPress={rateApp} style={{ marginLeft: 4 }}>
           <Icon name="description" color="white" size={24} />
         </HorseRaceButton>
@@ -82,8 +88,7 @@ const Header = () => {
           onPress={() => setShowModal(true)}
         >
           <Icon type="fontawesom5" name="info" color="white" size={24} />
-        </HorseRaceButton> */}
-        <Text>lol</Text>
+        </HorseRaceButton>
       </View>
 
       <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
