@@ -20,7 +20,6 @@ const defineConfig = (): ExpoConfig => ({
   },
   updates: {
     fallbackToCacheTimeout: 0,
-
     url: "https://u.expo.dev/7eb073d8-81bd-409a-9b6a-09db2d499c73",
   },
   assetBundlePatterns: ["**/*"],
