@@ -10,6 +10,9 @@ const defineConfig = (): ExpoConfig => ({
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "light",
+  runtimeVersion: {
+    policy: "appVersion",
+  },
   splash: {
     image: "./assets/icon.png",
     resizeMode: "contain",
@@ -17,6 +20,8 @@ const defineConfig = (): ExpoConfig => ({
   },
   updates: {
     fallbackToCacheTimeout: 0,
+
+    url: "https://u.expo.dev/7eb073d8-81bd-409a-9b6a-09db2d499c73",
   },
   assetBundlePatterns: ["**/*"],
   ios: {
