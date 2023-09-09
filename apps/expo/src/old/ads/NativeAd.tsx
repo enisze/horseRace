@@ -14,7 +14,6 @@ const NativeAd: FunctionComponent<{ id: string }> = ({ id }) => {
   };
 
   const bannerSize = useGetBannerSize();
-  console.log(id);
 
   return (
     <BannerAd

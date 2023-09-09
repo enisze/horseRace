@@ -76,10 +76,10 @@ const StartView: FunctionComponent = () => {
           onPress={() => router.push("/SessionView")}
           className={buttonStyle}
         />
+      </View>
 
-        <View className="flex items-center">
-          <NativeAd id="ca-app-pub-7941882405849156/1638012899" />
-        </View>
+      <View className="mt-auto items-center">
+        <NativeAd id="ca-app-pub-7941882405849156/1638012899" />
       </View>
     </MainLayout>
   );
