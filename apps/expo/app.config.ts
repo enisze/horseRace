@@ -5,7 +5,7 @@ import "dotenv/config";
 const defineConfig = (): ExpoConfig => ({
   name: "horseRace",
   slug: "horseRace",
-  scheme: "horseRace",
+  scheme: "horserace",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "light",
