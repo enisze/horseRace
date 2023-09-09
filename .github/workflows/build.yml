@@ -1,0 +1,48 @@
+name: Mobile Build & Submit
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  BUILD_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
+jobs:
+  build_production:
+    if: github.ref_name == 'production'
+    name: Build & Submit Production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Setup Expo and EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install node modules
+        run: pnpm install
+
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_OUTPUT
+
+      - name: Run Build & Submit to Production
+        working-directory: ./apps/expo
+        env:
+          BUILD_DATE: ${{ steps.date.outputs.date }}
+        run: |
+          # make sure there is a new line
+          echo -e "\n" >> .env
+          # write all environment variables into .env
+          set >> .env
+          eas build --profile production --non-interactive --auto-submit --no-wait -p android

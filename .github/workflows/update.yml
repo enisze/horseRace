@@ -1,0 +1,78 @@
+name: mobile
+on:
+  push:
+    branches: [production]
+  pull_request:
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#patterns-to-match-file-paths
+    paths:
+      - "**/package.json" # A package.json file anywhere in the repository.
+      - "apps/expo/**/*.json" # A file with a .json suffix anywhere in the mobile directory.
+      - "apps/expo/**/*.jsx?"
+      - "apps/expo/**/*.tsx?"
+
+concurrency:
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  BUILD_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+
+jobs:
+  pre_validate:
+    name: Pre Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "pnpm"
+
+      - name: Install node modules
+        run: pnpm install
+
+  upload_update:
+    name: Upload Update to Expo
+    runs-on: ubuntu-latest
+    outputs:
+      expo_branch: ${{ steps.expo_branch.outputs.expo_branch }}
+      date: ${{ steps.date.outputs.date }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Setup Expo and EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install node modules
+        run: pnpm install
+
+      - name: Set expo branch
+        id: expo_branch
+        run: echo "expo_branch=$EXPO_BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_OUTPUT
+
+      - name: Build Bundles
+        working-directory: apps/expo
+        run: expo export --platform android
+        env:
+          BUILD_DATE: ${{ steps.date.outputs.date }}
+
+      - name: Upload to Expo
+        id: upload_to_expo
+        working-directory: apps/expo
+        run: |
+          eas update --auto --branch=$EXPO_BRANCH --non-interactive
