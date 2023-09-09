@@ -73,7 +73,7 @@ jobs:
 
       - name: Build Bundles
         working-directory: apps/expo
-        run: expo export --platform android
+        run: pnpm export
         env:
           BUILD_DATE: ${{ steps.date.outputs.date }}
 

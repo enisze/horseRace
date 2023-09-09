@@ -15,7 +15,8 @@
     "ios": "npx expo run:ios",
     "dev-client:ios-simulator": "eas build --platform ios --profile preview --local",
     "dev-client:android": "export ANDROID_HOME=$HOME/Library/Android/sdk/ && eas build --platform android --profile development --local",
-    "start-dev-client": "npx expo start --dev-client"
+    "start-dev-client": "npx expo start --dev-client",
+    "export": "expo export --p android"
   },
   "dependencies": {
     "@expo/metro-config": "^0.10.7",
