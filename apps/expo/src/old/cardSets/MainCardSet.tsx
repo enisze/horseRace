@@ -9,11 +9,12 @@ import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
 import { useGetCardWidthAndHeight } from "../hooks/useGetCardWidthAndHeight";
 import { gapStyles } from "../styles/gapStyles.styles";
 
-export const MainCardSet: FunctionComponent = () => {
-  //TODO: Add this somehow
-  const styles = gapStyles(12, "row");
+const keys: RankSymbol[] = ["AC", "AD", "AS", "AH"];
 
-  const keys: RankSymbol[] = ["AC", "AD", "AS", "AH"];
+const styles = gapStyles(12, "row");
+
+export const MainCardSet = () => {
+  //TODO: Add this somehow
 
   return (
     <View

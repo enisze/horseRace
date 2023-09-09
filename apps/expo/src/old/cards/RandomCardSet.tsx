@@ -20,7 +20,7 @@ export const RandomCardSet: FunctionComponent = () => {
   );
 
   return (
-    <View className="flex flex-row">
+    <View className="flex flex-row space-x-2">
       <BackCard
         onClick={() => {
           const rankSymbol: RankSymbol | undefined =

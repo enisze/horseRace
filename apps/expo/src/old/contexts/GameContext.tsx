@@ -34,7 +34,7 @@ export const gameDataAtom = atomWithStorage<GameData>(GAMEDATA_STORAGE_KEY, {
   H: 0,
   S: 0,
   drawnCards: [],
-  levelAmount: 0,
+  levelAmount: 5,
 });
 
 export const levelAtom = atom(

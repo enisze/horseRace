@@ -12,10 +12,8 @@ export const SideCardSet: FunctionComponent = () => {
 
   const styles = gapStyles(SIDE_CARD_SET_GAP, "column");
 
-  //TODO: Add this
-  //...styles.container }}>
   return (
-    <View className="flex flex-col">
+    <View className="flex flex-col pl-2">
       {[...Array<number>(levelAmount)].map((e, i) => (
         <View style={styles.child} key={i}>
           <RandomCardAutomated level={levelAmount - i} />

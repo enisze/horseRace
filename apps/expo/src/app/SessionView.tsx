@@ -11,8 +11,10 @@ const SessionView = () => {
   return (
     <MainLayout>
       <Stack.Screen options={{ title: "Sessions" }} />
-      <View className="flex h-full w-full items-center justify-center">
-        <Paragraph className="text-3xl">{t("comingSoon.session")}</Paragraph>
+      <View className="flex h-full w-full items-center justify-center ">
+        <Paragraph className="text-3xl text-white">
+          {t("comingSoon.session")}
+        </Paragraph>
       </View>
     </MainLayout>
   );

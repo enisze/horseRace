@@ -10,7 +10,9 @@ interface BackCardProps {
 const BackCard: FunctionComponent<BackCardProps> = ({ onClick }) => {
   return (
     <View onTouchStart={onClick}>
-      <CardImage source={require("../../../assets/cards/extra/back.png")} />
+      <CardImage
+        source={require("../../../assets/cards/back/cardBackBlue.png")}
+      />
     </View>
   );
 };
