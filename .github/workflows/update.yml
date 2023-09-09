@@ -25,6 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+
       - name: Setup Node 18
         uses: actions/setup-node@v3
         with:
@@ -42,6 +45,9 @@ jobs:
       date: ${{ steps.date.outputs.date }}
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
 
       - uses: actions/setup-node@v3
         with:
