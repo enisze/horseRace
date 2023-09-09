@@ -25,10 +25,10 @@ export const HorseRaceModal: FunctionComponent<HorseRaceModalProps> = ({
       onRequestClose={onClose}
     >
       <MainLayout
-        className={`m-auto flex items-center justify-center rounded border p-10 shadow-2xl shadow-black ${props.className}`}
+        className={`m-auto flex items-center justify-center rounded-xl border border-blue-200 p-10 shadow-2xl shadow-black ${props.className}`}
       >
         {showBackButton && (
-          <View className="absolute left-4 top-4">
+          <View className="absolute right-4 top-4">
             <BackButton darkBg={false} onPress={onClose} />
           </View>
         )}

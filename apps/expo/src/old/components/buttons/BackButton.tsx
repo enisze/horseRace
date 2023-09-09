@@ -9,11 +9,7 @@ export const BackButton: React.FunctionComponent<{
 }> = ({ darkBg = true, onPress }) => {
   return (
     <HorseRaceButton onPress={onPress}>
-      <Icon
-        type="entypo"
-        name="arrow-long-left"
-        color={darkBg ? "#fff" : "#2089dc"}
-      />
+      <Icon type="material" name="close" color={darkBg ? "#fff" : "#2089dc"} />
     </HorseRaceButton>
   );
 };

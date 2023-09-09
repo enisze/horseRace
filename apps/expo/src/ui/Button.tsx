@@ -10,8 +10,8 @@ interface Props {
 
 export const Button = ({ onPress, title, className }: Props) => {
   return (
-    <PaperButton onPress={onPress}>
-      <Text className={`text-xl font-semibold text-blue-400 ${className}`}>
+    <PaperButton onPress={onPress} mode="outlined" className="m-2">
+      <Text className={`text-xl font-semibold text-blue-200 ${className}`}>
         {title}
       </Text>
     </PaperButton>

@@ -1,14 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { View } from "react-native";
+import { Text } from "react-native-paper";
 import { useAtomValue } from "jotai";
 import { useTranslation } from "react-i18next";
 
 import { RankSymbol } from "~/types/RankSymbol.type";
 import Card from "../old/cards/Card";
-import { HorseRaceButton } from "../old/components/buttons/HorseRaceButton";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
-import { Paragraph } from "../old/components/Paragraph";
 import { useRestartGame, winnerAtom } from "../old/contexts/GameContext";
+import { Button } from "./Button";
 
 export const WinnerModal: FunctionComponent = () => {
   const winner = useAtomValue(winnerAtom);
@@ -32,19 +31,18 @@ export const WinnerModal: FunctionComponent = () => {
       onClose={() => setShowModal(false)}
       showBackButton={false}
     >
-      <Paragraph>{t("winner")}</Paragraph>
+      <Text variant="headlineMedium" className="text-white">
+        {t("winner")}
+      </Text>
 
       {winner && <Card rankSymbol={symbol} />}
-      <View className="rounded border bg-green-200 p-2 shadow-2xl shadow-black">
-        <HorseRaceButton
-          onPress={() => {
-            setShowModal(false);
-            restart();
-          }}
-        >
-          <Paragraph>{t("restart")}</Paragraph>
-        </HorseRaceButton>
-      </View>
+      <Button
+        onPress={() => {
+          setShowModal(false);
+          restart();
+        }}
+        title={t("restart")}
+      />
       {/* <NativeAd id={GOOGLE_ADMOB_MODAL_BANNER_ID} /> */}
     </HorseRaceModal>
   );

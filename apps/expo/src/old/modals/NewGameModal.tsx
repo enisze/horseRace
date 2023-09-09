@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import { View } from "react-native";
-import { Input } from "react-native-elements";
+import { Icon, Slider } from "react-native-elements";
+import { Text } from "react-native-paper";
 import { useSetAtom } from "jotai";
 
 import { Button } from "../../ui/Button";
@@ -15,38 +16,42 @@ export const NewGameModal: FunctionComponent<{
   const setLevelAmount = useSetAtom(levelAtom);
 
   const reset = useResetGame();
-  const [level, setLevel] = useState<string>("");
-  const [showError, setShowError] = useState<boolean>(false);
+  const [level, setLevel] = useState<number>(5);
 
   return (
     <HorseRaceModal visible={showModal} onClose={closeModal}>
-      <View className="flex w-40">
-        <Input
-          onChangeText={(text) => {
-            setLevel(text);
-          }}
+      <View className="flex w-40 pb-2">
+        <Slider
           value={level}
-          placeholder="Set Level"
-          keyboardType="numeric"
-          errorMessage={
-            showError ? "Level must be a number below 10" : undefined
-          }
+          onValueChange={setLevel}
+          maximumValue={10}
+          minimumValue={1}
+          step={1}
+          allowTouchTrack
+          trackStyle={{ height: 5, backgroundColor: "transparent" }}
+          thumbStyle={{ height: 20, width: 20, backgroundColor: "transparent" }}
+          thumbProps={{
+            children: (
+              <Icon
+                name="circle"
+                type="material"
+                size={15}
+                reverse
+                containerStyle={{ bottom: 15, right: 15 }}
+              />
+            ),
+          }}
         />
+        <Text className="text-center text-white">{"Level: " + level}</Text>
       </View>
       <Button
         onPress={() => {
-          const numericLevel = Number(level);
-          if (!isNaN(numericLevel) && numericLevel < 11) {
-            reset();
-            setLevelAmount(numericLevel);
-            closeModal();
-            setShowError(false);
-            onSubmit();
-          } else {
-            setShowError(true);
-          }
+          reset();
+          closeModal();
+          setLevelAmount(level);
+          onSubmit();
         }}
-        title="Set level"
+        title="Start Game"
         className="w-40"
       />
     </HorseRaceModal>

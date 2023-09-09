@@ -9,7 +9,7 @@ export const MainLayout: FunctionComponent<MainLayoutProps> = ({
   ...props
 }) => {
   return (
-    <View className={`bg-blue-100 p-2 ${className}`} {...props}>
+    <View className={`bg-blue-900 p-2 text-white ${className}`} {...props}>
       {children}
     </View>
   );
