@@ -3,6 +3,7 @@ import { Text } from "react-native-paper";
 import { useAtomValue } from "jotai";
 import { useTranslation } from "react-i18next";
 
+import NativeAd from "~/old/ads/NativeAd";
 import { RankSymbol } from "~/types/RankSymbol.type";
 import Card from "../old/cards/Card";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
@@ -43,7 +44,7 @@ export const WinnerModal: FunctionComponent = () => {
         }}
         title={t("restart")}
       />
-      {/* <NativeAd id={GOOGLE_ADMOB_MODAL_BANNER_ID} /> */}
+      <NativeAd id="ca-app-pub-7941882405849156/3177221624" />
     </HorseRaceModal>
   );
 };

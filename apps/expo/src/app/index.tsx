@@ -6,6 +6,7 @@ import { Stack, useRouter } from "expo-router";
 import { t } from "i18next";
 import { useAtom } from "jotai";
 
+import NativeAd from "~/old/ads/NativeAd";
 import { levelAtom } from "~/old/contexts/GameContext";
 import { MainLayout } from "../old/components/MainLayout";
 import { Button } from "../ui/Button";
@@ -77,7 +78,7 @@ const StartView: FunctionComponent = () => {
         />
 
         <View className="flex items-center">
-          {/* <NativeAd id={GOOGLE_ADMOB_STARTVIEW_BANNER_ID ?? ""} /> */}
+          <NativeAd id="ca-app-pub-7941882405849156/1638012899" />
         </View>
       </View>
     </MainLayout>

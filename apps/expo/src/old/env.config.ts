@@ -1,11 +1,4 @@
-import Constants from "expo-constants";
-
 export const GOOGLE_ADMOB_MAINVIEW_BANNER_ID: string =
-  Constants?.expoConfig?.extra?.mainViewBannerId;
+  process.env.EXPO_PUBLIC_GOOGLE_ADMOB_MAINVIEW_BANNER_ID!;
 export const GOOGLE_ADMOB_STARTVIEW_BANNER_ID: string =
-  Constants?.expoConfig?.extra?.startViewBannerId;
-
-export const GOOGLE_ADMOB_MODAL_BANNER_ID: string =
-  Constants?.expoConfig?.extra?.modalBannerId;
-
-console.log(Constants);
+  process.env.EXPO_PUBLIC_GOOGLE_ADMOB_STARTVIEW_BANNER_ID!;

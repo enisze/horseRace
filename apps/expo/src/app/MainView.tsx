@@ -2,6 +2,7 @@ import React from "react";
 import { ImageBackground, View } from "react-native";
 import { Stack } from "expo-router";
 
+import NativeAd from "~/old/ads/NativeAd";
 import { RandomCardSet } from "../old/cards/RandomCardSet";
 import { MainCardSet } from "../old/cardSets/MainCardSet";
 import { SideCardSet } from "../old/cardSets/SideCardSet";
@@ -15,7 +16,7 @@ const MainView = () => {
         className="-m-3"
       >
         <Stack.Screen options={{ title: "" }} />
-        <View className="flex h-full w-full pt-10">
+        <View className="flex h-full w-full">
           <View className="flex flex-row p-6">
             <SideCardSet />
             <MainCardSet />
@@ -25,9 +26,9 @@ const MainView = () => {
             <RandomCardSet />
           </View>
           <WinnerModal />
-          {/* <View className="flex items-center">
-            <NativeAd id={GOOGLE_ADMOB_MAINVIEW_BANNER_ID} />
-          </View> */}
+          <View className="flex items-center">
+            <NativeAd id="ca-app-pub-7941882405849156/9049599050" />
+          </View>
         </View>
       </ImageBackground>
     </View>
