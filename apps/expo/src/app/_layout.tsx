@@ -17,6 +17,7 @@ import { appLink, paypalDonationURL } from "../old/constants";
 import MainProvider from "../old/helpers/MainProvider";
 import i18n from "../old/i18n";
 import { TRPCProvider } from "../utils/api";
+import { AddWinnerStatisticsSideEffect } from "./SideEffects/AddWinnerStatisticsSideEffect";
 
 void mobileAds()
   .initialize()
@@ -43,13 +44,13 @@ const RootLayout = () => {
                 <Stack
                   screenOptions={{
                     headerStyle: {
-                      backgroundColor: "#a855f7",
+                      backgroundColor: "#6b21a8",
                     },
                     headerTitleStyle: { color: "white" },
-
                     headerRight: () => <Header />,
                   }}
                 />
+                <AddWinnerStatisticsSideEffect />
                 <StatusBar />
               </GestureHandlerRootView>
             </MainProvider>

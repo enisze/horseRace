@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { View } from "react-native";
+import { useAtomValue } from "jotai";
 
 import { RankSymbol } from "../../types/RankSymbol.type";
 import Card from "../cards/Card";
 import { SIDE_CARD_SET_GAP } from "../constants";
-import { useGetCurrentLevelBySymbol } from "../contexts/GameContext";
+import { levelAtom, useGetCurrentLevelBySymbol } from "../contexts/GameContext";
 import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
 import { useGetCardWidthAndHeight } from "../hooks/useGetCardWidthAndHeight";
 import { gapStyles } from "../styles/gapStyles.styles";
@@ -14,15 +15,8 @@ const keys: RankSymbol[] = ["AC", "AD", "AS", "AH"];
 const styles = gapStyles(12, "row");
 
 export const MainCardSet = () => {
-  //TODO: Add this somehow
-
   return (
-    <View
-      className={`flex flex-row items-end`}
-      //TODO: Add this
-      style={styles.container}
-      //   ...{ marginBottom: -SIDE_CARD_SET_GAP / 2 },
-    >
+    <View className={`flex flex-row items-end`} style={styles.container}>
       {keys.map((key, idx) => {
         return (
           <View style={styles.child} key={idx}>
@@ -43,7 +37,10 @@ const CardWithCurrentPosition: FunctionComponent<{
 
   const amount = useGetCurrentLevelBySymbol(symbol) + offset;
 
-  const newHeight = (height + SIDE_CARD_SET_GAP) * amount;
+  const level = useAtomValue(levelAtom);
+
+  const newHeight =
+    (height + SIDE_CARD_SET_GAP) * (amount > level ? level : amount);
 
   return (
     <View style={{ height: newHeight }} key={rankSymbol}>

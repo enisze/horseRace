@@ -1,21 +1,58 @@
 import React from "react";
 import { View } from "react-native";
+import { Text } from "react-native-paper";
 import { Stack } from "expo-router";
-import { useTranslation } from "react-i18next";
+import { useAtomValue } from "jotai";
 
+import PlayingCard from "~/old/cards/Card";
+import { RankSymbol } from "~/types/RankSymbol.type";
+import { totalAtom, valuesAtom } from "~/utils/statisticAtoms";
 import { MainLayout } from "../old/components/MainLayout";
-import { Paragraph } from "../old/components/Paragraph";
+
+const keys: RankSymbol[] = ["AC", "AD", "AS", "AH"];
 
 const StatisticsView: React.FC = () => {
-  const { t } = useTranslation();
+  const total = useAtomValue(totalAtom);
+  const vals = useAtomValue(valuesAtom);
+
   return (
     <MainLayout>
       <Stack.Screen options={{ title: "Statistics" }} />
-      <View className="flex h-full w-full items-center justify-center">
-        <Paragraph className="text-3xl">{t("comingSoon.statistics")}</Paragraph>
+      <View className="h-full w-full p-4">
+        <Text variant="headlineLarge" className="text-white">
+          {"Statistics"}
+        </Text>
+        <Text variant="headlineLarge" className="text-white">
+          {"Total games: " + total}
+        </Text>
+
+        <View className={`flex-col gap-y-1`}>
+          {keys.map((key, idx) => {
+            return (
+              <View
+                className="flex-row items-center justify-start gap-x-4"
+                key={idx}
+              >
+                <View>
+                  <PlayingCard rankSymbol={key} />
+                </View>
+                <Text variant="headlineLarge" className="text-white">
+                  Wins: {vals[idx]}
+                </Text>
+                <Text variant="headlineLarge" className="text-white">
+                  {`(${getPercentage(vals[idx], total)}%)`}
+                </Text>
+              </View>
+            );
+          })}
+        </View>
       </View>
     </MainLayout>
   );
 };
 
 export default StatisticsView;
+
+const getPercentage = (num: number | undefined, total: number) => {
+  return total !== 0 && num && num !== 0 ? Math.round((num / total) * 100) : 0;
+};
