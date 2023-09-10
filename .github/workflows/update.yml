@@ -2,13 +2,6 @@ name: mobile
 on:
   push:
     branches: [production]
-  pull_request:
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#patterns-to-match-file-paths
-    paths:
-      - "**/package.json" # A package.json file anywhere in the repository.
-      - "apps/expo/**/*.json" # A file with a .json suffix anywhere in the mobile directory.
-      - "apps/expo/**/*.jsx?"
-      - "apps/expo/**/*.tsx?"
 
 concurrency:
   group: ${{ github.ref_name }}
