@@ -12,6 +12,7 @@ const MainView = () => {
   return (
     <View className="h-full w-full">
       <ImageBackground
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         source={require("../../assets/background_1.png")}
         className="-m-3"
       >

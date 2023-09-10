@@ -21,7 +21,7 @@ import { AddWinnerStatisticsSideEffect } from "./SideEffects/AddWinnerStatistics
 
 void mobileAds()
   .initialize()
-  .then((adapterStatuses) => {
+  .then(() => {
     // Initialization complete!
   });
 
@@ -68,12 +68,12 @@ const Header = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const donationsNavigate = () => {
-    Linking.openURL(paypalDonationURL);
+  const donationsNavigate = async () => {
+    await Linking.openURL(paypalDonationURL);
   };
 
-  const rateApp = () => {
-    Linking.openURL(appLink);
+  const rateApp = async () => {
+    await Linking.openURL(appLink);
   };
   return (
     <>

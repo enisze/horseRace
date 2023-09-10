@@ -11,6 +11,7 @@ const BackCard: FunctionComponent<BackCardProps> = ({ onClick }) => {
   return (
     <View onTouchStart={onClick}>
       <CardImage
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         source={require("../../../assets/cards/back/cardBackBlue.png")}
       />
     </View>
