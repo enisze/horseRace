@@ -6,13 +6,10 @@
  * tl;dr - this is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end
  */
-import { initTRPC, TRPCError } from "@trpc/server";
-import superjson from "superjson";
-import { ZodError } from "zod";
-
-import { auth } from "@acme/auth";
-import type { Session } from "@acme/auth";
-import { db } from "@acme/db";
+import { initTRPC } from "@trpc/server"
+import superjson from "superjson"
+import { ZodError } from "zod"
+import { db } from "../../db"
 
 /**
  * 1. CONTEXT
@@ -23,9 +20,7 @@ import { db } from "@acme/db";
  * processing a request
  *
  */
-interface CreateContextOptions {
-  session: Session | null;
-}
+interface CreateContextOptions {}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
@@ -38,29 +33,23 @@ interface CreateContextOptions {
  */
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
-    session: opts.session,
-    db,
-  };
-};
+    db
+  }
+}
 
 /**
  * This is the actual context you'll use in your router. It will be used to
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: {
-  req?: Request;
-  auth?: Session;
-}) => {
-  const session = opts.auth ?? (await auth());
-  const source = opts.req?.headers.get("x-trpc-source") ?? "unknown";
+export const createTRPCContext = async (opts: { req?: Request }) => {
+  // const session = opts.auth ?? (await auth())
+  const source = opts.req?.headers.get("x-trpc-source") ?? "unknown"
 
-  console.log(">>> tRPC Request from", source, "by", session?.user);
+  // console.log(">>> tRPC Request from", source, "by", session?.user)
 
-  return createInnerTRPCContext({
-    session,
-  });
-};
+  return createInnerTRPCContext({})
+}
 
 /**
  * 2. INITIALIZATION
@@ -75,12 +64,11 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
-      },
-    };
-  },
-});
+        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null
+      }
+    }
+  }
+})
 
 /**
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
@@ -93,7 +81,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
  * This is how you create new routers and subrouters in your tRPC API
  * @see https://trpc.io/docs/router
  */
-export const createTRPCRouter = t.router;
+export const createTRPCRouter = t.router
 
 /**
  * Public (unauthed) procedure
@@ -102,23 +90,23 @@ export const createTRPCRouter = t.router;
  * tRPC API. It does not guarantee that a user querying is authorized, but you
  * can still access user session data if they are logged in
  */
-export const publicProcedure = t.procedure;
+export const publicProcedure = t.procedure
 
 /**
  * Reusable middleware that enforces users are logged in before running the
  * procedure
  */
-const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.session?.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
-  return next({
-    ctx: {
-      // infers the `session` as non-nullable
-      session: { ...ctx.session, user: ctx.session.user },
-    },
-  });
-});
+// const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
+//   if (!ctx.session?.user) {
+//     throw new TRPCError({ code: "UNAUTHORIZED" })
+//   }
+//   return next({
+//     ctx: {
+//       // infers the `session` as non-nullable
+//       session: { ...ctx.session, user: ctx.session.user }
+//     }
+//   })
+// })
 
 /**
  * Protected (authed) procedure
@@ -129,4 +117,4 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  *
  * @see https://trpc.io/docs/procedures
  */
-export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+// export const protectedProcedure = t.procedure.use(enforceUserIsAuthed)

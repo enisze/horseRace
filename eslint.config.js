@@ -6,6 +6,9 @@ const config = {
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   env: {
     es2022: true,
@@ -26,6 +29,8 @@ const config = {
       2,
       { checksVoidReturn: { attributes: false } },
     ],
+    "react/prop-types": "off",
+
   },
   ignorePatterns: [
     "**/.eslintrc.cjs",
@@ -36,6 +41,11 @@ const config = {
     "pnpm-lock.yaml",
   ],
   reportUnusedDisableDirectives: true,
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };
 
 module.exports = config;
