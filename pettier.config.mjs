@@ -6,9 +6,9 @@
 const config = {
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss",
+    "prettier-plugin-tailwindcss"
   ],
-  tailwindConfig: "./tailwind.config.ts",
+  tailwindConfig: "./tailwind.config.js",
   importOrder: [
     "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
     "^(next/(.*)$)|^(next$)",
@@ -18,12 +18,12 @@ const config = {
     "",
     "^~/",
     "^[../]",
-    "^[./]",
+    "^[./]"
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
   semi: false,
-  single,
-};
+  single
+}
 
-export default config;
+export default config
