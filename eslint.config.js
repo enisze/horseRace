@@ -30,7 +30,6 @@ const config = {
       { checksVoidReturn: { attributes: false } },
     ],
     "react/prop-types": "off",
-
   },
   ignorePatterns: [
     "**/.eslintrc.cjs",

@@ -12,4 +12,4 @@ export type Rank =
   | "J"
   | "Q"
   | "K"
-  | "A";
+  | "A"

@@ -20,7 +20,7 @@
     "export": "expo export --platform android",
     "db:push": "pnpm -F db push",
     "db:studio": "pnpm -F db dev",
-    "format:fix": "todo",
+    "format:fix": "prettier --w \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "lint:fix": "todo"
   },
   "dependencies": {
