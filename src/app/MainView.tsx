@@ -1,10 +1,11 @@
 import { Stack } from "expo-router"
 import { ImageBackground, View } from "react-native"
 
+import { Icon } from "react-native-elements"
 import NativeAd from "../old/ads/NativeAd"
-import { RandomCardSet } from "../old/cards/RandomCardSet"
 import { MainCardSet } from "../old/cardSets/MainCardSet"
 import { SideCardSet } from "../old/cardSets/SideCardSet"
+import { RandomCardSet } from "../old/cards/RandomCardSet"
 import { WinnerModal } from "../ui/WinnerModal"
 
 const MainView = () => {
@@ -16,13 +17,21 @@ const MainView = () => {
         className='-m-3'
       >
         <Stack.Screen options={{ title: "" }} />
-        <View className='flex h-full w-full'>
+        <View className='flex h-full w-full '>
           <View className='flex flex-row p-6'>
             <SideCardSet />
             <MainCardSet />
           </View>
 
-          <View className='flex items-center justify-center pb-2'>
+          <View className='flex-row items-center justify-center pb-2'>
+            <Icon
+              className='fill-white -mr-4'
+              name='arrow-right'
+              type='material'
+              color='white'
+              size={64}
+            />
+
             <RandomCardSet />
           </View>
           <WinnerModal />

@@ -30,7 +30,7 @@ export const WinnerModal: FunctionComponent = () => {
     <HorseRaceModal
       visible={showModal}
       onClose={() => setShowModal(false)}
-      showBackButton={false}
+      showBackButton={true}
     >
       <Text variant='headlineMedium' className='text-white'>
         {t("winner")}
