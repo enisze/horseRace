@@ -12,7 +12,7 @@ env:
 
 jobs:
   build_production:
-    if: github.ref_name == 'production'
+    if: github.ref_name == 'main'
     name: Build & Submit Production
     runs-on: ubuntu-latest
     steps:
