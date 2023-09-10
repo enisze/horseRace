@@ -1,17 +1,18 @@
-import { FunctionComponent, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { HorseRaceModal } from '../components/HorseRaceModal'
+import { FunctionComponent, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-export type ActionModalProps = {}
+import { HorseRaceModal } from "../components/HorseRaceModal";
+
+export interface ActionModalProps {}
 
 export const ActionModal: FunctionComponent<ActionModalProps> = ({}) => {
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
       {}
     </HorseRaceModal>
-  )
-}
+  );
+};
