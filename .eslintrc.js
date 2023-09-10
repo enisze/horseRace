@@ -1,50 +1,54 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
   extends: [
-    "turbo",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "prettier",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   env: {
     es2022: true,
-    node: true,
+    node: true
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: true,
+    project: true
   },
   plugins: ["@typescript-eslint", "import"],
   rules: {
-    "turbo/no-undeclared-env-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
-      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }
     ],
     "@typescript-eslint/no-misused-promises": [
       2,
-      { checksVoidReturn: { attributes: false } },
+      { checksVoidReturn: { attributes: false } }
     ],
     "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off"
   },
   ignorePatterns: [
-    "**/.eslintrc.cjs",
+    "**/**.cjs",
     "**/*.config.js",
     "**/*.config.cjs",
     ".next",
     "dist",
     "pnpm-lock.yaml",
+    "**/db/**/*",
+    "**/api/**/*",
+    "**/expo-plugins/**/*",
+    "**/**/*/api.tsx",
+    "/.eslintrc.js",
+    "/postcss.js"
   ],
   reportUnusedDisableDirectives: true,
   settings: {
     react: {
-      version: "detect",
-    },
-  },
-};
+      version: "detect"
+    }
+  }
+}
 
-module.exports = config;
+module.exports = config
