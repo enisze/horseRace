@@ -14,7 +14,6 @@ import { ShareAppButton } from "~/old/header/ShareAppButton";
 import { HorseRaceModal } from "../old/components/HorseRaceModal";
 import { Paragraph } from "../old/components/Paragraph";
 import { appLink, paypalDonationURL } from "../old/constants";
-import MainProvider from "../old/helpers/MainProvider";
 import i18n from "../old/i18n";
 import { TRPCProvider } from "../utils/api";
 import { AddWinnerStatisticsSideEffect } from "./SideEffects/AddWinnerStatisticsSideEffect";
@@ -39,21 +38,19 @@ const RootLayout = () => {
       <I18nextProvider i18n={i18n}>
         <PaperProvider>
           <SafeAreaProvider>
-            <MainProvider>
-              <GestureHandlerRootView style={{ flex: 1 }}>
-                <Stack
-                  screenOptions={{
-                    headerStyle: {
-                      backgroundColor: "#6b21a8",
-                    },
-                    headerTitleStyle: { color: "white" },
-                    headerRight: () => <Header />,
-                  }}
-                />
-                <AddWinnerStatisticsSideEffect />
-                <StatusBar />
-              </GestureHandlerRootView>
-            </MainProvider>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <Stack
+                screenOptions={{
+                  headerStyle: {
+                    backgroundColor: "#6b21a8",
+                  },
+                  headerTitleStyle: { color: "white" },
+                  headerRight: () => <Header />,
+                }}
+              />
+              <AddWinnerStatisticsSideEffect />
+              <StatusBar />
+            </GestureHandlerRootView>
           </SafeAreaProvider>
         </PaperProvider>
       </I18nextProvider>

@@ -3,7 +3,7 @@ export interface ActionGeneratorOptions {}
 
 //TODO: Generate random action todo
 
-// eslint-disable-next-line no-empty-pattern
+// eslint-disable-next-line no-empty-pattern, @typescript-eslint/no-empty-function
 export const actionGenerator = ({}: ActionGeneratorOptions) => {};
 
 //TODO: Get current distance from card levels (lowest / highest)
