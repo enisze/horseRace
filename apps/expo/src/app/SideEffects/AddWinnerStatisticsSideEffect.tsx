@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAtom, useAtomValue } from "jotai";
 
-import { winnerAtom } from "~/old/contexts/GameContext";
+import { winnerAtom } from "~/contexts/GameContext";
 import { statisticsAtom } from "~/utils/statisticAtoms";
 
 export const AddWinnerStatisticsSideEffect = () => {
