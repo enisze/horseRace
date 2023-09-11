@@ -9,7 +9,7 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "~/i18n";
 import { Header } from "~/ui/header/Header";
 import { UpdateProvider } from "~/updates/UpdateProvider";
-import { TRPCProvider } from "../utils/api";
+import { TRPCProvider } from "~/utils/api";
 import { AddWinnerStatisticsSideEffect } from "./SideEffects/AddWinnerStatisticsSideEffect";
 
 void mobileAds()
