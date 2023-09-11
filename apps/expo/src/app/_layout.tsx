@@ -12,7 +12,7 @@ import { UpdateProvider } from "~/updates/UpdateProvider";
 import { TRPCProvider } from "~/utils/api";
 import { AddWinnerStatisticsSideEffect } from "./SideEffects/AddWinnerStatisticsSideEffect";
 
-void mobileAds()
+mobileAds()
   .initialize()
   .then(() => {
     // Initialization complete!

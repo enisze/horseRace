@@ -21,25 +21,22 @@ export const UpdateProviderDownloader: FunctionComponent<
   useEffect(() => {
     const checkForUpdate = async () => {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call
         const result = await withTimeout(5000)(checkForUpdateAsync());
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
         setUpdateIsAvailable(result.isAvailable ?? false);
       } catch (error: unknown) {
         console.log("Error while checking for update:", error);
         setUpdateIsAvailable(false);
       }
     };
-    void checkForUpdate();
+    checkForUpdate();
   }, []);
 
   useEffect(() => {
     const downloadUpdateAndReloadApp = async () => {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-call
         const result = await withTimeout(5000)(fetchUpdateAsync());
         if (result.isNew) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           await reloadAsync();
         } else {
           setUpdateIsAvailable(false);
@@ -51,7 +48,7 @@ export const UpdateProviderDownloader: FunctionComponent<
     };
 
     if (isUpdateAvailable) {
-      void downloadUpdateAndReloadApp();
+      downloadUpdateAndReloadApp();
     }
   }, [isUpdateAvailable]);
 

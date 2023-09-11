@@ -8,14 +8,12 @@ import { MainCardSet } from "~/ui/cardSets/MainCardSet";
 import { SideCardSet } from "~/ui/cardSets/SideCardSet";
 import { WinnerModal } from "~/ui/WinnerModal";
 
+const image = require("../../assets/background_1.png");
+
 const MainView = () => {
   return (
     <View className="h-full w-full">
-      <ImageBackground
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        source={require("~/~/assets/background_1.png")}
-        className="-m-3"
-      >
+      <ImageBackground source={image} className="-m-3">
         <Stack.Screen options={{ title: "" }} />
         <View className="flex h-full w-full">
           <View className="flex flex-row p-6">

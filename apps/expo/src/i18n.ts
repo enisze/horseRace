@@ -5,7 +5,7 @@ import { initReactI18next } from "react-i18next";
 import de from "./locales/de/horseRace.json";
 import en from "./locales/en/horseRace.json";
 
-void i18next.use(initReactI18next).init({
+i18next.use(initReactI18next).init({
   resources: {
     de: { general: de },
     en: { general: en },
