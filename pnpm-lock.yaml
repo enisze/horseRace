@@ -17,6 +17,9 @@ importers:
       '@turbo/gen':
         specifier: ^1.10.13
         version: 1.10.13(@types/node@20.6.0)(typescript@5.2.2)
+      '@types/node':
+        specifier: ^20.6.0
+        version: 20.6.0
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
@@ -26,10 +29,6 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
-    devDependencies:
-      '@types/node':
-        specifier: ^20.6.0
-        version: 20.6.0
 
   apps/expo:
     dependencies:
