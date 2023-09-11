@@ -43,3 +43,9 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+
+expo-env.d.ts
+# @end expo-cli
+
+build-*
