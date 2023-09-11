@@ -5,10 +5,10 @@ import { Stack, useRouter } from "expo-router";
 import { t } from "i18next";
 import { useAtom } from "jotai";
 
-import NativeAd from "~/old/ads/NativeAd";
-import { levelAtom } from "~/old/contexts/GameContext";
-import { MainLayout } from "../old/components/MainLayout";
-import { Button } from "../ui/Button";
+import { levelAtom } from "~/contexts/GameContext";
+import NativeAd from "~/ui/ads/NativeAd";
+import { Button } from "~/ui/Button";
+import { MainLayout } from "~/ui/components/MainLayout";
 
 const buttonStyle = "";
 

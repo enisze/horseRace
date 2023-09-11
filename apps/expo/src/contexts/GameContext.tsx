@@ -7,10 +7,10 @@ import {
   useResetAtom,
 } from "jotai/utils";
 
-import { LevelAction } from "../../types/LevelAction.type";
-import { RankSymbol } from "../../types/RankSymbol.type";
-import { CardSymbol } from "../../types/Symbol.type";
-import { GAMEDATA_STORAGE_KEY } from "../constants";
+import { GAMEDATA_STORAGE_KEY } from "~/constants";
+import { LevelAction } from "~/types/LevelAction.type";
+import { RankSymbol } from "~/types/RankSymbol.type";
+import { CardSymbol } from "~/types/Symbol.type";
 
 interface DrawnCard {
   rankSymbol: RankSymbol;

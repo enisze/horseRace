@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 
-import { RankSymbol } from "../../types/RankSymbol.type";
-import { getImage } from "../dataLists/imageList";
+import { getImage } from "~/~/dataLists/imageList";
+import { RankSymbol } from "~/~/types/RankSymbol.type";
 import CardImage from "./CardImage";
 
 interface CardProps {

@@ -1,5 +1,5 @@
-import { RankSymbol } from "../../types/RankSymbol.type";
-import { CardSymbol } from "../../types/Symbol.type";
+import { RankSymbol } from "~/types/RankSymbol.type";
+import { CardSymbol } from "~/types/Symbol.type";
 
 export const getSymbolFromRankSymbol = (
   rankSymbol: RankSymbol | undefined,

@@ -2,14 +2,14 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { View } from "react-native";
 import { useAtomValue, useSetAtom } from "jotai";
 
-import { RankSymbol } from "../../types/RankSymbol.type";
 import {
   currentLevelAtom,
   decrementAtom,
   drawnCardsAtom,
-} from "../contexts/GameContext";
-import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
-import { useGetRandomRankSymbol } from "../hooks/useGetRandomRankSymbol";
+} from "~/contexts/GameContext";
+import { getSymbolFromRankSymbol } from "~/helpers/getSymbolFromRankSymbol";
+import { useGetRandomRankSymbol } from "~/hooks/useGetRandomRankSymbol";
+import { RankSymbol } from "~/types/RankSymbol.type";
 import BackCard from "./BackCard";
 import Card from "./Card";
 

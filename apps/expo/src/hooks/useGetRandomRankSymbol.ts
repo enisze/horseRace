@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 
-import { LevelAction } from "../../types/LevelAction.type";
-import { appendCardAtom, drawnCardsAtom } from "../contexts/GameContext";
-import { rankSymbolList } from "../dataLists/rankSymbolList";
+import { appendCardAtom, drawnCardsAtom } from "~/contexts/GameContext";
+import { rankSymbolList } from "~/dataLists/rankSymbolList";
+import { LevelAction } from "~/types/LevelAction.type";
 
 function getRandomValueNotInArray<T>(
   sourceArray: T[],

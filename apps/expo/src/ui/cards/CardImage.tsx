@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { Image, ImageSourcePropType, View } from "react-native";
 
-import { useGetCardWidthAndHeight } from "../hooks/useGetCardWidthAndHeight";
+import { useGetCardWidthAndHeight } from "~/hooks/useGetCardWidthAndHeight";
 
 const CardImage: FunctionComponent<{ source: ImageSourcePropType }> = ({
   source,

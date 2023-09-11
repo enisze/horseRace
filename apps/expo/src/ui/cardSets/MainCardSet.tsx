@@ -2,13 +2,13 @@ import { FunctionComponent } from "react";
 import { View } from "react-native";
 import { useAtomValue } from "jotai";
 
-import { RankSymbol } from "../../types/RankSymbol.type";
-import Card from "../cards/Card";
-import { SIDE_CARD_SET_GAP } from "../constants";
-import { levelAtom, useGetCurrentLevelBySymbol } from "../contexts/GameContext";
-import { getSymbolFromRankSymbol } from "../helpers/getSymbolFromRankSymbol";
-import { useGetCardWidthAndHeight } from "../hooks/useGetCardWidthAndHeight";
-import { gapStyles } from "../styles/gapStyles.styles";
+import { getSymbolFromRankSymbol } from "~//helpers/getSymbolFromRankSymbol";
+import { SIDE_CARD_SET_GAP } from "~/constants";
+import { levelAtom, useGetCurrentLevelBySymbol } from "~/contexts/GameContext";
+import { useGetCardWidthAndHeight } from "~/hooks/useGetCardWidthAndHeight";
+import { gapStyles } from "~/styles/gapStyles.styles";
+import { RankSymbol } from "~/types/RankSymbol.type";
+import Card from "~/ui/cards/Card";
 
 const keys: RankSymbol[] = ["AC", "AD", "AS", "AH"];
 

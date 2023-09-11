@@ -2,8 +2,8 @@ import { FunctionComponent } from "react";
 import { Share } from "react-native";
 import { Icon } from "react-native-elements";
 
-import { HorseRaceButton } from "../components/buttons/HorseRaceButton";
-import { appLink } from "../constants";
+import { appLink } from "~/constants";
+import { HorseRaceButton } from "~/ui/components/buttons/HorseRaceButton";
 
 export const ShareAppButton: FunctionComponent = () => {
   const onShare = async () => {

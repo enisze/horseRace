@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 
-import { SIDE_CARD_SET_GAP } from "../constants";
-import { levelAtom } from "../contexts/GameContext";
+import { SIDE_CARD_SET_GAP } from "~/constants";
+import { levelAtom } from "~/contexts/GameContext";
 import { useDimensions } from "./useDimensions";
 
 export const useGetCardWidthAndHeight = () => {

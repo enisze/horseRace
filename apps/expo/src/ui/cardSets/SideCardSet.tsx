@@ -2,10 +2,10 @@ import { FunctionComponent } from "react";
 import { View } from "react-native";
 import { useAtomValue } from "jotai";
 
-import { RandomCardAutomated } from "../cards/RandomCardAutomated";
-import { SIDE_CARD_SET_GAP } from "../constants";
-import { levelAtom } from "../contexts/GameContext";
-import { gapStyles } from "../styles/gapStyles.styles";
+import { SIDE_CARD_SET_GAP } from "~//constants";
+import { levelAtom } from "~/contexts/GameContext";
+import { gapStyles } from "~/styles/gapStyles.styles";
+import { RandomCardAutomated } from "~/ui/cards/RandomCardAutomated";
 
 export const SideCardSet: FunctionComponent = () => {
   const levelAmount = useAtomValue(levelAtom);

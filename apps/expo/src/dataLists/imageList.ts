@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { RankSymbol } from "../../types/RankSymbol.type";
+
+import { RankSymbol } from "~/types/RankSymbol.type";
 
 const spades = {
   "2S": require("../../../assets/cards/spade/cardSpades_2.png"),

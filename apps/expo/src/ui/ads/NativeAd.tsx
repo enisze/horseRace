@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
 
-import { useDimensions } from "../hooks/useDimensions";
+import { useDimensions } from "~/hooks/useDimensions";
 
 const NativeAd: FunctionComponent<{ id: string }> = ({ id }) => {
   const useGetBannerSize = () => {
