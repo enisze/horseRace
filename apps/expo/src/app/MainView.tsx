@@ -1,20 +1,20 @@
-import { ImageBackground, View } from "react-native";
-import { Icon } from "react-native-elements";
-import { Stack } from "expo-router";
+import { ImageBackground, View } from 'react-native'
+import { Icon } from 'react-native-elements'
+import { Stack } from 'expo-router'
 
-import NativeAd from "~/ui/ads/NativeAd";
-import { RandomCardSet } from "~/ui/cards/RandomCardSet";
-import { MainCardSet } from "~/ui/cardSets/MainCardSet";
-import { SideCardSet } from "~/ui/cardSets/SideCardSet";
-import { WinnerModal } from "~/ui/WinnerModal";
+import NativeAd from '~/ui/ads/NativeAd'
+import { RandomCardSet } from '~/ui/cards/RandomCardSet'
+import { MainCardSet } from '~/ui/cardSets/MainCardSet'
+import { SideCardSet } from '~/ui/cardSets/SideCardSet'
+import { WinnerModal } from '~/ui/WinnerModal'
 
-const image = require("../../assets/background_1.png");
+const image = require('../../assets/background_1.png')
 
 const MainView = () => {
   return (
     <View className="h-full w-full">
       <ImageBackground source={image} className="-m-3">
-        <Stack.Screen options={{ title: "" }} />
+        <Stack.Screen options={{ title: '' }} />
         <View className="flex h-full w-full">
           <View className="flex flex-row p-6">
             <SideCardSet />
@@ -38,7 +38,7 @@ const MainView = () => {
         </View>
       </ImageBackground>
     </View>
-  );
-};
+  )
+}
 
-export default MainView;
+export default MainView

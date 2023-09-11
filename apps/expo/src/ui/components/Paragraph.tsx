@@ -1,15 +1,15 @@
-import { FunctionComponent, PropsWithChildren } from "react";
-import { Text, TextProps } from "react-native";
+import { FunctionComponent, PropsWithChildren } from 'react'
+import { Text, TextProps } from 'react-native'
 
-type ParagraphSize = "S" | "M" | "L";
+type ParagraphSize = 'S' | 'M' | 'L'
 
 export type ParagraphProps = PropsWithChildren<{
-  size?: ParagraphSize;
+  size?: ParagraphSize
 }> &
-  TextProps;
+  TextProps
 
 export const Paragraph: FunctionComponent<ParagraphProps> = ({
-  size = "M",
+  size = 'M',
   children,
   ...props
 }) => {
@@ -17,12 +17,12 @@ export const Paragraph: FunctionComponent<ParagraphProps> = ({
     <Text
       {...props}
       className={`
-        ${size === "S" && "text-base"}
-        ${size === "M" && "text-lg"}
-        ${size === "L" && "text-2xl"}
+        ${size === 'S' && 'text-base'}
+        ${size === 'M' && 'text-lg'}
+        ${size === 'L' && 'text-2xl'}
         ${props.className}`}
     >
       {children}
     </Text>
-  );
-};
+  )
+}

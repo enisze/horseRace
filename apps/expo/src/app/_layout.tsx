@@ -1,22 +1,22 @@
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import mobileAds from "react-native-google-mobile-ads";
-import { PaperProvider } from "react-native-paper";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import { I18nextProvider } from "react-i18next";
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import mobileAds from 'react-native-google-mobile-ads'
+import { PaperProvider } from 'react-native-paper'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+import { I18nextProvider } from 'react-i18next'
 
-import i18n from "~/i18n";
-import { Header } from "~/ui/header/Header";
-import { UpdateProvider } from "~/updates/UpdateProvider";
-import { TRPCProvider } from "~/utils/api";
-import { AddWinnerStatisticsSideEffect } from "./SideEffects/AddWinnerStatisticsSideEffect";
+import i18n from '~/i18n'
+import { Header } from '~/ui/header/Header'
+import { UpdateProvider } from '~/updates/UpdateProvider'
+import { TRPCProvider } from '~/utils/api'
+import { AddWinnerStatisticsSideEffect } from './SideEffects/AddWinnerStatisticsSideEffect'
 
 mobileAds()
   .initialize()
   .then(() => {
     // Initialization complete!
-  });
+  })
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need
@@ -37,9 +37,9 @@ const RootLayout = () => {
                 <Stack
                   screenOptions={{
                     headerStyle: {
-                      backgroundColor: "#6b21a8",
+                      backgroundColor: '#6b21a8',
                     },
-                    headerTitleStyle: { color: "white" },
+                    headerTitleStyle: { color: 'white' },
                     headerRight: () => <Header />,
                   }}
                 />
@@ -51,7 +51,7 @@ const RootLayout = () => {
         </I18nextProvider>
       </TRPCProvider>
     </UpdateProvider>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout

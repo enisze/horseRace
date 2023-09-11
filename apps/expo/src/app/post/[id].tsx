@@ -1,13 +1,13 @@
-import { SafeAreaView } from "react-native";
-import { useGlobalSearchParams } from "expo-router";
+import { SafeAreaView } from 'react-native'
+import { useGlobalSearchParams } from 'expo-router'
 
 export default function Post() {
-  const { id } = useGlobalSearchParams();
-  if (!id || typeof id !== "string") throw new Error("unreachable");
+  const { id } = useGlobalSearchParams()
+  if (!id || typeof id !== 'string') throw new Error('unreachable')
 
-  const data = null;
+  const data = null
 
-  if (!data) return null;
+  if (!data) return null
 
   return (
     <SafeAreaView className="bg-[#1F104A]">
@@ -17,5 +17,5 @@ export default function Post() {
         <Text className="py-4 text-white">{data.content}</Text>
       </View> */}
     </SafeAreaView>
-  );
+  )
 }

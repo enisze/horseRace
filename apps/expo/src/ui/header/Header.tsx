@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { Linking, View } from "react-native";
-import { Icon } from "react-native-elements";
-import { Paragraph } from "react-native-paper";
-import { useTranslation } from "react-i18next";
+import { useState } from 'react'
+import { Linking, View } from 'react-native'
+import { Icon } from 'react-native-elements'
+import { Paragraph } from 'react-native-paper'
+import { useTranslation } from 'react-i18next'
 
-import { appLink, paypalDonationURL } from "~/constants";
-import { HorseRaceButton } from "~/ui/components/buttons/HorseRaceButton";
-import { HorseRaceModal } from "~/ui/components/HorseRaceModal";
-import { ShareAppButton } from "~/ui/header/ShareAppButton";
+import { appLink, paypalDonationURL } from '~/constants'
+import { HorseRaceButton } from '~/ui/components/buttons/HorseRaceButton'
+import { HorseRaceModal } from '~/ui/components/HorseRaceModal'
+import { ShareAppButton } from '~/ui/header/ShareAppButton'
 
 export const Header = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   const donationsNavigate = async () => {
-    await Linking.openURL(paypalDonationURL);
-  };
+    await Linking.openURL(paypalDonationURL)
+  }
 
   const rateApp = async () => {
-    await Linking.openURL(appLink);
-  };
+    await Linking.openURL(appLink)
+  }
   return (
     <>
       <View className="flex flex-row">
@@ -41,8 +41,8 @@ export const Header = () => {
       </View>
 
       <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
-        <Paragraph>{t("about")}</Paragraph>
+        <Paragraph>{t('about')}</Paragraph>
       </HorseRaceModal>
     </>
-  );
-};
+  )
+}

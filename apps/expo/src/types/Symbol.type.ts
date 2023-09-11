@@ -1,1 +1,1 @@
-export type CardSymbol = "C" | "H" | "S" | "D";
+export type CardSymbol = 'C' | 'H' | 'S' | 'D'

@@ -1,6 +1,6 @@
-import { AuthShowcase } from "./_components/auth-showcase";
+import { AuthShowcase } from './_components/auth-showcase'
 
-export const runtime = "edge";
+export const runtime = 'edge'
 
 export default function HomePage() {
   return (
@@ -27,5 +27,5 @@ export default function HomePage() {
         </div>
       </div>
     </main>
-  );
+  )
 }

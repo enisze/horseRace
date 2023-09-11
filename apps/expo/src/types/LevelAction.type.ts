@@ -1,1 +1,1 @@
-export type LevelAction = "increment" | "decrement";
+export type LevelAction = 'increment' | 'decrement'

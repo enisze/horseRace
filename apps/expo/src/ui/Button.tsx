@@ -1,11 +1,11 @@
-import type { GestureResponderEvent } from "react-native";
-import { Text } from "react-native";
-import { Button as PaperButton } from "react-native-paper";
+import type { GestureResponderEvent } from 'react-native'
+import { Text } from 'react-native'
+import { Button as PaperButton } from 'react-native-paper'
 
 interface Props {
-  onPress?: (event: GestureResponderEvent) => void;
-  title: string;
-  className?: string;
+  onPress?: (event: GestureResponderEvent) => void
+  title: string
+  className?: string
 }
 
 export const Button = ({ onPress, title, className }: Props) => {
@@ -19,5 +19,5 @@ export const Button = ({ onPress, title, className }: Props) => {
         {title}
       </Text>
     </PaperButton>
-  );
-};
+  )
+}

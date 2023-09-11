@@ -1,13 +1,13 @@
-import { FunctionComponent, PropsWithChildren } from "react";
-import { Modal, ModalProps, View } from "react-native";
+import { FunctionComponent, PropsWithChildren } from 'react'
+import { Modal, ModalProps, View } from 'react-native'
 
-import { BackButton } from "./buttons/BackButton";
-import { MainLayout } from "./MainLayout";
+import { BackButton } from './buttons/BackButton'
+import { MainLayout } from './MainLayout'
 
 export type HorseRaceModalProps = PropsWithChildren<ModalProps> & {
-  onClose: () => void;
-  showBackButton?: boolean;
-};
+  onClose: () => void
+  showBackButton?: boolean
+}
 
 export const HorseRaceModal: FunctionComponent<HorseRaceModalProps> = ({
   visible,
@@ -35,5 +35,5 @@ export const HorseRaceModal: FunctionComponent<HorseRaceModalProps> = ({
         {children}
       </MainLayout>
     </Modal>
-  );
-};
+  )
+}

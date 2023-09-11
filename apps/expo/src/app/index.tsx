@@ -1,25 +1,25 @@
-import type { FunctionComponent } from "react";
-import { Text, View } from "react-native";
-import { Icon, Slider } from "react-native-elements";
-import { Stack, useRouter } from "expo-router";
-import { t } from "i18next";
-import { useAtom } from "jotai";
+import type { FunctionComponent } from 'react'
+import { Text, View } from 'react-native'
+import { Icon, Slider } from 'react-native-elements'
+import { Stack, useRouter } from 'expo-router'
+import { t } from 'i18next'
+import { useAtom } from 'jotai'
 
-import { levelAtom } from "~/contexts/GameContext";
-import NativeAd from "~/ui/ads/NativeAd";
-import { Button } from "~/ui/Button";
-import { MainLayout } from "~/ui/components/MainLayout";
+import { levelAtom } from '~/contexts/GameContext'
+import NativeAd from '~/ui/ads/NativeAd'
+import { Button } from '~/ui/Button'
+import { MainLayout } from '~/ui/components/MainLayout'
 
-const buttonStyle = "";
+const buttonStyle = ''
 
 const StartView: FunctionComponent = () => {
-  const router = useRouter();
-  const [level, setLevel] = useAtom(levelAtom);
+  const router = useRouter()
+  const [level, setLevel] = useAtom(levelAtom)
 
   return (
     <MainLayout>
       <Stack.Screen
-        options={{ title: "Horse Race", headerTitleAlign: "center" }}
+        options={{ title: 'Horse Race', headerTitleAlign: 'center' }}
       />
 
       <View className="flex h-full flex-col items-center justify-center">
@@ -31,11 +31,11 @@ const StartView: FunctionComponent = () => {
             minimumValue={1}
             step={1}
             allowTouchTrack
-            trackStyle={{ height: 5, backgroundColor: "transparent" }}
+            trackStyle={{ height: 5, backgroundColor: 'transparent' }}
             thumbStyle={{
               height: 20,
               width: 20,
-              backgroundColor: "transparent",
+              backgroundColor: 'transparent',
             }}
             thumbProps={{
               children: (
@@ -49,30 +49,30 @@ const StartView: FunctionComponent = () => {
               ),
             }}
           />
-          <Text className="text-center text-white">{"Level: " + level}</Text>
+          <Text className="text-center text-white">{'Level: ' + level}</Text>
         </View>
         <Button
-          title={t("game.start")}
+          title={t('game.start')}
           onPress={() => {
-            router.push("/MainView");
+            router.push('/MainView')
           }}
           className={buttonStyle}
         />
         <Button
-          title={t("game.continue")}
+          title={t('game.continue')}
           className={buttonStyle}
           onPress={() => {
-            router.push("/MainView");
+            router.push('/MainView')
           }}
         />
         <Button
-          title={t("statistics")}
-          onPress={() => router.push("/StatisticsView")}
+          title={t('statistics')}
+          onPress={() => router.push('/StatisticsView')}
           className={buttonStyle}
         />
         <Button
-          title={t("game.session")}
-          onPress={() => router.push("/SessionView")}
+          title={t('game.session')}
+          onPress={() => router.push('/SessionView')}
           className={buttonStyle}
         />
       </View>
@@ -81,7 +81,7 @@ const StartView: FunctionComponent = () => {
         <NativeAd id="ca-app-pub-7941882405849156/1638012899" />
       </View>
     </MainLayout>
-  );
-};
+  )
+}
 
-export default StartView;
+export default StartView

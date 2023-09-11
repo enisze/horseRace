@@ -1,9 +1,9 @@
-import type { FunctionComponent, PropsWithChildren } from "react";
-import { channel } from "expo-updates";
+import type { FunctionComponent, PropsWithChildren } from 'react'
+import { channel } from 'expo-updates'
 
-import { UpdateProviderDownloader } from "./UpdateDownloader";
+import { UpdateProviderDownloader } from './UpdateDownloader'
 
-export type UpdateProviderProps = PropsWithChildren;
+export type UpdateProviderProps = PropsWithChildren
 
 export const UpdateProvider: FunctionComponent<UpdateProviderProps> = (
   props,
@@ -13,9 +13,9 @@ export const UpdateProvider: FunctionComponent<UpdateProviderProps> = (
    *
    * Will be 'mock' when running tests
    */
-  if (!channel || channel === "mock") {
-    return <>{props.children}</>;
+  if (!channel || channel === 'mock') {
+    return <>{props.children}</>
   }
 
-  return <UpdateProviderDownloader {...props} />;
-};
+  return <UpdateProviderDownloader {...props} />
+}

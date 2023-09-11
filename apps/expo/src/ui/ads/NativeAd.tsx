@@ -1,29 +1,29 @@
-import { FunctionComponent } from "react";
-import { BannerAd, BannerAdSize } from "react-native-google-mobile-ads";
+import { FunctionComponent } from 'react'
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads'
 
-import { useDimensions } from "~/hooks/useDimensions";
+import { useDimensions } from '~/hooks/useDimensions'
 
 const NativeAd: FunctionComponent<{ id: string }> = ({ id }) => {
   const useGetBannerSize = () => {
-    const { width } = useDimensions();
+    const { width } = useDimensions()
 
     if (width > 768) {
-      return BannerAdSize.FULL_BANNER;
+      return BannerAdSize.FULL_BANNER
     }
-    return BannerAdSize.LARGE_BANNER;
-  };
+    return BannerAdSize.LARGE_BANNER
+  }
 
-  const bannerSize = useGetBannerSize();
+  const bannerSize = useGetBannerSize()
 
   return (
     <BannerAd
       unitId={id}
-      size={bannerSize ?? ""}
+      size={bannerSize ?? ''}
       requestOptions={{
         requestNonPersonalizedAdsOnly: true,
       }}
     />
-  );
-};
+  )
+}
 
-export default NativeAd;
+export default NativeAd
