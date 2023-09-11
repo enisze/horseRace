@@ -27,6 +27,28 @@ void mobileAds()
 // This is the main layout of the app
 // It wraps your pages with the providers they need
 
+// export const UpdateAppSideEffect = () => {
+//   async function onFetchUpdateAsync() {
+//     try {
+//       const update = await checkForUpdateAsync()
+
+//       if (update.isAvailable) {
+//         await fetchUpdateAsync()
+//         await reloadAsync()
+//       }
+//     } catch (error) {
+//       // You can also add an alert() to see the error message in case of an error when fetching updates.
+//       alert(`Error fetching latest Expo update: ${error}`)
+//     }
+//   }
+
+//   return (
+//     <View>
+//       <Button title='Fetch update' onPress={onFetchUpdateAsync} />
+//     </View>
+//   )
+// }
+
 const RootLayout = () => {
   return (
     <TRPCProvider>
