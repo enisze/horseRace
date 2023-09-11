@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Text } from "react-native-paper";
 import { useAtomValue } from "jotai";
 import { useTranslation } from "react-i18next";
 
-import NativeAd from "~/old/ads/NativeAd";
+import { useRestartGame, winnerAtom } from "~/contexts/GameContext";
 import { RankSymbol } from "~/types/RankSymbol.type";
-import Card from "../old/cards/Card";
-import { HorseRaceModal } from "../old/components/HorseRaceModal";
-import { useRestartGame, winnerAtom } from "../old/contexts/GameContext";
+import NativeAd from "~/ui/ads/NativeAd";
 import { Button } from "./Button";
+import Card from "./cards/Card";
+import { HorseRaceModal } from "./components/HorseRaceModal";
 
 export const WinnerModal: FunctionComponent = () => {
   const winner = useAtomValue(winnerAtom);
@@ -27,11 +27,7 @@ export const WinnerModal: FunctionComponent = () => {
   const symbol: RankSymbol = winner ? `A${winner}` : "AC";
 
   return (
-    <HorseRaceModal
-      visible={showModal}
-      onClose={() => setShowModal(false)}
-      showBackButton={false}
-    >
+    <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
       <Text variant="headlineMedium" className="text-white">
         {t("winner")}
       </Text>

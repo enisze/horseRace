@@ -1,13 +1,12 @@
-import React from "react";
 import { View } from "react-native";
 import { Text } from "react-native-paper";
 import { Stack } from "expo-router";
 import { useAtomValue } from "jotai";
 
-import PlayingCard from "~/old/cards/Card";
 import { RankSymbol } from "~/types/RankSymbol.type";
+import PlayingCard from "~/ui/cards/Card";
+import { MainLayout } from "~/ui/components/MainLayout";
 import { totalAtom, valuesAtom } from "~/utils/statisticAtoms";
-import { MainLayout } from "../old/components/MainLayout";
 
 const keys: RankSymbol[] = ["AC", "AD", "AS", "AH"];
 
