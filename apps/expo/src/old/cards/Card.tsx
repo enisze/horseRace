@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 
 import { RankSymbol } from "../../types/RankSymbol.type";
 import { getImage } from "../dataLists/imageList";

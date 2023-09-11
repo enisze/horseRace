@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Share } from "react-native";
 import { Icon } from "react-native-elements";
 

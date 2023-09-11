@@ -1,5 +1,4 @@
 import type { FunctionComponent } from "react";
-import React from "react";
 import { Text, View } from "react-native";
 import { Icon, Slider } from "react-native-elements";
 import { Stack, useRouter } from "expo-router";

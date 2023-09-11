@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Image, ImageSourcePropType, View } from "react-native";
 
 import { useGetCardWidthAndHeight } from "../hooks/useGetCardWidthAndHeight";

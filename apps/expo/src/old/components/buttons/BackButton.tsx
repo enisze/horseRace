@@ -1,9 +1,11 @@
-import React from "react";
+import "react";
+
+import { FunctionComponent } from "react";
 import { Icon } from "react-native-elements";
 
 import { HorseRaceButton } from "./HorseRaceButton";
 
-export const BackButton: React.FunctionComponent<{
+export const BackButton: FunctionComponent<{
   darkBg?: boolean;
   onPress: () => void;
 }> = ({ darkBg = true, onPress }) => {

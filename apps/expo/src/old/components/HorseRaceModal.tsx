@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren } from "react";
+import { FunctionComponent, PropsWithChildren } from "react";
 import { Modal, ModalProps, View } from "react-native";
 
 import { BackButton } from "./buttons/BackButton";

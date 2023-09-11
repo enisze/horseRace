@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Linking, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { GestureHandlerRootView } from "react-native-gesture-handler";

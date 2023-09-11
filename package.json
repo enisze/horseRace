@@ -26,5 +26,8 @@
     "turbo": "^1.10.13",
     "typescript": "^5.2.2"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "devDependencies": {
+    "@types/node": "^20.6.0"
+  }
 }

@@ -1,5 +1,5 @@
-import React from "react";
 import { ImageBackground, View } from "react-native";
+import { Icon } from "react-native-elements";
 import { Stack } from "expo-router";
 
 import NativeAd from "~/old/ads/NativeAd";
@@ -23,7 +23,14 @@ const MainView = () => {
             <MainCardSet />
           </View>
 
-          <View className="flex items-center justify-center pb-2">
+          <View className="flex-row items-center justify-center pb-2">
+            <Icon
+              className="-mr-4 fill-white"
+              name="arrow-right"
+              type="material"
+              color="white"
+              size={64}
+            />
             <RandomCardSet />
           </View>
           <WinnerModal />

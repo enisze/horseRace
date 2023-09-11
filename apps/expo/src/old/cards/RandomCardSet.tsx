@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { View } from "react-native";
 import { useAtomValue, useSetAtom } from "jotai";
 

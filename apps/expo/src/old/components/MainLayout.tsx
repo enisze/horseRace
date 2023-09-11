@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren } from "react";
+import { FunctionComponent, PropsWithChildren } from "react";
 import { View, ViewProps } from "react-native";
 
 export type MainLayoutProps = PropsWithChildren<ViewProps>;

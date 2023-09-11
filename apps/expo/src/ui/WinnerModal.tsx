@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Text } from "react-native-paper";
 import { useAtomValue } from "jotai";
 import { useTranslation } from "react-i18next";
@@ -27,11 +27,7 @@ export const WinnerModal: FunctionComponent = () => {
   const symbol: RankSymbol = winner ? `A${winner}` : "AC";
 
   return (
-    <HorseRaceModal
-      visible={showModal}
-      onClose={() => setShowModal(false)}
-      showBackButton={false}
-    >
+    <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
       <Text variant="headlineMedium" className="text-white">
         {t("winner")}
       </Text>
