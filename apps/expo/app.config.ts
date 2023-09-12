@@ -6,6 +6,7 @@ const defineConfig = (): ExpoConfig => ({
   name: 'horseRace',
   slug: 'horseRace',
   scheme: ['horserace'],
+  owner: 'eniszej',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'light',
@@ -35,7 +36,6 @@ const defineConfig = (): ExpoConfig => ({
       foregroundImage: './assets/icon.png',
       backgroundColor: '#1F104A',
     },
-    versionCode: 6,
     permissions: [],
   },
   // extra: {
