@@ -36,7 +36,7 @@ const defineConfig = (): ExpoConfig => ({
       foregroundImage: './assets/icon.png',
       backgroundColor: '#1F104A',
     },
-    versionCode: 6,
+    versionCode: 7,
     permissions: [],
   },
   // extra: {
