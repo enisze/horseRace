@@ -5,7 +5,7 @@ import { Stack, useRouter } from 'expo-router'
 import { t } from 'i18next'
 import { useAtom } from 'jotai'
 
-import { levelAtom } from '~/contexts/GameContext'
+import { levelAtom, useRestartGame } from '~/contexts/GameContext'
 import NativeAd from '~/ui/ads/NativeAd'
 import { Button } from '~/ui/Button'
 import { MainLayout } from '~/ui/components/MainLayout'
@@ -15,6 +15,8 @@ const buttonStyle = ''
 const StartView: FunctionComponent = () => {
   const router = useRouter()
   const [level, setLevel] = useAtom(levelAtom)
+
+  const restartGame = useRestartGame()
 
   return (
     <MainLayout>
@@ -54,6 +56,7 @@ const StartView: FunctionComponent = () => {
         <Button
           title={t('game.start')}
           onPress={() => {
+            restartGame()
             router.push('/MainView')
           }}
           className={buttonStyle}
