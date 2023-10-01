@@ -37,9 +37,10 @@ const RootLayout = () => {
                 <Stack
                   screenOptions={{
                     headerStyle: {
-                      backgroundColor: '#6b21a8',
+                      backgroundColor: '#0f172a',
                     },
                     headerTitleStyle: { color: 'white' },
+                    headerTintColor: 'white',
                     headerRight: () => <Header />,
                   }}
                 />

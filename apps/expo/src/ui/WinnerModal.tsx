@@ -1,4 +1,5 @@
 import { FunctionComponent, useEffect, useState } from 'react'
+import { ImageBackground } from 'react-native'
 import { Text } from 'react-native-paper'
 import { useAtomValue } from 'jotai'
 import { useTranslation } from 'react-i18next'
@@ -9,6 +10,8 @@ import NativeAd from '~/ui/ads/NativeAd'
 import { Button } from './Button'
 import Card from './cards/Card'
 import { HorseRaceModal } from './components/HorseRaceModal'
+
+const image = require('../../assets/background_1.png')
 
 export const WinnerModal: FunctionComponent = () => {
   const winner = useAtomValue(winnerAtom)
@@ -28,19 +31,21 @@ export const WinnerModal: FunctionComponent = () => {
 
   return (
     <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
-      <Text variant="headlineMedium" className="text-white">
-        {t('winner')}
-      </Text>
+      <ImageBackground source={image} className="-m-3">
+        <Text variant="headlineMedium" className="text-white">
+          {t('winner')}
+        </Text>
 
-      {winner && <Card rankSymbol={symbol} />}
-      <Button
-        onPress={() => {
-          setShowModal(false)
-          restart()
-        }}
-        title={t('restart')}
-      />
-      <NativeAd id="ca-app-pub-7941882405849156/3177221624" />
+        {winner && <Card rankSymbol={symbol} />}
+        <Button
+          onPress={() => {
+            setShowModal(false)
+            restart()
+          }}
+          title={t('restart')}
+        />
+        <NativeAd id="ca-app-pub-7941882405849156/3177221624" />
+      </ImageBackground>
     </HorseRaceModal>
   )
 }
