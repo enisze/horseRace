@@ -11,7 +11,7 @@ const defineConfig = (): ExpoConfig => ({
   icon: './assets/icon.png',
   userInterfaceStyle: 'light',
   runtimeVersion: {
-    policy: 'appVersion',
+    policy: 'sdkVersion',
   },
   splash: {
     image: './assets/icon.png',
