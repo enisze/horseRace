@@ -9,6 +9,8 @@ import { HorseRaceButton } from '~/ui/components/buttons/HorseRaceButton'
 import { HorseRaceModal } from '~/ui/components/HorseRaceModal'
 import { ShareAppButton } from '~/ui/header/ShareAppButton'
 
+const image = require('../../../assets/background_1.png')
+
 export const Header = () => {
   const { t } = useTranslation()
 
@@ -40,8 +42,12 @@ export const Header = () => {
         </HorseRaceButton>
       </View>
 
-      <HorseRaceModal visible={showModal} onClose={() => setShowModal(false)}>
-        <Paragraph>{t('about')}</Paragraph>
+      <HorseRaceModal
+        visible={showModal}
+        showBackButton
+        onClose={() => setShowModal(false)}
+      >
+        <Paragraph className="m-5 text-white">{t('about')}</Paragraph>
       </HorseRaceModal>
     </>
   )

@@ -22,7 +22,7 @@ const StartView: FunctionComponent = () => {
 
   return (
     <MainLayout>
-      <ImageBackground source={image} className="-m-3">
+      <ImageBackground source={image} className="-m-4">
         <Stack.Screen
           options={{ title: 'Horse Race', headerTitleAlign: 'center' }}
         />
