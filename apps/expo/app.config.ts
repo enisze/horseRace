@@ -57,7 +57,7 @@ const defineConfig = (): ExpoConfig => ({
           compileSdkVersion: 33,
         },
         ios: {
-          deploymentTarget: '13.0',
+          deploymentTarget: '13.4',
         },
       },
     ],
