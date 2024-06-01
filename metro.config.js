@@ -22,4 +22,4 @@ if (config.resolver) {
 	config.resolver.disableHierarchicalLookup = true
 }
 
-module.exports = withNativeWind(config, { input: './global.css' })
+module.exports = withNativeWind(config, { input: './globals.css' })
