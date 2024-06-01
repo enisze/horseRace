@@ -10,7 +10,7 @@ import type { RankSymbol } from '@/src/types/RankSymbol.type'
 import { useAtomValue } from 'jotai'
 import type { FunctionComponent } from 'react'
 import { View } from 'react-native'
-import { Card } from 'react-native-elements'
+import Card from '../cards/Card'
 
 const keys: RankSymbol[] = ['AC', 'AD', 'AS', 'AH']
 

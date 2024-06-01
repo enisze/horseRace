@@ -18,26 +18,12 @@ module.exports = (api) => {
 	api.cache.forever()
 
 	return {
-		presets: [
-			'babel-preset-expo',
-			{
-				jsxImportSource: 'nativewind',
-			},
-			'nativewind/babel',
-		],
-		plugins: [
-			[
-				'nativewind/babel',
-				{
-					tailwindConfig: lazyLoadConfig(),
-				},
-			],
-			require.resolve('expo-router/babel'),
-		],
+		presets: [['babel-preset-expo']],
 		env: {
 			production: {
 				plugins: ['react-native-paper/babel'],
 			},
 		},
+		plugins: ['nativewind/babel'],
 	}
 }

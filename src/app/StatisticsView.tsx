@@ -3,6 +3,7 @@ import { useAtomValue } from 'jotai'
 import { ImageBackground, View } from 'react-native'
 import { Text } from 'react-native-paper'
 import type { RankSymbol } from '../types/RankSymbol.type'
+import Card from '../ui/cards/Card'
 import { MainLayout } from '../ui/components/MainLayout'
 import { totalAtom, valuesAtom } from '../utils/statisticAtoms'
 
@@ -34,7 +35,7 @@ const StatisticsView: React.FC = () => {
 									key={idx}
 								>
 									<View>
-										<PlayingCard rankSymbol={key} />
+										<Card rankSymbol={key} />
 									</View>
 									<Text variant='headlineLarge' className='text-white'>
 										Wins: {vals[idx]}
