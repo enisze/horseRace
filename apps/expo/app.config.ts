@@ -54,7 +54,7 @@ const defineConfig = (): ExpoConfig => ({
       'expo-build-properties',
       {
         android: {
-          compileSdkVersion: 33,
+          compileSdkVersion: 34,
         },
         ios: {
           deploymentTarget: '13.4',
