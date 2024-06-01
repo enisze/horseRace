@@ -2,6 +2,7 @@
 	"name": "horserace",
 	"main": "expo-router/entry",
 	"version": "1.0.0",
+	"packageManager": "pnpm@9.1.4",
 	"scripts": {
 		"start": "export NODE_OPTIONS=--max_old_space_size=4096 &&  expo start",
 		"android": "expo start --android",
