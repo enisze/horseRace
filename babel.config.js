@@ -9,7 +9,7 @@ const _tailwindConfig = null
  */
 function lazyLoadConfig() {
 	return (
-		_tailwindConfig ?? loadConfig(path.join(__dirname, 'tailwind.config.ts'))
+		_tailwindConfig ?? loadConfig(path.join(__dirname, 'tailwind.config.js'))
 	)
 }
 
