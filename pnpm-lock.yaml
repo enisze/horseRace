@@ -32,6 +32,9 @@ importers:
       '@trpc/server':
         specifier: ^10.38.1
         version: 10.45.2
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       expo:
         specifier: ~51.0.9
         version: 51.0.9(@babel/core@7.24.6)(@babel/preset-env@7.24.6(@babel/core@7.24.6))
